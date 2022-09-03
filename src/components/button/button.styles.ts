@@ -3,13 +3,18 @@ import Button from '@mui/material/Button';
 import { SxProps, Theme } from '@mui/material';
 
 import { MainButtonProps } from './MainButton';
-import { MAIN_COLORS, SECONDARY_SHADES, NEUTRAL_SHADES } from '../../ui/colors';
 import { ButtonVariants } from './button.consts';
+import {
+  MAIN_COLORS,
+  SECONDARY_SHADES,
+  NEUTRAL_SHADES,
+} from '../../utils/ui/colors';
+import { BORDER_RADIUS } from '../../globalStyles';
 
 export const StyledButton = styled(Button)`
   && {
     ${({ btnVariant }: MainButtonProps) => css`
-      border-radius: 20px;
+      border-radius: ${BORDER_RADIUS};
       font-size: 14px;
       background: ${btnVariant === ButtonVariants.TEXT
         ? 'none'

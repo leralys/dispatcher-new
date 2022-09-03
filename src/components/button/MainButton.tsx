@@ -8,7 +8,7 @@ export interface MainButtonProps extends MuiButtonProps {
   withEndIcon?: boolean;
   children?: JSX.Element | string;
   btnVariant: ButtonVariants;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const MainButton = ({
@@ -23,7 +23,7 @@ const MainButton = ({
       disableElevation
       endIcon={withEndIcon && <EastIcon sx={iconStyles(btnVariant)} />}
       btnVariant={btnVariant}
-      onClick={onClick}
+      onClick={onClick && onClick}
     >
       {children}
     </StyledButton>
