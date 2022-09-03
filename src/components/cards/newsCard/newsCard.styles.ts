@@ -55,7 +55,6 @@ export const CardButtonContainer = styled(FlexRow)`
 export const ATagStyled = styled.a`
   font-size: inherit;
   color: ${NEUTRAL_SHADES.WHITE};
-  text-decoration: none;
   @media only screen and (max-width: 300px) {
     font-size: 12px;
   }

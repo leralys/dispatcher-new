@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { SECONDARY_SHADES } from './utils/ui/colors';
+
+export const GlobalStyle = createGlobalStyle`
+  *,
+  * ::before,
+  * ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: ${SECONDARY_SHADES[400]};
+    font-size: 16px;
+  }
+  a {
+    text-decoration: none;
+  }
+`;
 
 export const FlexColumn = styled.div`
   display: flex;
