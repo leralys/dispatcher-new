@@ -15,7 +15,6 @@ export const CardPrimaryStyled = styled(StyledCard)`
   width: 100%;
   min-height: max(12.6vw, 240px);
   margin-bottom: 24px;
-  box-shadow: 0px 32px 64px ${BOX_SHADOW_COLOR};
 
   @media only screen and (max-width: ${SCREENS.breakpoint700}px) {
     flex-direction: column;

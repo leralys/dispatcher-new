@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-import { NEUTRAL_SHADES, MAIN_COLORS } from '../../utils/ui/colors';
+import {
+  NEUTRAL_SHADES,
+  MAIN_COLORS,
+  BOX_SHADOW_COLOR,
+} from '../../utils/ui/colors';
 import { BORDER_RADIUS } from '../../globalStyles';
 
 export const StyledCard = styled.div`
@@ -8,4 +12,5 @@ export const StyledCard = styled.div`
   border-radius: ${BORDER_RADIUS};
   background-color: ${NEUTRAL_SHADES.WHITE};
   border: 1px solid ${MAIN_COLORS.secondary};
+  box-shadow: 0px 32px 64px ${BOX_SHADOW_COLOR};
 `;
