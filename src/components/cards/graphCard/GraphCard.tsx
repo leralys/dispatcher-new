@@ -7,7 +7,7 @@ import {
 } from './graphCard.styles';
 
 export interface GraphCardProps {
-  children?: JSX.Element;
+  children?: React.ReactNode;
   title?: string;
   justifyContent: string;
   alignItems: string;

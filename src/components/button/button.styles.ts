@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import Button from '@mui/material/Button';
 import { SxProps, Theme } from '@mui/material';
 
-import { MainButtonProps } from './MainButton';
-import { ButtonVariants } from './button.consts';
+import { ButtonVariants } from './MainButton';
+
 import {
   MAIN_COLORS,
   SECONDARY_SHADES,
@@ -11,15 +11,15 @@ import {
 } from '../../utils/ui/colors';
 import { BORDER_RADIUS } from '../../globalStyles';
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)<{ $btnVariant: ButtonVariants }>`
   && {
-    ${({ btnVariant }: MainButtonProps) => css`
+    ${({ $btnVariant }) => css`
       border-radius: ${BORDER_RADIUS};
       font-size: 14px;
-      background: ${btnVariant === ButtonVariants.TEXT
+      background: ${$btnVariant === ButtonVariants.TEXT
         ? 'none'
-        : MAIN_COLORS[btnVariant]};
-      color: ${btnVariant === ButtonVariants.PRIMARY
+        : MAIN_COLORS[$btnVariant]};
+      color: ${$btnVariant === ButtonVariants.PRIMARY
         ? NEUTRAL_SHADES.WHITE
         : SECONDARY_SHADES[300]};
       opacity: 1;
@@ -28,10 +28,10 @@ export const StyledButton = styled(Button)`
         font-size: 12px;
       }
       &:hover {
-        background: ${btnVariant === ButtonVariants.TEXT
+        background: ${$btnVariant === ButtonVariants.TEXT
           ? `${MAIN_COLORS.secondary}70`
-          : MAIN_COLORS[btnVariant]};
-        opacity: ${btnVariant !== ButtonVariants.TEXT && 0.8};
+          : MAIN_COLORS[$btnVariant]};
+        opacity: ${$btnVariant !== ButtonVariants.TEXT && 0.8};
       }
     `}
   }

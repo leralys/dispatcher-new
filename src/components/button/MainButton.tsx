@@ -2,12 +2,17 @@ import { ButtonProps as MuiButtonProps } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 
 import { StyledButton, iconStyles } from './button.styles';
-import { ButtonVariants } from './button.consts';
+
+export enum ButtonVariants {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  TEXT = 'text',
+}
 
 export interface MainButtonProps extends MuiButtonProps {
   withEndIcon?: boolean;
-  children?: JSX.Element | string;
-  btnVariant: ButtonVariants;
+  children?: React.ReactNode | string;
+  btnVariant?: ButtonVariants;
   onClick?: () => void;
 }
 
@@ -22,8 +27,10 @@ const MainButton = ({
       variant='contained'
       disableElevation
       endIcon={withEndIcon && <EastIcon sx={iconStyles(btnVariant)} />}
-      btnVariant={btnVariant}
       onClick={onClick && onClick}
+      data-testid='main-button'
+      // transient props
+      $btnVariant={btnVariant}
     >
       {children}
     </StyledButton>

@@ -1,8 +1,5 @@
-import { useMemo } from 'react';
-
 import useWindowSize from '../../../utils/hooks/useWindowSize';
-import Button from '../../button/MainButton';
-import { ButtonVariants } from '../../button/button.consts';
+import Button, { ButtonVariants } from '../../button/MainButton';
 import NoImage from './NoImage';
 import { TEXT_DIR } from '../../../utils/helpers/isRTL';
 import cropCardContent from '../../../utils/helpers/cropCardContent';
