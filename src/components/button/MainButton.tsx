@@ -1,7 +1,7 @@
 import { ButtonProps as MuiButtonProps } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 
-import { StyledButton, iconStyles } from './button.styles';
+import { StyledButton, iconStyles } from './mainButton.styles';
 
 export enum ButtonVariants {
   PRIMARY = 'primary',
