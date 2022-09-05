@@ -5,4 +5,7 @@ export default {
   },
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['jest-chain'],
+  moduleNameMapper: {
+    '^.+\\.svg$': 'jest-svg-transformer',
+  },
 };

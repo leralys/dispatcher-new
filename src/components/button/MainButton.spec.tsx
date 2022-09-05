@@ -8,34 +8,36 @@ import {
 
 const buttonText = 'test';
 
-Object.values(ButtonVariants).forEach((variant) => {
-  test(`Checking button variant ${variant}`, () => {
-    render(
-      <MainButton btnVariant={variant} withEndIcon={true}>
-        {buttonText}
-      </MainButton>
-    );
-    const buttonElement = screen.getByTestId('main-button');
-    const endIcon = screen.getByTestId('end-icon');
-    expect(buttonElement)
-      .toBeDefined()
-      .toHaveTextContent(buttonText)
-      .toHaveStyle(
-        `background: ${
-          variant === ButtonVariants.TEXT ? 'none' : MAIN_COLORS[variant]
-        };
-      color: ${
-        variant === ButtonVariants.PRIMARY
-          ? NEUTRAL_SHADES.WHITE
-          : SECONDARY_SHADES[300]
-      }`
+describe('Test main button', () => {
+  Object.values(ButtonVariants).forEach((variant) => {
+    test(`Test button variant ${variant}`, () => {
+      render(
+        <MainButton btnVariant={variant} withEndIcon={true}>
+          {buttonText}
+        </MainButton>
       );
-    expect(endIcon).toHaveStyle(
-      `fill: ${
-        variant === ButtonVariants.PRIMARY
-          ? NEUTRAL_SHADES.WHITE
-          : SECONDARY_SHADES[300]
-      }`
-    );
+      const buttonElement = screen.getByTestId('main-button');
+      const endIcon = screen.getByTestId('end-icon');
+      expect(buttonElement)
+        .toBeDefined()
+        .toHaveTextContent(buttonText)
+        .toHaveStyle(
+          `background: ${
+            variant === ButtonVariants.TEXT ? 'none' : MAIN_COLORS[variant]
+          };
+        color: ${
+          variant === ButtonVariants.PRIMARY
+            ? NEUTRAL_SHADES.WHITE
+            : SECONDARY_SHADES[300]
+        }`
+        );
+      expect(endIcon).toHaveStyle(
+        `fill: ${
+          variant === ButtonVariants.PRIMARY
+            ? NEUTRAL_SHADES.WHITE
+            : SECONDARY_SHADES[300]
+        }`
+      );
+    });
   });
 });
