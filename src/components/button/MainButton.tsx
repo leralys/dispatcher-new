@@ -26,8 +26,12 @@ const MainButton = ({
     <StyledButton
       variant='contained'
       disableElevation
-      endIcon={withEndIcon && <EastIcon sx={iconStyles(btnVariant)} />}
-      onClick={onClick && onClick}
+      endIcon={
+        withEndIcon && (
+          <EastIcon sx={iconStyles(btnVariant)} data-testid='end-icon' />
+        )
+      }
+      onClick={onClick}
       data-testid='main-button'
       // transient props
       $btnVariant={btnVariant}

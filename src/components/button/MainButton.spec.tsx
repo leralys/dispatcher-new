@@ -5,23 +5,33 @@ import {
   NEUTRAL_SHADES,
   SECONDARY_SHADES,
 } from '../../utils/ui/colors';
-// import { iconStyles } from './button.styles';
 
 const buttonText = 'test';
 
 Object.values(ButtonVariants).forEach((variant) => {
   test(`Checking button variant ${variant}`, () => {
-    render(<MainButton btnVariant={variant}>{buttonText}</MainButton>);
-    const buttonElement = screen.getByTestId('main-button');
-    expect(buttonElement).toBeDefined();
-    expect(buttonElement).toHaveTextContent(buttonText);
-    expect(buttonElement).toHaveStyle(
-      `background: ${
-        variant === ButtonVariants.TEXT ? 'none' : MAIN_COLORS[variant]
-      }`
+    render(
+      <MainButton btnVariant={variant} withEndIcon={true}>
+        {buttonText}
+      </MainButton>
     );
-    expect(buttonElement).toHaveStyle(
-      `color: ${
+    const buttonElement = screen.getByTestId('main-button');
+    const endIcon = screen.getByTestId('end-icon');
+    expect(buttonElement)
+      .toBeDefined()
+      .toHaveTextContent(buttonText)
+      .toHaveStyle(
+        `background: ${
+          variant === ButtonVariants.TEXT ? 'none' : MAIN_COLORS[variant]
+        };
+      color: ${
+        variant === ButtonVariants.PRIMARY
+          ? NEUTRAL_SHADES.WHITE
+          : SECONDARY_SHADES[300]
+      }`
+      );
+    expect(endIcon).toHaveStyle(
+      `fill: ${
         variant === ButtonVariants.PRIMARY
           ? NEUTRAL_SHADES.WHITE
           : SECONDARY_SHADES[300]

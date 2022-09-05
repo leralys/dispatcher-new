@@ -4,4 +4,5 @@ export default {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['jest-chain'],
 };
