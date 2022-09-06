@@ -1,16 +1,16 @@
 import {
   TitleContainer,
   Underline,
-  CardSecondaryStyled,
-  CardSecondaryTitle,
-  CardSecondaryBody,
+  Card,
+  CardTitle,
+  CardBody,
 } from './graphCard.styles';
 
 export interface GraphCardProps {
   children?: React.ReactNode;
   title?: string;
-  justifyContent: string;
-  alignItems: string;
+  justifyContent?: string;
+  alignItems?: string;
 }
 
 const GraphCard = ({
@@ -20,18 +20,19 @@ const GraphCard = ({
   alignItems = 'center',
 }: GraphCardProps) => {
   return (
-    <CardSecondaryStyled>
+    <Card>
       <TitleContainer>
-        <CardSecondaryTitle>{title}</CardSecondaryTitle>
+        <CardTitle>{title}</CardTitle>
         <Underline />
       </TitleContainer>
-      <CardSecondaryBody
+      <CardBody
         justifyContent={justifyContent}
         alignItems={alignItems}
+        data-testid='graph-card-body'
       >
         {children}
-      </CardSecondaryBody>
-    </CardSecondaryStyled>
+      </CardBody>
+    </Card>
   );
 };
 

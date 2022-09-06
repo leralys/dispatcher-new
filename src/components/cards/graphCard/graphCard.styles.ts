@@ -4,7 +4,7 @@ import { SECONDARY_SHADES } from '../../../utils/ui/colors';
 import { StyledCard } from '../card.styles';
 import { FlexColumn, FlexRow } from '../../../globalStyles';
 
-export const CardSecondaryStyled = styled(StyledCard)`
+export const Card = styled(StyledCard)`
   // width: 100%;
   // padding: 6.07% 4.5%;
   width: 19.69vw;
@@ -18,7 +18,7 @@ export const TitleContainer = styled(FlexColumn)`
   margin: 24px;
 `;
 
-export const CardSecondaryTitle = styled.h5`
+export const CardTitle = styled.h5`
   font-size: clamp(20px, 1.25vw, 24px);
   color: ${SECONDARY_SHADES[400]};
   margin-bottom: 6px;
@@ -31,7 +31,7 @@ export const Underline = styled.div`
   background: ${SECONDARY_SHADES[300]};
 `;
 
-export const CardSecondaryBody = styled(FlexRow)<{
+export const CardBody = styled(FlexRow)<{
   justifyContent: string;
   alignItems: string;
 }>`

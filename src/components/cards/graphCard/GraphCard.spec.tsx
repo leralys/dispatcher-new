@@ -1,0 +1,29 @@
+import { render, screen } from '../../../utils/test-utils';
+import GraphCard from './GraphCard';
+
+const flexProperties = [
+  'flex-end',
+  'flex-start',
+  'space-between',
+  'space-around',
+  'space-evenly',
+];
+
+describe('Should render graph card', () => {
+  test(`default flex properties (center)`, () => {
+    render(<GraphCard />);
+    const graphCardBody = screen.getByTestId('graph-card-body');
+    expect(graphCardBody)
+      .toBeDefined()
+      .toHaveStyle('align-items: center; justify-content: center');
+  });
+  flexProperties.forEach((property) => {
+    test(`graph card with align-items and justify-content equal to ${property}`, () => {
+      render(<GraphCard alignItems={property} justifyContent={property} />);
+      const graphCardBody = screen.getByTestId('graph-card-body');
+      expect(graphCardBody)
+        .toBeDefined()
+        .toHaveStyle(`align-items: ${property}; justify-content: ${property}`);
+    });
+  });
+});
