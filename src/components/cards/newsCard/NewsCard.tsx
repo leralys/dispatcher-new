@@ -1,13 +1,13 @@
 import useWindowSize from '../../../utils/hooks/useWindowSize';
 import Button, { ButtonVariants } from '../../button/MainButton';
-import NoImage from './NoImage';
+import NoImage from './noImage/NoImage';
 import { TEXT_DIR } from '../../../utils/helpers/isRTL';
 import cropCardContent from '../../../utils/helpers/cropCardContent';
 import { formatArticleDate } from '../../../utils/helpers/dateFormat';
 import { IArticle } from '../../../utils/types/APITypes';
 import { replacementChar } from '../../../utils/consts/consts';
 import {
-  CardPrimaryStyled,
+  Card,
   CardImgContainer,
   CardButtonContainer,
   Article,
@@ -15,7 +15,7 @@ import {
   ArticleDetailes,
   ArticleTitle,
   ArticleContent,
-  ATagStyled,
+  ATag,
 } from './newsCard.styles';
 
 export interface NewsCardProps {
@@ -29,10 +29,11 @@ const NewsCard = ({ article, textDir = TEXT_DIR.RTL }: NewsCardProps) => {
     ? `${article.author}, ${article.source.name}`
     : `${article.source.name}`;
   return (
-    <CardPrimaryStyled>
+    <Card data-testid='news-card'>
       <CardImgContainer>
         {article.urlToImage ? (
           <ArticleImg
+            data-testid='article-img'
             src={article.urlToImage}
             onError={(e: any) => {
               e.target.src = '';
@@ -42,11 +43,16 @@ const NewsCard = ({ article, textDir = TEXT_DIR.RTL }: NewsCardProps) => {
           <NoImage />
         )}
       </CardImgContainer>
-      <Article isRTL={textDir === TEXT_DIR.RTL ? true : false}>
+      <Article
+        isRTL={textDir === TEXT_DIR.RTL ? true : false}
+        data-testid='article-container'
+      >
         <ArticleDetailes>
           {formatArticleDate(article.publishedAt)}
         </ArticleDetailes>
-        <ArticleTitle dir={textDir}>{article.title}</ArticleTitle>
+        <ArticleTitle dir={textDir} data-testid='article-title'>
+          {article.title}
+        </ArticleTitle>
         <ArticleDetailes dir={textDir}>{sourceString}</ArticleDetailes>
         <ArticleContent dir={textDir}>
           {article.description && !article.description.includes(replacementChar)
@@ -55,17 +61,18 @@ const NewsCard = ({ article, textDir = TEXT_DIR.RTL }: NewsCardProps) => {
         </ArticleContent>
         <CardButtonContainer>
           <Button withEndIcon={true} btnVariant={ButtonVariants.PRIMARY}>
-            <ATagStyled
+            <ATag
               href={article.url}
               target='_blank'
               rel='noopener noreferrer'
+              data-testid='navigate-to-dispatch'
             >
               Navigate to dispatch
-            </ATagStyled>
+            </ATag>
           </Button>
         </CardButtonContainer>
       </Article>
-    </CardPrimaryStyled>
+    </Card>
   );
 };
 

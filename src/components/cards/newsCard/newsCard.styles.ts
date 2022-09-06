@@ -9,7 +9,7 @@ import { SCREENS } from '../../../utils/ui/screenSizes';
 import { FlexColumn, FlexRow, BORDER_RADIUS } from '../../../globalStyles';
 import { StyledCard } from '../card.styles';
 
-export const CardPrimaryStyled = styled(StyledCard)`
+export const Card = styled(StyledCard)`
   flex-direction: row;
   width: 100%;
   min-height: max(12.6vw, 240px);
@@ -50,7 +50,7 @@ export const CardButtonContainer = styled(FlexRow)`
     }
 `;
 
-export const ATagStyled = styled.a`
+export const ATag = styled.a`
   font-size: inherit;
   color: ${NEUTRAL_SHADES.WHITE};
   @media only screen and (max-width: 300px) {
@@ -107,16 +107,4 @@ export const ArticleTitle = styled.h6`
 export const ArticleContent = styled.section`
   color: ${SECONDARY_SHADES[300]};
   font-size: 14px;
-`;
-
-export const NoImageContainer = styled(FlexRow)`
-  align-items: center;
-  justify-content: center;
-  background: ${NEUTRAL_SHADES[200]};
-  width: 100%;
-  height: 100%;
-  border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
-  @media only screen and (max-width: ${SCREENS.breakpoint700}px) {
-    border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
-  }
 `;
