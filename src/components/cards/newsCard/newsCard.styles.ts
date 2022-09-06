@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import {
-  BOX_SHADOW_COLOR,
   MAIN_COLORS,
   NEUTRAL_SHADES,
   SECONDARY_SHADES,

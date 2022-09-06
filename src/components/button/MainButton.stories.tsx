@@ -1,5 +1,4 @@
 import { Story, Meta } from '@storybook/react';
-
 import MainButton, { MainButtonProps, ButtonVariants } from './MainButton';
 
 export default {

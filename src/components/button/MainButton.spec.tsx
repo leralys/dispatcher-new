@@ -1,4 +1,5 @@
 import { render, screen } from '../../utils/test-utils';
+
 import MainButton, { ButtonVariants } from './MainButton';
 import {
   MAIN_COLORS,
@@ -8,9 +9,9 @@ import {
 
 const buttonText = 'test';
 
-describe('Test main button', () => {
+describe(`Should render button and icon with correct styles`, () => {
   Object.values(ButtonVariants).forEach((variant) => {
-    test(`Test button variant ${variant}`, () => {
+    test(`button variant ${variant}`, () => {
       render(
         <MainButton btnVariant={variant} withEndIcon={true}>
           {buttonText}
