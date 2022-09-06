@@ -57,7 +57,7 @@ describe('Test News card', () => {
     it('text-align of the article should be right when RTL text', () => {
       render(<NewsCard article={articleRTL} textDir={textDirRTL} />);
       const articleContainer = screen.getByTestId('article-container');
-      expect(articleContainer).toHaveStyle('text-align: right');
+      expect(articleContainer).toHaveStyleRule('text-align', 'right');
     });
     it(`text dir of the LTR article's title should be ${TEXT_DIR.LTR}`, () => {
       render(<NewsCard article={articleLTR} textDir={textDirLTR} />);

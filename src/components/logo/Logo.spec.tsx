@@ -10,13 +10,15 @@ describe('Should render logo with correct height', () => {
     const logoContainer = screen.getByTestId('logo-container');
     expect(logoContainer)
       .toBeDefined()
-      .toHaveStyle(`height: ${defaultLogoSize}px`);
+      .toHaveStyleRule('height', `${defaultLogoSize}px`);
   });
   customHeightsArr.forEach((height) => {
     test(`logo with ${height}px height`, () => {
       render(<Logo customHeight={height} />);
       const logoContainer = screen.getByTestId('logo-container');
-      expect(logoContainer).toBeDefined().toHaveStyle(`height: ${height}px`);
+      expect(logoContainer)
+        .toBeDefined()
+        .toHaveStyleRule('height', `${height}px`);
     });
   });
 });

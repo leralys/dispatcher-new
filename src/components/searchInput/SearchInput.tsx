@@ -1,23 +1,23 @@
 import { InputAdornment } from '@mui/material';
 import { InputProps as MuiInputProps } from '@mui/material';
 
-import { InputStyled, InputIcon } from './styles';
+import { InputStyled, InputIcon } from './searchInput.styles';
 
-export interface InputComponentProps extends MuiInputProps {
+export interface SearchInputProps extends MuiInputProps {
   withStartAdornment?: boolean;
   placeholder?: string;
 }
 
-const InputComponent = ({
+const SearchInput = ({
   withStartAdornment = true,
   placeholder = 'Search',
-}: InputComponentProps) => {
+}: SearchInputProps) => {
   return (
     <InputStyled
       startAdornment={
         withStartAdornment && (
           <InputAdornment position='start'>
-            <InputIcon />
+            <InputIcon data-testid='search-input-icon' />
           </InputAdornment>
         )
       }
@@ -27,4 +27,4 @@ const InputComponent = ({
   );
 };
 
-export default InputComponent;
+export default SearchInput;
