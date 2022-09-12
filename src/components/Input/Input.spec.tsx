@@ -13,7 +13,7 @@ describe(`Should render input`, () => {
   });
   test('icon when error should exist', () => {
     render(<Input isError={true} />);
-    const icon = screen.getByTestId('error-icon');
+    const icon = screen.getByTestId('ErrorOutlineIcon');
     expect(icon).toBeDefined().toHaveStyle(`fill: ${red[700]}`);
   });
   test('test helper text', () => {

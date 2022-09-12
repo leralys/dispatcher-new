@@ -15,6 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  .font-mulish {
+    font-family: 'Mulish', 'Roboto', sans-serif;
+  }
 `;
 
 export const FlexColumn = styled.div`

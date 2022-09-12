@@ -42,7 +42,6 @@ const Input = ({
             <InputAdornment position='end'>
               <ErrorOutlineIcon
                 sx={SxErrorIcon}
-                data-testid='error-icon'
               />
             </InputAdornment>
           )
