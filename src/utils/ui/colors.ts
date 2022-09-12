@@ -8,7 +8,7 @@ export const SECONDARY_SHADES = {
 
 export const NEUTRAL_SHADES = {
   WHITE: '#FFFFFF',
-  100: '#ECECF0',
+  100: '#E7E8E9',
   200: '#ECECEC',
   300: '#E6E6E6',
   400: '#E0E0E0',
@@ -28,4 +28,7 @@ export const MAIN_COLORS = {
   secondary: '#D9DBE9',
 };
 
-export const BOX_SHADOW_COLOR = 'rgba(0, 0, 0, 0.05)';
+export const BOX_SHADOW = {
+  100: 'rgba(0, 0, 0, 0.05)',
+  200: 'rgba(0, 0, 0, 0.08)',
+};

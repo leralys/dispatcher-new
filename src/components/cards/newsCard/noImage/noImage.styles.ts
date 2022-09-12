@@ -9,8 +9,8 @@ export const NoImageContainer = styled(FlexRow)`
   background: ${NEUTRAL_SHADES[200]};
   width: 100%;
   height: 100%;
-  border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
+  border-radius: ${BORDER_RADIUS[20]} 0 0 ${BORDER_RADIUS[20]};
   @media only screen and (max-width: ${SCREENS.breakpoint700}px) {
-    border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
+    border-radius: ${BORDER_RADIUS[20]} ${BORDER_RADIUS[20]} 0 0;
   }
 `;

@@ -27,4 +27,8 @@ export const FlexRow = styled.div`
   flex-direction: row;
 `;
 
-export const BORDER_RADIUS = '20px';
+export const BORDER_RADIUS = {
+  8: '8px',
+  10: '10px',
+  20: '20px',
+};

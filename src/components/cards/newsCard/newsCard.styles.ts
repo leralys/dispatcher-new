@@ -7,7 +7,7 @@ import {
 } from '../../../utils/ui/colors';
 import { SCREENS } from '../../../utils/ui/screenSizes';
 import { FlexColumn, FlexRow, BORDER_RADIUS } from '../../../globalStyles';
-import { StyledCard } from '../card.styles';
+import { StyledCard } from '../cards.styles';
 
 export const Card = styled(StyledCard)`
   flex-direction: row;
@@ -64,11 +64,11 @@ export const ArticleImg = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: 50% 0%;
-  border-radius: ${BORDER_RADIUS} 0 0 ${BORDER_RADIUS};
+  border-radius: ${BORDER_RADIUS[20]} 0 0 ${BORDER_RADIUS[20]};
   border-right: 1px solid ${MAIN_COLORS.secondary};
 
   @media only screen and (max-width: ${SCREENS.breakpoint700}px) {
-    border-radius: ${BORDER_RADIUS} ${BORDER_RADIUS} 0 0;
+    border-radius: ${BORDER_RADIUS[20]} ${BORDER_RADIUS[20]} 0 0;
     object-position: 0% 50%;
   }
   @media only screen and (max-width: ${SCREENS.tabletM - 1}px) {

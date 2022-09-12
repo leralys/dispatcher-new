@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import {
   TitleContainer,
   Underline,
@@ -7,7 +9,7 @@ import {
 } from './graphCard.styles';
 
 export interface GraphCardProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   title?: string;
   justifyContent?: string;
   alignItems?: string;

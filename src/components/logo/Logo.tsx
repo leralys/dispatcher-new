@@ -1,5 +1,5 @@
 import logoSvg from '../../assets/svgs/logo.svg';
-import { LogoContainer, LogoImg } from './style';
+import { LogoContainer, LogoImg } from './logo.style';
 
 export interface LogoProps {
   customHeight?: number;

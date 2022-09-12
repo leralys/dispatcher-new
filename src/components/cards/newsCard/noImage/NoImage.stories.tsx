@@ -4,7 +4,7 @@ import NoImage from './NoImage';
 
 export default {
   component: NoImage,
-  title: 'Cards/NewsCardNoImage',
+  title: 'Cards/NoImagePic',
 } as Meta;
 
 const Template: Story = (args) => (
