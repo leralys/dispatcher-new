@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
 
 :root {
+  --color-hover-scrollbar: #a0a3bd;
+  --color-light-purple: #f8f8ff;
   --color-dark-purple: #262146;
+  --color-medium-purple: #5a5a89;
 }
 
 *,
@@ -18,4 +21,19 @@
 
 a {
   text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  margin-block: 4px;
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-medium-purple);
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hover-scrollbar);
 }

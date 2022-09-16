@@ -18,6 +18,20 @@ export const GlobalStyle = createGlobalStyle`
   .font-mulish {
     font-family: 'Mulish', 'Roboto', sans-serif;
   }
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    margin-block: 4px;
+    border-radius: 5px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: ${SECONDARY_SHADES[300]};
+    border-radius: 5px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: ${SECONDARY_SHADES.SCROLLBAR};
+  }
 `;
 
 export const FlexColumn = styled.div`

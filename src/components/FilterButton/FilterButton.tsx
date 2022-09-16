@@ -1,10 +1,12 @@
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+
 import {
   StyledFilterButton,
   FilterText,
   SxFilterIcon,
   TextAndAmount,
+  Amount,
 } from './filterButton.styles';
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 export interface FilterButtonProps {
   isOpen: boolean;
@@ -31,7 +33,10 @@ const DropdownButton = ({
           {selectedItem ? selectedItem : title}
         </FilterText>
         {selectedItemsAmount && (
-          <span data-testid='selected-amount'> + {selectedItemsAmount}</span>
+          <Amount data-testid='selected-amount'>
+            {' '}
+            + {selectedItemsAmount}
+          </Amount>
         )}
       </TextAndAmount>
       <ArrowBackIosRoundedIcon
