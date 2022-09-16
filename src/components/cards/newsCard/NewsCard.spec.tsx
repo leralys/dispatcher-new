@@ -2,7 +2,7 @@ import { render, screen } from '../../../utils/test-utils';
 import mockIl from '../../../mock/topHeadlinesIsrMock.json';
 import mockUs from '../../../mock/topHeadlinesUsMock.json';
 import NewsCard from './NewsCard';
-import { TEXT_DIR, isRTL } from '../../../utils/helpers/isRTL';
+import { TEXT_DIR, isRTL } from '../../../utils/helpers/isRTL/isRTL';
 
 const articleNoImg = mockIl.articles[0];
 const textDirArticleNoImg = isRTL(mockIl.articles[0].title)

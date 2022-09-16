@@ -1,8 +1,8 @@
-import { SCREENS } from '../ui/screenSizes';
+import { SCREENS } from '../../ui/screenSizes';
 import {
   MAX_ARTICLE_LENGTH_MOBILE,
   MAX_ARTICLE_LENGTH_DESKTOP,
-} from '../consts/maxValues';
+} from '../../consts/maxValues';
 
 const { breakpoint700 } = SCREENS;
 export const ellipsis = ' ...';

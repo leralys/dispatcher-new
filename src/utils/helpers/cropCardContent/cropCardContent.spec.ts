@@ -1,12 +1,12 @@
 import cropCardContent, { ellipsis } from './cropCardContent';
-import { SCREENS } from '../ui/screenSizes';
+import { SCREENS } from '../../ui/screenSizes';
 import {
   MAX_ARTICLE_LENGTH_MOBILE,
   MAX_ARTICLE_LENGTH_DESKTOP,
-} from '../consts/maxValues';
-import { replacementChar } from '../consts/consts';
-import mockIl from '../../mock/topHeadlinesIsrMock.json';
-import mockUs from '../../mock/topHeadlinesUsMock.json';
+} from '../../consts/maxValues';
+import { replacementChar } from '../../consts/consts';
+import mockIl from '../../../mock/topHeadlinesIsrMock.json';
+import mockUs from '../../../mock/topHeadlinesUsMock.json';
 
 const screenWidths = [SCREENS.mobileM, SCREENS.tabletS, SCREENS.laptopS];
 const ellipsisLength = ellipsis.length;

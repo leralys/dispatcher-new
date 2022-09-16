@@ -1,9 +1,9 @@
 import useWindowSize from '../../../utils/hooks/useWindowSize';
 import Button, { ButtonVariants } from '../../MainButton/MainButton';
 import NoImage from './NoImage/NoImage';
-import { TEXT_DIR } from '../../../utils/helpers/isRTL';
-import cropCardContent from '../../../utils/helpers/cropCardContent';
-import { formatArticleDate } from '../../../utils/helpers/dateFormat';
+import { TEXT_DIR } from '../../../utils/helpers/isRTL/isRTL';
+import cropCardContent from '../../../utils/helpers/cropCardContent/cropCardContent';
+import { formatArticleDate } from '../../../utils/helpers/dateFormat/dateFormat';
 import { IArticle } from '../../../utils/types/APITypes';
 import { replacementChar } from '../../../utils/consts/consts';
 import {

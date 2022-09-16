@@ -1,5 +1,5 @@
-import mockIl from '../../mock/topHeadlinesIsrMock.json';
-import mockUs from '../../mock/topHeadlinesUsMock.json';
+import mockIl from '../../../mock/topHeadlinesIsrMock.json';
+import mockUs from '../../../mock/topHeadlinesUsMock.json';
 import { isRTL } from './isRTL';
 
 describe('Should return correct boolean for RTL and LTR texts', () => {

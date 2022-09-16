@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import NewsCard, { NewsCardProps } from './NewsCard';
 import mockIl from '../../../mock/topHeadlinesIsrMock.json';
 import mockUs from '../../../mock/topHeadlinesUsMock.json';
-import { TEXT_DIR } from '../../../utils/helpers/isRTL';
+import { TEXT_DIR } from '../../../utils/helpers/isRTL/isRTL';
 
 export default {
   title: 'Cards/NewsCard',
