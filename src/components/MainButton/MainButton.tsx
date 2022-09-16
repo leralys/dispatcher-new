@@ -28,7 +28,7 @@ const MainButton = ({
       variant='contained'
       disableElevation
       endIcon={
-        withEndIcon || (
+        withEndIcon && (
           <EastIcon sx={SxButtonIcon(btnVariant)} data-testid='end-icon' />
         )
       }

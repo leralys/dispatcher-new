@@ -4,11 +4,10 @@ import { noDataImgObj } from './noData.consts';
 
 const search = 'search';
 const chart = 'chart';
-const searchText = noDataImgObj.search.text;
-const chartText = noDataImgObj.chart.text;
 
 describe('Should NoData component with img and correct text', () => {
   test(`${search} no data component`, () => {
+    const searchText = noDataImgObj.search.text;
     render(<NoData component={search} />);
     const noDataImg = screen.getByTestId('no-data-img') as HTMLImageElement;
     const noDataText = screen.getByTestId(
@@ -18,6 +17,7 @@ describe('Should NoData component with img and correct text', () => {
     expect(noDataText.innerHTML).toBeDefined().toBe(searchText);
   });
   test(`${chart} no data component`, () => {
+    const chartText = noDataImgObj.chart.text;
     render(<NoData component={chart} />);
     const noDataImg = screen.getByTestId('no-data-img') as HTMLImageElement;
     const noDataText = screen.getByTestId(

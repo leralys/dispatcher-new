@@ -11,7 +11,7 @@ export interface FilterButtonProps {
   title?: string;
   selectedItem?: string;
   selectedItemsAmount?: number;
-  isInSearch: boolean;
+  isInSearch?: boolean;
 }
 
 const DropdownButton = ({
@@ -22,14 +22,22 @@ const DropdownButton = ({
   isInSearch = false,
 }: FilterButtonProps) => {
   return (
-    <StyledFilterButton isInSearch={isInSearch}>
+    <StyledFilterButton isInSearch={isInSearch} data-testid='filter-button'>
       <TextAndAmount>
-        <FilterText selectedItemsAmount={selectedItemsAmount}>
+        <FilterText
+          selectedItemsAmount={selectedItemsAmount}
+          data-testid='filter-text'
+        >
           {selectedItem ? selectedItem : title}
         </FilterText>
-        {selectedItemsAmount && <span> + {selectedItemsAmount}</span>}
+        {selectedItemsAmount && (
+          <span data-testid='selected-amount'> + {selectedItemsAmount}</span>
+        )}
       </TextAndAmount>
-      <ArrowBackIosRoundedIcon sx={SxFilterIcon(isOpen)} />
+      <ArrowBackIosRoundedIcon
+        sx={SxFilterIcon(isOpen)}
+        data-testid='filter-icon'
+      />
     </StyledFilterButton>
   );
 };

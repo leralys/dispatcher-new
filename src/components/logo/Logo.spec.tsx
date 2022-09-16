@@ -10,7 +10,7 @@ describe('Should render logo with correct height', () => {
     const logoContainer = screen.getByTestId('logo-container');
     expect(logoContainer)
       .toBeDefined()
-      .toHaveStyleRule('height', `${defaultLogoSize}px`);
+      .toHaveStyle(`height: ${defaultLogoSize}px`);
   });
   customHeightsArr.forEach((height) => {
     test(`logo with ${height}px height`, () => {
@@ -18,7 +18,7 @@ describe('Should render logo with correct height', () => {
       const logoContainer = screen.getByTestId('logo-container');
       expect(logoContainer)
         .toBeDefined()
-        .toHaveStyleRule('height', `${height}px`);
+        .toHaveStyle(`height: ${height}px`);
     });
   });
 });
