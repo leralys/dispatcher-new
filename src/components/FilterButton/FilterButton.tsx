@@ -8,22 +8,24 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 export interface FilterButtonProps {
   isOpen: boolean;
-  filterTitle: string;
-  selectedItem: string;
-  selectedItemsAmount: number;
+  title?: string;
+  selectedItem?: string;
+  selectedItemsAmount?: number;
+  isInSearch: boolean;
 }
 
 const DropdownButton = ({
   isOpen,
-  filterTitle = 'Select',
+  title = 'Select',
   selectedItem = '',
   selectedItemsAmount = null,
+  isInSearch = false,
 }: FilterButtonProps) => {
   return (
-    <StyledFilterButton>
+    <StyledFilterButton isInSearch={isInSearch}>
       <TextAndAmount>
         <FilterText selectedItemsAmount={selectedItemsAmount}>
-          {selectedItem ? selectedItem : filterTitle}
+          {selectedItem ? selectedItem : title}
         </FilterText>
         {selectedItemsAmount && <span> + {selectedItemsAmount}</span>}
       </TextAndAmount>

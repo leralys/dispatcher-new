@@ -1,22 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import Search, { SearchProps } from './Search';
-
-const testEndComponent = (
-  <div
-    style={{
-      width: 'fit-content',
-      height: '50px',
-      border: '1px solid green',
-      fontSize: '14px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingInline: '16px',
-    }}
-  >
-    Top Headlines
-  </div>
-);
+import FilterButton from '../FilterButton/FilterButton';
 
 export default {
   title: 'components/Search',
@@ -30,7 +14,9 @@ const Template: Story<SearchProps> = (args) => (
 );
 export const InputExample = Template.bind({});
 
-export const EndAdornmentComponent = Template.bind({});
-EndAdornmentComponent.args = {
-  endAdornmentComponent: testEndComponent,
+export const WithFilter = Template.bind({});
+WithFilter.args = {
+  endAdornmentComponent: (
+    <FilterButton isOpen={false} isInSearch={true} title='Top Headlines' />
+  ),
 };

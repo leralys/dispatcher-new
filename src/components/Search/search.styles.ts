@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 import { BORDER_RADIUS } from '../../globalStyles';
-import { SECONDARY_SHADES } from '../../utils/ui/colors';
+import { SECONDARY_SHADES, NEUTRAL_SHADES } from '../../utils/ui/colors';
 
 export const StyledSearch = styled(MuiOutlinedInput)`
   && {
@@ -14,6 +14,7 @@ export const StyledSearch = styled(MuiOutlinedInput)`
     color: ${SECONDARY_SHADES[300]};
     border-radius: ${BORDER_RADIUS[10]};
     height: 50px;
+    background: ${NEUTRAL_SHADES.WHITE};
   }
 `;
 
@@ -32,9 +33,6 @@ export const SxSearch = (isWithEndAdornment: boolean): SxProps<Theme> => {
           border: `1px solid ${SECONDARY_SHADES[400]}`,
         },
       },
-    },
-    '&.MuiInputBase-root.MuiOutlinedInput-root': {
-      paddingRight: isWithEndAdornment && '8px',
     },
   };
   const focusedStyles = {

@@ -9,19 +9,19 @@ export default {
 const Template: Story<FilterButtonProps> = (args) => <FilterButton {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = { isOpen: true, filterTitle: 'Category' };
+Primary.args = { isOpen: true, title: 'Category' };
 
 export const Selected = Template.bind({});
 Selected.args = {
   isOpen: true,
-  filterTitle: 'Category',
+  title: 'Category',
   selectedItem: 'Entertainment',
 };
 
 export const SelectedMany = Template.bind({});
 SelectedMany.args = {
   isOpen: true,
-  filterTitle: 'Sources',
+  title: 'Sources',
   selectedItem: 'ABC News Today',
   selectedItemsAmount: 10,
 };
