@@ -22,13 +22,21 @@
 a {
   text-decoration: none;
 }
-
+/* 
 *::-webkit-scrollbar {
   width: 8px;
+  display: block;
+}
+*::-webkit-scrollbar-button {
+  display: none;
 }
 *::-webkit-scrollbar-track {
   margin-block: 4px;
   border-radius: 5px;
+  background: 00000000;
+}
+*::-webkit-scrollbar-track-piece {
+  background: #00000000;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--color-medium-purple);
@@ -36,4 +44,4 @@ a {
 }
 *::-webkit-scrollbar-thumb:hover {
   background: var(--color-hover-scrollbar);
-}
+} */

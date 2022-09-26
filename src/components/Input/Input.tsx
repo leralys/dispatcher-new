@@ -8,9 +8,9 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import {
   SxErrorIcon,
-  SxHelperText,
   StyledInput,
   SxStyledInput,
+  SxHelperText,
 } from './input.styles';
 
 export interface InputProps extends OutlinedInputProps {
@@ -40,9 +40,7 @@ const Input = ({
         endAdornment={
           isError && (
             <InputAdornment position='end'>
-              <ErrorOutlineIcon
-                sx={SxErrorIcon}
-              />
+              <ErrorOutlineIcon sx={SxErrorIcon} />
             </InputAdornment>
           )
         }
@@ -51,7 +49,12 @@ const Input = ({
         sx={SxStyledInput(sx, props, isError)}
       />
       {showhelperText && (
-        <FormHelperText data-testid='input-helper-text' sx={SxHelperText(isError)}>{helperText}</FormHelperText>
+        <FormHelperText
+          data-testid='input-helper-text'
+          sx={SxHelperText(isError)}
+        >
+          {helperText}
+        </FormHelperText>
       )}
     </>
   );

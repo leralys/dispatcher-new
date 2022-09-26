@@ -20,13 +20,6 @@ export const SxErrorIcon = {
   fill: red[700],
 };
 
-export const SxHelperText = (isError: boolean): SxProps<Theme> => {
-  return {
-    color: isError ? red[700] : SECONDARY_SHADES[300],
-    position: 'absolute',
-  };
-};
-
 export const SxStyledInput = (
   sx: SxProps<Theme>,
   props: InputProps,
@@ -80,4 +73,12 @@ export const SxStyledInput = (
     errorStyles,
     ...(Array.isArray(sx) ? sx : [sx]),
   ];
+};
+
+export const SxHelperText = (isError: boolean): SxProps<Theme> => {
+  return {
+    color: isError ? red[700] : SECONDARY_SHADES[300],
+    position: 'absolute',
+    paddingLeft: '14px',
+  };
 };

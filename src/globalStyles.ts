@@ -1,4 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { SxProps, Theme } from '@mui/material';
+import { red } from '@mui/material/colors';
+
 import { SECONDARY_SHADES } from './utils/ui/colors';
 
 export const GlobalStyle = createGlobalStyle`
@@ -18,20 +21,20 @@ export const GlobalStyle = createGlobalStyle`
   .font-mulish {
     font-family: 'Mulish', 'Roboto', sans-serif;
   }
-  *::-webkit-scrollbar {
-    width: 8px;
-  }
-  *::-webkit-scrollbar-track {
-    margin-block: 4px;
-    border-radius: 5px;
-  }
-  *::-webkit-scrollbar-thumb {
-    background: ${SECONDARY_SHADES[300]};
-    border-radius: 5px;
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: ${SECONDARY_SHADES.SCROLLBAR};
-  }
+  // *::-webkit-scrollbar {
+  //   width: 8px;
+  // }
+  // *::-webkit-scrollbar-track {
+  //   margin-block: 4px;
+  //   border-radius: 5px;
+  // }
+  // *::-webkit-scrollbar-thumb {
+  //   background: ${SECONDARY_SHADES[300]};
+  //   border-radius: 5px;
+  // }
+  // *::-webkit-scrollbar-thumb:hover {
+  //   background: ${SECONDARY_SHADES.SCROLLBAR};
+  // }
 `;
 
 export const FlexColumn = styled.div`

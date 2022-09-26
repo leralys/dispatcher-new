@@ -8,10 +8,35 @@ export default {
 } as Meta;
 
 const Template: Story<SelectProps> = (args) => (
-  <Select
-    items={countries}
-    {...args}
-    onChange={(value: string) => console.log(value)}
-  />
+  <div>
+    <Select
+      items={countries}
+      {...args}
+      onChange={(value: string) => console.log(value)}
+    />
+  </div>
 );
 export const Primary = Template.bind({});
+
+export const HelperText = Template.bind({});
+HelperText.args = {
+  helperText: 'Helper Text',
+};
+
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  fullWidth: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  isError: true,
+  helperText: 'Error Message',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+  helperText: 'Disabled Error Text',
+  isError: true,
+};

@@ -1,4 +1,6 @@
+import { CSSProperties } from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 
 import { BORDER_RADIUS } from '../../globalStyles';
 import {
@@ -8,11 +10,15 @@ import {
 } from '../../utils/ui/colors';
 
 export const SxButtonIcon = (
+  sx: SxProps<Theme>,
   customWidth: number,
-  customHeight: number
+  customHeight: number,
+  fullWidth: boolean,
+  isError: boolean,
+  disabled: boolean
 ): SxProps<Theme> => {
-  return {
-    width: `${customWidth}px`,
+  const defaultStyles = {
+    width: fullWidth ? '100%' : `${customWidth}px`,
     height: `${customHeight}px`,
     borderRadius: BORDER_RADIUS[10],
     background: NEUTRAL_SHADES.WHITE,
@@ -34,6 +40,75 @@ export const SxButtonIcon = (
     '.MuiSelect-iconOpen': {
       transform: 'rotate(90deg)',
     },
+  };
+  const errorStyles = {
+    '&:hover': {
+      '.MuiOutlinedInput-notchedOutline': {
+        border: isError && !disabled && `1px solid ${red[700]}`,
+      },
+    },
+    '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
+      color: isError && !disabled && red[700],
+    },
+    '.MuiSelect-icon': {
+      fill: isError && !disabled && red[800],
+    },
+    '.MuiOutlinedInput-notchedOutline': {
+      border: isError && !disabled && `1px solid ${red[700]}`,
+    },
+    '&&.Mui-focused': {
+      '.MuiOutlinedInput-notchedOutline': {
+        border: isError && !disabled && `1px solid ${red[700]}`,
+      },
+    },
+  };
+  const disabledStyles = {
+    background: disabled && NEUTRAL_SHADES.DISABLED_BACKGROUND,
+    '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
+      cursor: disabled && 'not-allowed',
+    },
+    '.MuiSelect-icon': {
+      fill: disabled && NEUTRAL_SHADES.DISABLED,
+    },
+  };
+  return [
+    defaultStyles,
+    errorStyles,
+    disabledStyles,
+    ...(Array.isArray(sx) ? sx : [sx]),
+  ];
+};
+
+export const SxMenuStyles = (customWidth: number): SxProps<Theme> => {
+  return {
+    maxHeight: '126px',
+    width: `${customWidth}px`,
+    borderRadius: `${BORDER_RADIUS[8]}`,
+    boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
+    marginTop: '3px',
+    'li.MuiMenuItem-root': {
+      fontFamily: 'Mulish, Roboto, san-serif',
+      fontSize: '12px',
+    },
+  };
+};
+
+export const emptyValueStyles: CSSProperties = {
+  fontFamily: 'Mulish, Roboto, san-serif',
+  fontSize: '14px',
+  color: `${NEUTRAL_SHADES[600]}`,
+};
+
+export const SxHelperText = (
+  customWidth: number,
+  isError: boolean
+): SxProps<Theme> => {
+  return {
+    color: isError ? red[700] : SECONDARY_SHADES[300],
+    position: 'relative',
+    width: `${customWidth}px`,
+    marginInline: '0px',
+    paddingLeft: '14px',
   };
 };
 
@@ -62,24 +137,6 @@ export const SxButtonIcon = (
 //       border: `1px solid ${PRIMARY_COLOR}`
 //     }
 //   };
-// };
-
-// export const errorSelectStyles = (showError: boolean): SxProps<Theme> => {
-//   const errorStyle = {
-//     '.MuiOutlinedInput-notchedOutline': {
-//       border: `1px solid ${ERROR_SHADES[80]}`
-//     },
-//     '&:hover': {
-//       backgroundColor: 'none'
-//     },
-//     '&:hover .MuiOutlinedInput-notchedOutline': {
-//       border: `1px solid ${ERROR_SHADES[80]}`
-//     },
-//     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-//       border: `1px solid ${ERROR_SHADES[80]}`
-//     }
-//   };
-//   return showError ? errorStyle : {};
 // };
 
 // export const selectedValueStyles = {
@@ -115,17 +172,3 @@ export const SxButtonIcon = (
 //   };
 //   return styles;
 // };
-
-export const SxMenuStyles = (customWidth: number): SxProps<Theme> => {
-  return {
-    maxHeight: '126px',
-    width: `${customWidth}px`,
-    borderRadius: `${BORDER_RADIUS[8]}`,
-    boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
-    marginTop: '3px',
-    'li.MuiMenuItem-root': {
-      fontFamily: 'Mulish, Roboto, san-serif',
-      fontSize: '12px',
-    },
-  };
-};
