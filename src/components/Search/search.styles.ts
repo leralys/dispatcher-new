@@ -18,7 +18,7 @@ export const StyledSearch = styled(MuiOutlinedInput)`
   }
 `;
 
-export const SxSearch = (isWithEndAdornment: boolean): SxProps<Theme> => {
+export const SxSearch = (): SxProps<Theme> => {
   const defaultStyles = {
     fieldset: {
       '&.MuiOutlinedInput-notchedOutline': {

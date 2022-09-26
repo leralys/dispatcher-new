@@ -1,4 +1,4 @@
-import { noDataTypes, noDataImgObj } from './noData.consts';
+import { NoDataEnum, noDataImgObj } from './noData.consts';
 import {
   NoDataContainer,
   NoDataImageDiv,
@@ -7,7 +7,7 @@ import {
 } from './noData.styles';
 
 export interface NoDataProps {
-  component: noDataTypes;
+  component: NoDataEnum;
 }
 
 const NoData = ({ component }: NoDataProps) => {

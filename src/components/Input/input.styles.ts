@@ -4,7 +4,11 @@ import { OutlinedInput as MuiOutlinedInput } from '@mui/material';
 import styled from 'styled-components';
 
 import { InputProps } from '../Input/Input';
-import { SECONDARY_SHADES, MAIN_COLORS } from '../../utils/ui/colors';
+import {
+  SECONDARY_SHADES,
+  MAIN_COLORS,
+  NEUTRAL_SHADES,
+} from '../../utils/ui/colors';
 import { BORDER_RADIUS } from '../../globalStyles';
 
 export const StyledInput = styled(MuiOutlinedInput)`
@@ -13,6 +17,7 @@ export const StyledInput = styled(MuiOutlinedInput)`
     color: ${SECONDARY_SHADES[300]};
     border-radius: ${BORDER_RADIUS[10]};
     height: 38px;
+    background: ${NEUTRAL_SHADES.WHITE};
   }
 `;
 

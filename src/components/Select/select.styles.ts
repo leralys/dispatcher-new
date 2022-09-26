@@ -9,7 +9,7 @@ import {
   BOX_SHADOW,
 } from '../../utils/ui/colors';
 
-export const SxButtonIcon = (
+export const SxSelect = (
   sx: SxProps<Theme>,
   customWidth: number,
   customHeight: number,
@@ -109,6 +109,11 @@ export const SxHelperText = (
     width: `${customWidth}px`,
     marginInline: '0px',
     paddingLeft: '14px',
+  };
+};
+export const SxFormControl = (fullWidth: boolean): SxProps<Theme> => {
+  return {
+    width: fullWidth && '100%',
   };
 };
 

@@ -31,7 +31,7 @@ const Search = ({
       }
       placeholder={placeholder}
       fullWidth={fullWidth}
-      sx={SxSearch(Boolean(endAdornmentComponent))}
+      sx={SxSearch()}
       data-testid='search'
     />
   );

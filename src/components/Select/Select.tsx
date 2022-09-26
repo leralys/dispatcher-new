@@ -11,10 +11,11 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import { cropMenuItem } from '../../utils/helpers/cropContent/cropContent';
 import {
-  SxButtonIcon,
+  SxSelect,
   SxMenuStyles,
   emptyValueStyles,
   SxHelperText,
+  SxFormControl,
 } from './select.styles';
 
 export type Option = {
@@ -23,18 +24,18 @@ export type Option = {
 };
 
 export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
-  name: string;
+  name?: string;
   placeholder?: string;
   className?: string;
-  items: Option[];
+  items?: Option[];
   isError?: boolean;
   helperText?: string;
   disabled?: boolean;
   // formSx?: SxProps<Theme>;
   onChange?: (value: string) => void;
   fullWidth?: boolean;
-  customWidth: number;
-  customHeight: number;
+  customWidth?: number;
+  customHeight?: number;
 }
 
 const Select = ({
@@ -63,7 +64,11 @@ const Select = ({
     setRenderedValue(child.props.children);
   };
   return (
-    <FormControl sx={{ width: fullWidth && '100%' }} className={className}>
+    <FormControl
+      sx={SxFormControl(fullWidth)}
+      className={className}
+      data-testid='select-form-control'
+    >
       <MuiSelect
         data-testid='select'
         id={name}
@@ -75,7 +80,7 @@ const Select = ({
         onChange={handleChange}
         IconComponent={ArrowBackIosRoundedIcon}
         renderValue={(value) => (value ? renderedValue : placeholder)}
-        sx={SxButtonIcon(
+        sx={SxSelect(
           sx,
           customWidth,
           customHeight,

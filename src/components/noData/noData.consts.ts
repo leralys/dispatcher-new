@@ -1,7 +1,10 @@
 import search from '../../assets/svgs/search.svg';
 import chart from '../../assets/svgs/chart.svg';
 
-export type noDataTypes = 'search' | 'chart';
+export enum NoDataEnum {
+  SEARCH = 'search',
+  CHART = 'chart',
+}
 
 export const noDataImgObj = {
   search: {
