@@ -4,17 +4,17 @@ import { red } from '@mui/material/colors';
 import Input from './Input';
 
 describe(`Should render input`, () => {
-  test(`input should exist`, () => {
+  it(`input should exist`, () => {
     render(<Input />);
     const inputElement = screen.getByTestId('input');
     expect(inputElement).toBeDefined();
   });
-  test('icon when error should exist', () => {
+  it('icon when error should exist', () => {
     render(<Input isError={true} />);
     const icon = screen.getByTestId('ErrorOutlineIcon');
     expect(icon).toBeDefined().toHaveStyle(`fill: ${red[700]}`);
   });
-  test('helper text', () => {
+  it('helper text should exist', () => {
     const helpText = 'Helper Text';
     render(<Input helperText={helpText} error={true} />);
     const helperTextElement = screen.getByTestId('input-helper-text');

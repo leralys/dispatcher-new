@@ -5,7 +5,7 @@ const customHeightsArr = [10, 100];
 const defaultLogoSize = 50;
 
 describe('Should render logo with correct height', () => {
-  test(`default logo with ${defaultLogoSize}px height`, () => {
+  it(`default ${defaultLogoSize}px height`, () => {
     render(<Logo />);
     const logoContainer = screen.getByTestId('logo-container');
     expect(logoContainer)
@@ -13,7 +13,7 @@ describe('Should render logo with correct height', () => {
       .toHaveStyle(`height: ${defaultLogoSize}px`);
   });
   customHeightsArr.forEach((height) => {
-    test(`logo with ${height}px height`, () => {
+    it(`${height}px height`, () => {
       render(<Logo customHeight={height} />);
       const logoContainer = screen.getByTestId('logo-container');
       expect(logoContainer)

@@ -3,7 +3,7 @@ import NoData from './NoData';
 import { noDataImgObj, NoDataEnum } from './noData.consts';
 
 describe('Should render component with img and correct text', () => {
-  test(`${NoDataEnum.SEARCH} no data component`, () => {
+  it(`${NoDataEnum.SEARCH} no data component`, () => {
     const searchText = noDataImgObj.search.text;
     render(<NoData component={NoDataEnum.SEARCH} />);
     const noDataImg = screen.getByTestId('no-data-img') as HTMLImageElement;
@@ -13,7 +13,7 @@ describe('Should render component with img and correct text', () => {
     expect(noDataImg.src).toBeDefined();
     expect(noDataText.innerHTML).toBeDefined().toBe(searchText);
   });
-  test(`${NoDataEnum.CHART} no data component`, () => {
+  it(`${NoDataEnum.CHART} no data component`, () => {
     const chartText = noDataImgObj.chart.text;
     render(<NoData component={NoDataEnum.CHART} />);
     const noDataImg = screen.getByTestId('no-data-img') as HTMLImageElement;

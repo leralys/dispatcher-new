@@ -9,7 +9,7 @@ import {
 
 describe(`Should render button and icon with correct styles`, () => {
   Object.values(ButtonVariants).forEach((variant) => {
-    test(`button variant ${variant}`, () => {
+    it(`button variant ${variant}`, () => {
       const buttonText = 'test';
       render(
         <MainButton btnVariant={variant} withEndIcon={true}>

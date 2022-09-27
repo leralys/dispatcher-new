@@ -19,18 +19,18 @@ const textDirLTR = isRTL(mockUs.articles[0].title)
   ? TEXT_DIR.RTL
   : TEXT_DIR.LTR;
 
-describe('Test News card', () => {
-  test(`renders news card`, () => {
+describe('News card should render', () => {
+  it(`card exists`, () => {
     render(<NewsCard article={articleNoImg} textDir={textDirArticleNoImg} />);
     const newsCard = screen.getByTestId('news-card');
     expect(newsCard).toBeDefined();
   });
-  test(`renders noImage when urlToImg is null`, () => {
+  it(`renders noImage when urlToImg is null`, () => {
     render(<NewsCard article={articleNoImg} textDir={textDirArticleNoImg} />);
     const noImageContainer = screen.getByTestId('no-image-container');
     expect(noImageContainer).toBeDefined();
   });
-  test(`renders image with src when urlToImg exists`, () => {
+  it(`renders image with src when urlToImg exists`, () => {
     render(<NewsCard article={articleRTL} textDir={textDirRTL} />);
     const articleImg = screen.getByTestId('article-img') as HTMLImageElement;
     expect(articleImg.src)
@@ -39,7 +39,7 @@ describe('Test News card', () => {
         'https://images.maariv.co.il/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_407,w_690/759778'
       );
   });
-  test('a tag has correct href, rel and target', () => {
+  it('a tag inside button has correct href, rel and target', () => {
     render(<NewsCard article={articleLTR} textDir={textDirLTR} />);
     const navigateToDispatch = screen.getByTestId(
       'navigate-to-dispatch'
