@@ -31,6 +31,9 @@ export const SxStyledInput = (
   isError: boolean
 ): SxProps<Theme> => {
   const defaultStyles = {
+    '.MuiInputBase-input.MuiOutlinedInput-input': {
+      paddingInline: '8px',
+    },
     fieldset: {
       '&.MuiOutlinedInput-notchedOutline': {
         border: `1px solid ${MAIN_COLORS.secondary}`,
@@ -84,6 +87,6 @@ export const SxHelperText = (isError: boolean): SxProps<Theme> => {
   return {
     color: isError ? red[700] : SECONDARY_SHADES[300],
     position: 'absolute',
-    paddingLeft: '14px',
+    paddingLeft: '8px',
   };
 };

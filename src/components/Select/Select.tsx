@@ -36,6 +36,7 @@ export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
   fullWidth?: boolean;
   customWidth?: number;
   customHeight?: number;
+  isInSearch?: boolean;
 }
 
 const Select = ({
@@ -52,6 +53,7 @@ const Select = ({
   fullWidth = false,
   customWidth = 175,
   customHeight = 48,
+  isInSearch = false,
 }: SelectProps) => {
   const [value, setValue] = useState<string>('');
   const [renderedValue, setRenderedValue] = useState<string>('');
@@ -86,10 +88,11 @@ const Select = ({
           customHeight,
           fullWidth,
           isError,
-          disabled
+          disabled,
+          isInSearch
         )}
         MenuProps={{
-          PaperProps: { sx: SxMenuStyles(customWidth) },
+          PaperProps: { sx: SxMenuStyles(customWidth, isInSearch) },
         }}
       >
         <MenuItem value=''>

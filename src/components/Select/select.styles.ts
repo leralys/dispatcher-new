@@ -7,6 +7,7 @@ import {
   NEUTRAL_SHADES,
   SECONDARY_SHADES,
   BOX_SHADOW,
+  MAIN_COLORS,
 } from '../../utils/ui/colors';
 
 export const SxSelect = (
@@ -15,15 +16,18 @@ export const SxSelect = (
   customHeight: number,
   fullWidth: boolean,
   isError: boolean,
-  disabled: boolean
+  disabled: boolean,
+  isInSearch: boolean
 ): SxProps<Theme> => {
   const defaultStyles = {
-    width: fullWidth ? '100%' : `${customWidth}px`,
-    height: `${customHeight}px`,
-    borderRadius: BORDER_RADIUS[10],
+    width: fullWidth ? '100%' : isInSearch ? '164px' : `${customWidth}px`,
+    height: isInSearch ? '40px' : `${customHeight}px`,
+    borderRadius: !isInSearch && BORDER_RADIUS[10],
     background: NEUTRAL_SHADES.WHITE,
     textOverflow: 'ellipsis',
+    borderLeft: isInSearch && `1px solid ${MAIN_COLORS.secondary}`,
     '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
+      paddingLeft: '16px',
       paddingRight: '48px',
       color: SECONDARY_SHADES[300],
       fontSize: '14px',
@@ -79,10 +83,13 @@ export const SxSelect = (
   ];
 };
 
-export const SxMenuStyles = (customWidth: number): SxProps<Theme> => {
+export const SxMenuStyles = (
+  customWidth: number,
+  isInSearch: boolean
+): SxProps<Theme> => {
   return {
     maxHeight: '126px',
-    width: `${customWidth}px`,
+    width: isInSearch? '164px': `${customWidth}px`,
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
     marginTop: '3px',
@@ -108,7 +115,7 @@ export const SxHelperText = (
     position: 'relative',
     width: `${customWidth}px`,
     marginInline: '0px',
-    paddingLeft: '14px',
+    paddingLeft: '16px',
   };
 };
 export const SxFormControl = (fullWidth: boolean): SxProps<Theme> => {
@@ -116,6 +123,21 @@ export const SxFormControl = (fullWidth: boolean): SxProps<Theme> => {
     width: fullWidth && '100%',
   };
 };
+
+// export const StyledFilterButton = styled(FlexRow)<{ isInSearch: boolean }>`
+//   ${({ isInSearch }) => css`
+//     padding-inline: 16px;
+//     padding-right: ${isInSearch && '0px'};
+//     width: ${isInSearch ? '164px' : '176px'};
+//     background: ${NEUTRAL_SHADES.WHITE};
+//     align-items: center;
+//     justify-content: space-between;
+//     height: ${isInSearch ? '40px' : '48px'};
+//     border-radius: ${!isInSearch && BORDER_RADIUS[10]};
+//     border-left: ${isInSearch && `1px solid ${MAIN_COLORS.secondary}`};
+//     cursor: pointer;
+//   `}
+// `;
 
 // export const selectStyles = (customWidth: string, customHeight: string) => {
 //   return {
