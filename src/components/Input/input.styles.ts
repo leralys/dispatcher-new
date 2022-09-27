@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { SxProps, Theme } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { OutlinedInput as MuiOutlinedInput } from '@mui/material';
-import styled from 'styled-components';
 
 import { InputProps } from '../Input/Input';
 import {

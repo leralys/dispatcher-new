@@ -1,5 +1,4 @@
 import { render, screen } from '../../utils/test-utils';
-
 import MainButton, { ButtonVariants } from './MainButton';
 import {
   MAIN_COLORS,

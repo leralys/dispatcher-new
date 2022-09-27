@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react';
+
 import FilterButton, { FilterButtonProps } from './FilterButton';
 
 export default {

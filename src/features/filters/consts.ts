@@ -1,5 +1,10 @@
 import { Option } from '../../components/Select/Select';
 
+export const endpoints: Option[] = [
+  { label: 'Top Headlines', value: 'top-headlines' },
+  { label: 'Everything', value: 'everything' },
+];
+
 export const countries: Option[] = [
   { label: 'UAE', value: 'ae' },
   { label: 'Argentina', value: 'ar' },

@@ -12,16 +12,16 @@ import {
 
 export const SxSelect = (
   sx: SxProps<Theme>,
-  customWidth: number,
-  customHeight: number,
+  width: number,
+  height: number,
   fullWidth: boolean,
   isError: boolean,
   disabled: boolean,
   isInSearch: boolean
 ): SxProps<Theme> => {
   const defaultStyles = {
-    width: fullWidth ? '100%' : isInSearch ? '164px' : `${customWidth}px`,
-    height: isInSearch ? '40px' : `${customHeight}px`,
+    width: fullWidth ? '100%' : isInSearch ? '164px' : `${width}px`,
+    height: isInSearch ? '40px' : `${height}px`,
     borderRadius: !isInSearch && BORDER_RADIUS[10],
     background: NEUTRAL_SHADES.WHITE,
     textOverflow: 'ellipsis',
@@ -89,7 +89,7 @@ export const SxMenuStyles = (
 ): SxProps<Theme> => {
   return {
     maxHeight: '126px',
-    width: isInSearch? '164px': `${customWidth}px`,
+    width: isInSearch ? '164px' : `${customWidth}px`,
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
     marginTop: '3px',
@@ -123,79 +123,3 @@ export const SxFormControl = (fullWidth: boolean): SxProps<Theme> => {
     width: fullWidth && '100%',
   };
 };
-
-// export const StyledFilterButton = styled(FlexRow)<{ isInSearch: boolean }>`
-//   ${({ isInSearch }) => css`
-//     padding-inline: 16px;
-//     padding-right: ${isInSearch && '0px'};
-//     width: ${isInSearch ? '164px' : '176px'};
-//     background: ${NEUTRAL_SHADES.WHITE};
-//     align-items: center;
-//     justify-content: space-between;
-//     height: ${isInSearch ? '40px' : '48px'};
-//     border-radius: ${!isInSearch && BORDER_RADIUS[10]};
-//     border-left: ${isInSearch && `1px solid ${MAIN_COLORS.secondary}`};
-//     cursor: pointer;
-//   `}
-// `;
-
-// export const selectStyles = (customWidth: string, customHeight: string) => {
-//   return {
-//     width: customWidth ? customWidth : '265px',
-//     height: customHeight ? customHeight : '48px',
-//     display: 'flex',
-//     alignItems: 'center',
-//     borderRadius: `${BORDER_RADIUS}px`,
-//     '.MuiSelect-icon': {
-//       color: NEUTRAL_SHADES[900]
-//     },
-//     '.MuiSelect-select': {
-//       display: 'flex',
-//       gap: '10px',
-//       alignItems: 'center'
-//     },
-//     '&:hover': {
-//       backgroundColor: `${NEUTRAL_SHADES[200]}`
-//     },
-//     '&:hover .MuiOutlinedInput-notchedOutline': {
-//       border: `1px solid ${NEUTRAL_SHADES[500]}`
-//     },
-//     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-//       border: `1px solid ${PRIMARY_COLOR}`
-//     }
-//   };
-// };
-
-// export const selectedValueStyles = {
-//   color: PRIMARY_COLOR,
-//   backgroundColor: `${PRIMARY_SHADES[100]}`,
-//   '.MuiSelect-icon': {
-//     color: PRIMARY_COLOR
-//   },
-//   '&& .MuiOutlinedInput-notchedOutline': {
-//     border: 'none'
-//   },
-//   border: 'none'
-// };
-
-// export const menuItemStyles = {
-//   fontSize: '0.9em',
-//   py: 0
-// };
-
-// export const helperTextStyles = {
-//   color: `${ERROR_SHADES[80]}`,
-//   position: 'absolute',
-//   bottom: -22,
-//   left: -4
-// };
-
-// export const inputLabelStyles = (isError: boolean): SxProps<Theme> => {
-//   const styles = {
-//     lineHeight: '1.12em',
-//     '&.MuiInputLabel-shrink': {
-//       color: isError && `${ERROR_SHADES[80]}`
-//     }
-//   };
-//   return styles;
-// };

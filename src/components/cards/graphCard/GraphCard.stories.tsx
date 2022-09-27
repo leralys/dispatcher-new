@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react';
+
 import GraphCard, { GraphCardProps } from './GraphCard';
 
 export default {

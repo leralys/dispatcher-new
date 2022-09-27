@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { FlexRow, BORDER_RADIUS } from '../../../../globalStyles';
 import { NEUTRAL_SHADES } from '../../../../utils/ui/colors';
 import { SCREENS } from '../../../../utils/ui/screenSizes';

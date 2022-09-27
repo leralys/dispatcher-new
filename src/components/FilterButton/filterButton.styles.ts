@@ -1,6 +1,6 @@
+import styled, { css } from 'styled-components';
 import { SxProps, Theme } from '@mui/material';
 import { purple } from '@mui/material/colors';
-import styled, { css } from 'styled-components';
 
 import { FlexRow, BORDER_RADIUS } from '../../globalStyles';
 import {

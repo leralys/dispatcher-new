@@ -24,19 +24,21 @@ export type Option = {
 };
 
 export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
+  items?: Option[];
   name?: string;
   placeholder?: string;
   className?: string;
-  items?: Option[];
   isError?: boolean;
   helperText?: string;
   disabled?: boolean;
   // formSx?: SxProps<Theme>;
-  onChange?: (value: string) => void;
   fullWidth?: boolean;
   customWidth?: number;
   customHeight?: number;
   isInSearch?: boolean;
+  isWithEmptyValue?: boolean;
+  selected?: Option;
+  onChange?: (value: string) => void;
 }
 
 const Select = ({
@@ -47,16 +49,22 @@ const Select = ({
   isError = false,
   helperText,
   disabled = false,
-  onChange,
   sx,
   // formSx,
   fullWidth = false,
   customWidth = 175,
   customHeight = 48,
   isInSearch = false,
+  isWithEmptyValue = true,
+  onChange,
+  onOpen,
+  onClose,
+  selected,
 }: SelectProps) => {
-  const [value, setValue] = useState<string>('');
-  const [renderedValue, setRenderedValue] = useState<string>('');
+  const [value, setValue] = useState<string>(selected ? selected.value : '');
+  const [renderedValue, setRenderedValue] = useState<string>(
+    selected ? selected.label : ''
+  );
 
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
@@ -81,7 +89,9 @@ const Select = ({
         displayEmpty
         onChange={handleChange}
         IconComponent={ArrowBackIosRoundedIcon}
-        renderValue={(value) => (value ? renderedValue : placeholder)}
+        renderValue={(val) => (val ? renderedValue : placeholder)}
+        onOpen={onOpen}
+        onClose={onClose}
         sx={SxSelect(
           sx,
           customWidth,
@@ -95,9 +105,11 @@ const Select = ({
           PaperProps: { sx: SxMenuStyles(customWidth, isInSearch) },
         }}
       >
-        <MenuItem value=''>
-          <em style={emptyValueStyles}>None</em>
-        </MenuItem>
+        {isWithEmptyValue && (
+          <MenuItem value=''>
+            <em style={emptyValueStyles}>None</em>
+          </MenuItem>
+        )}
         {items.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {fullWidth ? item.label : cropMenuItem(item.label, customWidth)}
