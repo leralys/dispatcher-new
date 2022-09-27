@@ -9,8 +9,8 @@ import { BORDER_RADIUS } from '../../globalStyles';
 import { SECONDARY_SHADES, NEUTRAL_SHADES } from '../../utils/ui/colors';
 
 export const SearchContainer = styled.div<{ customWidth: number }>`
-  ${({ customWidth }) => css`
-    width: ${customWidth}px;
+  ${({ customWidth: width }) => css`
+    width: ${width}px;
     transition: all 0.5s ease-out;
   `}
 `;

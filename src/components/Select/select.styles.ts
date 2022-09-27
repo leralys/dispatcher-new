@@ -93,6 +93,7 @@ export const SxMenuStyles = (
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
     marginTop: '3px',
+    color: SECONDARY_SHADES[300],
     'li.MuiMenuItem-root': {
       fontFamily: 'Mulish, Roboto, san-serif',
       fontSize: '12px',
@@ -102,7 +103,7 @@ export const SxMenuStyles = (
 
 export const emptyValueStyles: CSSProperties = {
   fontFamily: 'Mulish, Roboto, san-serif',
-  fontSize: '14px',
+  fontSize: '12px',
   color: `${NEUTRAL_SHADES[600]}`,
 };
 
