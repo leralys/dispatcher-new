@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   InputProps as MuiOutlinedInputProps,
   InputAdornment,
   SvgIcon,
+  Fade,
 } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
 
@@ -31,17 +32,19 @@ const Search = ({
 }: SearchProps) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  // const [showHistory, setShowHistory] = useState<boolean>(false);
+  const [showHistory, setShowHistory] = useState<boolean>(false);
+
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleFocus = () => {
     setIsFocused(true);
-    // setShowHistory(true);
+    setShowHistory(true);
   };
 
   const handleClickAway = () => {
     if (!isFilterOpen) {
       setIsFocused(false);
-      // setShowHistory(false);
+      setShowHistory(false);
     }
   };
 
@@ -93,7 +96,9 @@ const Search = ({
           />
         </SearchContainer>
       </ClickAwayListener>
-      {isFocused && <SearchHistory />}
+      <Fade in={isFocused} timeout={350}>
+        <SearchHistory customWidth={customGrowWidth} ref={ref} />
+      </Fade>
     </>
   );
 };

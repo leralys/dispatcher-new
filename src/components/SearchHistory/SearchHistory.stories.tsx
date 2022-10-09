@@ -1,12 +1,16 @@
 import { Story, Meta } from '@storybook/react';
 
-import SearchHistory from './SearchHistory';
+import SearchHistory, { SearchHistoryProps } from './SearchHistory';
 
 export default {
   component: SearchHistory,
   title: 'Components/RecentSearches',
 } as Meta;
 
-const Template: Story = (args) => <SearchHistory {...args} />;
+const Template: Story<SearchHistoryProps> = (args) => (
+  <SearchHistory {...args} />
+);
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({
+  customWidth: 664,
+});

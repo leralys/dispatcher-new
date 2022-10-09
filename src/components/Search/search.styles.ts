@@ -11,7 +11,7 @@ import { SECONDARY_SHADES, NEUTRAL_SHADES } from '../../utils/ui/colors';
 export const SearchContainer = styled.div<{ customWidth: number }>`
   ${({ customWidth: width }) => css`
     width: ${width}px;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
   `}
 `;
 
