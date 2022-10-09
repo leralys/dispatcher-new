@@ -30,7 +30,7 @@ export const FilterText = styled.span<{ selectedItemsAmount: null | number }>`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: ${SECONDARY_SHADES[300]};
+    color: ${SECONDARY_SHADES[400]};
     font-size: 14px;
   `}
 `;
@@ -51,6 +51,6 @@ export const SxFilterIcon = (isOpen: boolean): SxProps<Theme> => {
   return {
     transition: 'transform 0.3s ease-out',
     transform: `${isOpen ? 'rotate(-90deg)' : 'rotate(90deg)'}`,
-    fill: SECONDARY_SHADES[300],
+    fill: SECONDARY_SHADES[400],
   };
 };

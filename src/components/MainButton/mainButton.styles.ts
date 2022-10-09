@@ -20,7 +20,7 @@ export const StyledButton = styled(Button)<{ $btnVariant: ButtonVariants }>`
         : MAIN_COLORS[variant]};
       color: ${variant === ButtonVariants.PRIMARY
         ? NEUTRAL_SHADES.WHITE
-        : SECONDARY_SHADES[300]};
+        : SECONDARY_SHADES[400]};
       opacity: 1;
 
       @media only screen and (max-width: 300px) {
@@ -41,6 +41,6 @@ export const SxButtonIcon = (variant: ButtonVariants): SxProps<Theme> => {
     fill:
       variant === ButtonVariants.PRIMARY
         ? NEUTRAL_SHADES.WHITE
-        : SECONDARY_SHADES[300],
+        : SECONDARY_SHADES[400],
   };
 };

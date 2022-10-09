@@ -20,7 +20,7 @@ export const TitleContainer = styled(FlexColumn)`
 
 export const CardTitle = styled.h5`
   font-size: clamp(20px, 1.25vw, 24px);
-  color: ${SECONDARY_SHADES[400]};
+  color: ${SECONDARY_SHADES[500]};
   margin-bottom: 6px;
 `;
 
@@ -28,7 +28,7 @@ export const Underline = styled.div`
   width: 20px;
   height: 3px;
   border-radius: 10px;
-  background: ${SECONDARY_SHADES[300]};
+  background: ${SECONDARY_SHADES[400]};
 `;
 
 export const CardBody = styled(FlexRow)<{

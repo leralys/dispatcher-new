@@ -29,14 +29,14 @@ export const SxSelect = (
     '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
       paddingLeft: '16px',
       paddingRight: '48px',
-      color: SECONDARY_SHADES[300],
+      color: SECONDARY_SHADES[400],
       fontSize: '14px',
     },
     '.MuiOutlinedInput-notchedOutline': {
       border: 'none',
     },
     '.MuiSelect-icon': {
-      fill: SECONDARY_SHADES[300],
+      fill: SECONDARY_SHADES[400],
       transition: 'transform 0.3s ease-out',
       transform: 'rotate(-90deg)',
       marginRight: '8px',
@@ -93,7 +93,7 @@ export const SxMenuStyles = (
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
     marginTop: '3px',
-    color: SECONDARY_SHADES[300],
+    color: SECONDARY_SHADES[400],
     'li.MuiMenuItem-root': {
       fontFamily: 'Mulish, Roboto, san-serif',
       fontSize: '12px',
@@ -112,7 +112,7 @@ export const SxHelperText = (
   isError: boolean
 ): SxProps<Theme> => {
   return {
-    color: isError ? red[700] : SECONDARY_SHADES[300],
+    color: isError ? red[700] : SECONDARY_SHADES[400],
     position: 'relative',
     width: `${customWidth}px`,
     marginInline: '0px',

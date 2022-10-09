@@ -27,14 +27,14 @@ describe(`Should render button and icon with correct styles`, () => {
         color: ${
           variant === ButtonVariants.PRIMARY
             ? NEUTRAL_SHADES.WHITE
-            : SECONDARY_SHADES[300]
+            : SECONDARY_SHADES[400]
         }`
         );
       expect(endIcon).toHaveStyle(
         `fill: ${
           variant === ButtonVariants.PRIMARY
             ? NEUTRAL_SHADES.WHITE
-            : SECONDARY_SHADES[300]
+            : SECONDARY_SHADES[400]
         }`
       );
     });

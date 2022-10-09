@@ -31,7 +31,7 @@ export const HistoryHeader = styled(FlexRow)`
 `;
 export const HistoryTitle = styled.span`
   text-transform: uppercase;
-  color: ${SECONDARY_SHADES[300]};
+  color: ${SECONDARY_SHADES[400]};
   font-size: 14px;
   font-weight: 500;
   cursor: default;

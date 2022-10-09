@@ -95,16 +95,16 @@ export const Article = styled(FlexColumn)<{ isRTL: boolean }>`
 `;
 
 export const ArticleDetailes = styled.p`
-  color: ${SECONDARY_SHADES[300]};
+  color: ${SECONDARY_SHADES[400]};
   opacity: 0.5;
 `;
 
 export const ArticleTitle = styled.h6`
-  color: ${SECONDARY_SHADES[400]};
+  color: ${SECONDARY_SHADES[500]};
   font-size: 18px;
 `;
 
 export const ArticleContent = styled.section`
-  color: ${SECONDARY_SHADES[300]};
+  color: ${SECONDARY_SHADES[400]};
   font-size: 14px;
 `;

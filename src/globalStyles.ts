@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: ${SECONDARY_SHADES[400]};
+    color: ${SECONDARY_SHADES[500]};
     font-size: 16px;
   }
   a {
@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   //   border-radius: 5px;
   // }
   // *::-webkit-scrollbar-thumb {
-  //   background: ${SECONDARY_SHADES[300]};
+  //   background: ${SECONDARY_SHADES[400]};
   //   border-radius: 5px;
   // }
   // *::-webkit-scrollbar-thumb:hover {

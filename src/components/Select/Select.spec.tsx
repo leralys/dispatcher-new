@@ -33,7 +33,7 @@ describe('Should render component', () => {
     ) as HTMLParagraphElement;
     expect(selectHelperText)
       .toBeDefined()
-      .toHaveStyle(`color: ${SECONDARY_SHADES[300]}; width: 175px`);
+      .toHaveStyle(`color: ${SECONDARY_SHADES[400]}; width: 175px`);
     expect(selectHelperText.innerHTML).toBeDefined().toBe(helperText);
   });
   it(`Select with error`, () => {

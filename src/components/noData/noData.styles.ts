@@ -33,7 +33,7 @@ export const NoDataImage = styled.img`
 
 export const NoDataText = styled.p`
   font-size: 20px;
-  color: ${SECONDARY_SHADES[300]};
+  color: ${SECONDARY_SHADES[400]};
   margin-top: 16px;
   text-align: center;
 `;

@@ -22,7 +22,7 @@ export const StyledSearch = styled(MuiOutlinedInput)<{
   && {
     ${({ $customHeight: height, $isWithFilter: isWithFilter }) => css`
       font-size: 14px;
-      color: ${SECONDARY_SHADES[300]};
+      color: ${SECONDARY_SHADES[400]};
       border-radius: ${BORDER_RADIUS[10]};
       height: ${height}px;
       background: ${NEUTRAL_SHADES.WHITE};

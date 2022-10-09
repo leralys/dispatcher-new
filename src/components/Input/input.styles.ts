@@ -14,7 +14,7 @@ import { BORDER_RADIUS } from '../../globalStyles';
 export const StyledInput = styled(MuiOutlinedInput)`
   && {
     font-size: 14px;
-    color: ${SECONDARY_SHADES[300]};
+    color: ${SECONDARY_SHADES[400]};
     border-radius: ${BORDER_RADIUS[10]};
     height: 38px;
     background: ${NEUTRAL_SHADES.WHITE};
@@ -44,7 +44,7 @@ export const SxStyledInput = (
     '&:hover': {
       fieldset: {
         '&.MuiOutlinedInput-notchedOutline': {
-          border: `1px solid ${SECONDARY_SHADES[300]}`,
+          border: `1px solid ${SECONDARY_SHADES[400]}`,
         },
       },
     },
@@ -53,7 +53,7 @@ export const SxStyledInput = (
     '&&.Mui-focused': {
       fieldset: {
         '&.MuiOutlinedInput-notchedOutline': {
-          border: `1px solid ${SECONDARY_SHADES[300]}`,
+          border: `1px solid ${SECONDARY_SHADES[400]}`,
         },
       },
     },
@@ -85,7 +85,7 @@ export const SxStyledInput = (
 
 export const SxHelperText = (isError: boolean): SxProps<Theme> => {
   return {
-    color: isError ? red[700] : SECONDARY_SHADES[300],
+    color: isError ? red[700] : SECONDARY_SHADES[400],
     position: 'absolute',
     paddingLeft: '8px',
   };
