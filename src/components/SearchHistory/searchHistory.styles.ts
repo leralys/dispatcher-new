@@ -1,3 +1,4 @@
+import { SxProps, Theme } from '@mui/material';
 import styled, { css } from 'styled-components';
 
 import { FlexRow, FlexColumn, BORDER_RADIUS } from '../../globalStyles';
@@ -11,28 +12,59 @@ export const HistoryContainer = styled(FlexColumn)<{ customWidth: number }>`
   ${({ customWidth: width }) => css`
     background: ${NEUTRAL_SHADES.WHITE};
     border-radius: ${BORDER_RADIUS[10]};
-    padding: 8px 2px 16px 16px;
     box-shadow: 0px 4px 12px ${BOX_SHADOW[200]};
     width: ${width}px;
     height: 132px;
     position: absolute;
     z-index: 6;
     margin-top: 6px;
-    // overflow: overlay;
-    // font-size: 12px;
     top: 63px;
-    left: 240px;
+    left: 238px;
   `}
 `;
 
 export const HistoryHeader = styled(FlexRow)`
   justify-content: space-between;
   align-items: center;
+  margin: 8px 2px 2px 16px;
 `;
 export const HistoryTitle = styled.span`
   text-transform: uppercase;
   color: ${SECONDARY_SHADES[400]};
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   cursor: default;
 `;
+
+export const HistoryBody = styled(FlexColumn)`
+  width: 100%;
+  gap: 4px;
+  overflow: overlay;
+  padding-bottom: 8px;
+`;
+
+export const HistoryItemContainer = styled(FlexRow)`
+  width: 100%;
+  justify-content: space-between;
+  padding-right: 10px;
+  align-items: center;
+  padding-inline: 16px;
+  &:hover {
+    background: ${SECONDARY_SHADES[300]}41;
+  }
+`;
+export const HistoryItem = styled.span`
+  color: ${SECONDARY_SHADES[400]};
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
+  cursor: pointer;
+`;
+
+export const SxRemoveIcon: SxProps<Theme> = {
+  height: '16px',
+  width: '16px',
+  color: SECONDARY_SHADES[300],
+};
