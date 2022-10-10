@@ -32,7 +32,9 @@ const MainButton = ({
   return (
     <>
       {isIconBtn ? (
-        <StyledIconButton onClick={onClick}>{children}</StyledIconButton>
+        <StyledIconButton onClick={onClick} data-testid='icon-button'>
+          {children}
+        </StyledIconButton>
       ) : (
         <StyledButton
           variant='contained'

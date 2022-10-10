@@ -1,3 +1,5 @@
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+
 import { render, screen } from '../../utils/test-utils';
 import MainButton, { ButtonVariants } from './MainButton';
 import {
@@ -15,9 +17,9 @@ describe(`Should render button and icon with correct styles`, () => {
           {buttonText}
         </MainButton>
       );
-      const buttonElement = screen.getByTestId('main-button');
+      const button = screen.getByTestId('main-button');
       const endIcon = screen.getByTestId('end-icon');
-      expect(buttonElement)
+      expect(button)
         .toBeDefined()
         .toHaveTextContent(buttonText)
         .toHaveStyle(
@@ -38,5 +40,16 @@ describe(`Should render button and icon with correct styles`, () => {
         }`
       );
     });
+  });
+  it('should render icon button with icon', () => {
+    render(
+      <MainButton isIconBtn={true}>
+        <CloseRoundedIcon />
+      </MainButton>
+    );
+    const iconButton = screen.getByTestId('icon-button');
+    const closeIcon = screen.getByTestId('CloseRoundedIcon');
+    expect(iconButton).toBeDefined();
+    expect(closeIcon).toBeDefined();
   });
 });
