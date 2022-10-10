@@ -6,14 +6,14 @@ export interface LogoProps {
   onClick?: () => void;
 }
 
-const Logo = ({ customHeight = 50, onClick }: LogoProps) => {
+const Logo = ({ customHeight = 50, onClick = undefined }: LogoProps) => {
   return (
-    <LogoContainer customHeight={customHeight} data-testid='logo-container'>
-      <LogoImg
-        src={logoSvg}
-        alt='dispatcher-logo'
-        onClick={onClick}
-      />
+    <LogoContainer
+      customHeight={customHeight}
+      onClick={onClick}
+      data-testid='logo-container'
+    >
+      <LogoImg src={logoSvg} alt='dispatcher-logo' />
     </LogoContainer>
   );
 };
