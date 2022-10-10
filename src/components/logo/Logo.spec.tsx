@@ -1,4 +1,4 @@
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import Logo from './Logo';
 
 const customHeightsArr = [10, 100];

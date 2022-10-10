@@ -1,4 +1,4 @@
-import { render, screen } from '../../../utils/test-utils';
+import { render, screen } from '../../../utils/testUtils';
 import mockIl from '../../../mock/topHeadlinesIsrMock.json';
 import mockUs from '../../../mock/topHeadlinesUsMock.json';
 import NewsCard from './NewsCard';

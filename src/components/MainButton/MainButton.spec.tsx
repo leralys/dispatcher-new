@@ -1,6 +1,6 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import MainButton, { ButtonVariants } from './MainButton';
 import {
   MAIN_COLORS,

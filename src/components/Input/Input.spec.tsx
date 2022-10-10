@@ -1,6 +1,6 @@
 import { red } from '@mui/material/colors';
 
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import Input from './Input';
 
 describe(`Should render input`, () => {

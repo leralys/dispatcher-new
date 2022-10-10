@@ -1,4 +1,4 @@
-import { render, screen } from '../../../../utils/test-utils';
+import { render, screen } from '../../../../utils/testUtils';
 
 import NoImage from './NoImage';
 import { NEUTRAL_SHADES } from '../../../../utils/ui/colors';

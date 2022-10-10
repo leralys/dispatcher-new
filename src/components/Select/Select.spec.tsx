@@ -1,6 +1,6 @@
 import { red } from '@mui/material/colors';
 
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import Select from './Select';
 import { countries } from '../../utils/consts/filters';
 import { NEUTRAL_SHADES, SECONDARY_SHADES } from '../../utils/ui/colors';

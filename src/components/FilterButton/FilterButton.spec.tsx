@@ -1,4 +1,4 @@
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import FilterButton from './FilterButton';
 import { BORDER_RADIUS } from '../../globalStyles';
 import { NEUTRAL_SHADES, MAIN_COLORS } from '../../utils/ui/colors';

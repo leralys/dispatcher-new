@@ -1,4 +1,4 @@
-import { render, screen } from '../../utils/test-utils';
+import { render, screen } from '../../utils/testUtils';
 import NoData from './NoData';
 import { noDataImgObj, NoDataEnum } from './noData.consts';
 
