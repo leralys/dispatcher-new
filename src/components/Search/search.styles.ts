@@ -15,7 +15,7 @@ export const SearchContainer = styled.div<{ customWidth: number }>`
   `}
 `;
 
-export const StyledSearch = styled(MuiOutlinedInput)<{
+export const StyledOutlinedInput = styled(MuiOutlinedInput)<{
   $customHeight: number;
   $isWithFilter: boolean;
 }>`

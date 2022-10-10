@@ -1,4 +1,11 @@
-import { useState, useRef } from 'react';
+import {
+  useState,
+  useRef,
+  useCallback,
+  ChangeEvent,
+  useMemo,
+  useEffect,
+} from 'react';
 import {
   InputProps as MuiOutlinedInputProps,
   InputAdornment,
@@ -6,11 +13,17 @@ import {
   Fade,
 } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
+import { debounce } from 'lodash';
 
 import Select, { Option } from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
-import { StyledSearch, SxSearch, SearchContainer } from './search.styles';
+import {
+  StyledOutlinedInput,
+  SxSearch,
+  SearchContainer,
+} from './search.styles';
 import { NEUTRAL_SHADES } from '../../utils/ui/colors';
 
 export interface SearchProps extends MuiOutlinedInputProps {
@@ -20,6 +33,7 @@ export interface SearchProps extends MuiOutlinedInputProps {
   customWidth?: number;
   customGrowWidth?: number;
   filterItems?: Option[];
+  selectedFilter?: Option;
 }
 
 const Search = ({
@@ -29,28 +43,78 @@ const Search = ({
   customWidth = 424,
   customGrowWidth = 664,
   filterItems = [],
+  selectedFilter,
 }: SearchProps) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [showHistory, setShowHistory] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  // const [showHistory, setShowHistory] = useState<boolean>(false);
+  const [searchList, setSearchList] = useState<string[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
+  // first arg is key to the value in local storage.
+  const [searches, setSearches] = useLocalStorage<string>('searches', '');
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleFocus = () => {
+  // TODO remove
+  const test = useMemo(() => ['test', 'search', 'soccer', 'lorem ipsum'], []);
+
+  // TODO move and change
+  const someApiFunc = async (value: string) => {
+    console.log(value);
+  };
+
+  const debouncedReference = useRef(
+    debounce(async (input) => {
+      await someApiFunc(input);
+    }, 1000)
+  ).current;
+
+  useEffect(() => {
+    return () => {
+      debouncedReference.cancel();
+    };
+  }, [debouncedReference]);
+
+  const handleFocus = useCallback(() => {
     setIsFocused(true);
-    // setShowHistory(true);
+    // if (searches) {
+    //   setSearchList(searches.split(','));
+    //   setShowHistory(true);
+    // }
+    // TODO change
+    setSearchList(test);
+    setShowHistory(true);
+  }, [test]);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    debouncedReference(e.target.value);
   };
 
   const handleClickAway = () => {
     if (!isFilterOpen) {
       setIsFocused(false);
-      // setShowHistory(false);
+      setShowHistory(false);
     }
   };
 
-  const handleChange = (value: string) => {
+  const handleFilterChange = useCallback((value: string) => {
     console.log(value);
-  };
+  }, []);
+
+  const handleItemSearch = useCallback((value: string) => {
+    console.log(`search ${value}`);
+  }, []);
+
+  const handleSearchItemRemove = useCallback(
+    (index: number) => {
+      console.log(`remove ${test[index]}`);
+    },
+    [test]
+  );
+  const handleClearHistory = useCallback(() => {
+    console.log('clear all');
+  }, []);
 
   return (
     <>
@@ -59,7 +123,9 @@ const Search = ({
           customWidth={isFocused ? customGrowWidth : customWidth}
           data-testid='search-container'
         >
-          <StyledSearch
+          <StyledOutlinedInput
+            value={searchValue}
+            onChange={handleInputChange}
             data-testid='search'
             startAdornment={
               <InputAdornment position='start'>
@@ -78,8 +144,8 @@ const Search = ({
                     items={filterItems}
                     isInSearch={true}
                     isWithEmptyValue={false}
-                    selected={filterItems[0]}
-                    onChange={handleChange}
+                    selected={Boolean(selectedFilter) && selectedFilter}
+                    onChange={handleFilterChange}
                     onOpen={() => setIsFilterOpen(true)}
                     onClose={() => setIsFilterOpen(false)}
                   />
@@ -96,8 +162,15 @@ const Search = ({
           />
         </SearchContainer>
       </ClickAwayListener>
-      <Fade in={isFocused} timeout={{ exit: 200 }}>
-        <SearchHistory customWidth={customGrowWidth} ref={ref} />
+      <Fade in={showHistory} timeout={{ exit: 200 }}>
+        <SearchHistory
+          customWidth={customGrowWidth}
+          searchList={test}
+          handleSearchItemRemove={handleSearchItemRemove}
+          handleClearHistory={handleClearHistory}
+          handleItemSearch={handleItemSearch}
+          ref={ref}
+        />
       </Fade>
     </>
   );
