@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 
 import Search, { SearchProps } from './Search';
-import { endpoints } from '../../features/filters/consts';
+import { endpoints } from '../../utils/consts/filters';
 
 export default {
   title: 'components/Search',

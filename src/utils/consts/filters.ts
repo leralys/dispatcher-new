@@ -78,7 +78,7 @@ export const sortBy: Option[] = [
   { label: 'Published at', value: 'publishedAt' },
 ];
 
-export const languages = [
+export const languages: Option[] = [
   { label: 'Arabic', value: 'ar' },
   { label: 'German', value: 'de' },
   { label: 'English', value: 'en' },

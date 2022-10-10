@@ -2,7 +2,7 @@ import { red } from '@mui/material/colors';
 
 import { render, screen } from '../../utils/test-utils';
 import Select from './Select';
-import { countries } from '../../features/filters/consts';
+import { countries } from '../../utils/consts/filters';
 import { NEUTRAL_SHADES, SECONDARY_SHADES } from '../../utils/ui/colors';
 
 describe('Should render component', () => {

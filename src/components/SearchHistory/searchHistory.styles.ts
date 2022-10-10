@@ -20,8 +20,8 @@ export const HistoryContainer = styled(FlexColumn)<{ customWidth: number }>`
     margin-top: 6px;
     // overflow: overlay;
     // font-size: 12px;
-    // left: 12.6%;
-    // top: 92%;
+    top: 63px;
+    left: 240px;
   `}
 `;
 

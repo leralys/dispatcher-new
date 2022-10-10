@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import Select, { SelectProps } from './Select';
-import { countries } from '../../features/filters/consts';
+import { countries } from '../../utils/consts/filters';
 
 export default {
   title: 'components/Select',

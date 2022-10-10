@@ -96,7 +96,7 @@ const Search = ({
           />
         </SearchContainer>
       </ClickAwayListener>
-      <Fade in={isFocused} timeout={350}>
+      <Fade in={isFocused} timeout={{ exit: 200 }}>
         <SearchHistory customWidth={customGrowWidth} ref={ref} />
       </Fade>
     </>
