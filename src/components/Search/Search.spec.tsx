@@ -1,3 +1,5 @@
+import { fireEvent } from '@testing-library/react';
+
 import { render, screen } from '../../utils/test-utils';
 import Search from './Search';
 
@@ -15,5 +17,12 @@ describe('Search', () => {
     render(<Search isWithFilter={true} />);
     const endAdornment = screen.getByTestId('end-adornment');
     expect(endAdornment).toBeDefined();
+  });
+  it('should grow and render search results when focused', async () => {
+    render(<Search />);
+    const search = screen.getByTestId('search');
+    fireEvent.focus(search);
+    const searchHistory = await screen.findByTestId('search-history-container');
+    expect(searchHistory).toBeDefined();
   });
 });

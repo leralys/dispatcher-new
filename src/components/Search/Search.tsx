@@ -32,19 +32,19 @@ const Search = ({
 }: SearchProps) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  const [showHistory, setShowHistory] = useState<boolean>(false);
+  // const [showHistory, setShowHistory] = useState<boolean>(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
   const handleFocus = () => {
     setIsFocused(true);
-    setShowHistory(true);
+    // setShowHistory(true);
   };
 
   const handleClickAway = () => {
     if (!isFilterOpen) {
       setIsFocused(false);
-      setShowHistory(false);
+      // setShowHistory(false);
     }
   };
 

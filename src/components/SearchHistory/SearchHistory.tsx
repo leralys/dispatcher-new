@@ -13,7 +13,12 @@ export interface SearchHistoryProps {
 const SearchHistory = forwardRef(
   (props: SearchHistoryProps, ref: ForwardedRef<HTMLDivElement>) => {
     return (
-      <HistoryContainer customWidth={props.customWidth} ref={ref} {...props}>
+      <HistoryContainer
+        customWidth={props.customWidth}
+        ref={ref}
+        {...props}
+        data-testid='search-history-container'
+      >
         <HistoryHeader>
           <HistoryTitle>Recent searches</HistoryTitle>
           <Button btnVariant={ButtonVariants.TEXT}>Clear</Button>
