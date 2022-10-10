@@ -2,7 +2,11 @@ import { ReactNode } from 'react';
 import { ButtonProps as MuiButtonProps } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 
-import { StyledButton, SxButtonIcon } from './mainButton.styles';
+import {
+  StyledButton,
+  SxButtonIcon,
+  StyledIconButton,
+} from './mainButton.styles';
 
 export enum ButtonVariants {
   PRIMARY = 'primary',
@@ -14,31 +18,40 @@ export interface MainButtonProps extends MuiButtonProps {
   withEndIcon?: boolean;
   children?: ReactNode | string;
   btnVariant?: ButtonVariants;
-  onClick?: () => void;
+  isIconBtn?: boolean;
 }
 
 const MainButton = ({
   children,
   withEndIcon = false,
   btnVariant = ButtonVariants.PRIMARY,
+  isIconBtn = false,
   onClick,
+  sx,
 }: MainButtonProps) => {
   return (
-    <StyledButton
-      variant='contained'
-      disableElevation
-      endIcon={
-        withEndIcon && (
-          <EastIcon sx={SxButtonIcon(btnVariant)} data-testid='end-icon' />
-        )
-      }
-      onClick={onClick}
-      data-testid='main-button'
-      // transient props
-      $btnVariant={btnVariant}
-    >
-      {children}
-    </StyledButton>
+    <>
+      {isIconBtn ? (
+        <StyledIconButton onClick={onClick}>{children}</StyledIconButton>
+      ) : (
+        <StyledButton
+          variant='contained'
+          disableElevation
+          endIcon={
+            withEndIcon && (
+              <EastIcon sx={SxButtonIcon(btnVariant)} data-testid='end-icon' />
+            )
+          }
+          onClick={onClick}
+          sx={sx}
+          data-testid='main-button'
+          // transient props
+          $btnVariant={btnVariant}
+        >
+          {children}
+        </StyledButton>
+      )}
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Button from '@mui/material/Button';
+import { Button, IconButton } from '@mui/material';
 import { SxProps, Theme } from '@mui/material';
 
 import { ButtonVariants } from './MainButton';
@@ -44,3 +44,11 @@ export const SxButtonIcon = (variant: ButtonVariants): SxProps<Theme> => {
         : SECONDARY_SHADES[400],
   };
 };
+
+export const StyledIconButton = styled(IconButton)`
+&& {
+  color: ${SECONDARY_SHADES[400]};
+  &:hover {
+   background: ${MAIN_COLORS.secondary}70;
+  }
+`;
