@@ -20,20 +20,20 @@ export const GlobalStyle = createGlobalStyle`
   .font-mulish {
     font-family: 'Mulish', 'Roboto', sans-serif;
   }
-  *::-webkit-scrollbar {
-    width: 6px;
-  }
-  *::-webkit-scrollbar-track {
-    // margin-block: 4px;
-    border-radius: 5px;
-  }
-  *::-webkit-scrollbar-thumb {
-    background: ${SECONDARY_SHADES[400]};
-    border-radius: 5px;
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: ${SECONDARY_SHADES.SCROLLBAR};
-  }
+  // *::-webkit-scrollbar {
+  //   width: 6px;
+  // }
+  // *::-webkit-scrollbar-track {
+  //   margin-block: 4px;
+  //   border-radius: 5px;
+  // }
+  // *::-webkit-scrollbar-thumb {
+  //   background: ${SECONDARY_SHADES[400]};
+  //   border-radius: 5px;
+  // }
+  // *::-webkit-scrollbar-thumb:hover {
+  //   background: ${SECONDARY_SHADES.SCROLLBAR};
+  // }
 `;
 
 export const globalMuiTheme: Theme = createTheme({
