@@ -23,7 +23,6 @@ export const NEUTRAL_SHADES = {
   1200: '#333333',
   BLACK: '#000000',
   DISABLED: '#9E9E9E',
-  DISABLED_BACKGROUND: '#f8f8f8',
 };
 
 export const MAIN_COLORS = {

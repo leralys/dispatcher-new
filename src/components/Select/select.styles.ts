@@ -67,7 +67,8 @@ export const SxSelect = (
     },
   };
   const disabledStyles = {
-    background: disabled && NEUTRAL_SHADES.DISABLED_BACKGROUND,
+    background: disabled && SECONDARY_SHADES[100],
+    border: disabled && `1px solid ${NEUTRAL_SHADES[300]}`,
     '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
       cursor: disabled && 'not-allowed',
     },
