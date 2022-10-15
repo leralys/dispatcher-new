@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
+import { Option } from '../../utils/types/types';
 import { cropMenuItem } from '../../utils/helpers/cropContent/cropContent';
 import {
   SxSelect,
@@ -17,11 +18,6 @@ import {
   SxHelperText,
   SxFormControl,
 } from './select.styles';
-
-export type Option = {
-  label: string;
-  value: string;
-};
 
 export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
   items?: Option[];

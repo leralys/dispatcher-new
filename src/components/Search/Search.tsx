@@ -15,9 +15,10 @@ import {
 import { ClickAwayListener } from '@mui/base';
 import { debounce } from 'lodash';
 
-import Select, { Option } from '../Select/Select';
+import Select from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
+import { Option } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
 import {
   StyledOutlinedInput,
@@ -34,6 +35,7 @@ export interface SearchProps extends MuiOutlinedInputProps {
   customGrowWidth?: number;
   filterItems?: Option[];
   selectedFilter?: Option;
+  onEndpointChange?: (value: string) => void;
 }
 
 const Search = ({
@@ -44,6 +46,7 @@ const Search = ({
   customGrowWidth = 664,
   filterItems = [],
   selectedFilter,
+  onEndpointChange,
 }: SearchProps) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showHistory, setShowHistory] = useState<boolean>(false);
@@ -98,10 +101,6 @@ const Search = ({
     }
   };
 
-  const handleFilterChange = useCallback((value: string) => {
-    console.log(value);
-  }, []);
-
   const handleItemSearch = useCallback((value: string) => {
     console.log(`search ${value}`);
   }, []);
@@ -145,7 +144,7 @@ const Search = ({
                     isInSearch={true}
                     isWithEmptyValue={false}
                     selected={Boolean(selectedFilter) && selectedFilter}
-                    onChange={handleFilterChange}
+                    onChange={onEndpointChange}
                     onOpen={() => setIsFilterOpen(true)}
                     onClose={() => setIsFilterOpen(false)}
                   />

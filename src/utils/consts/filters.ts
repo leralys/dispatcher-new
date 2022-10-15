@@ -1,4 +1,4 @@
-import { Option } from '../../components/Select/Select';
+import { Option } from '../types/types';
 
 export const endpoints: Option[] = [
   { label: 'Top Headlines', value: 'top-headlines' },
