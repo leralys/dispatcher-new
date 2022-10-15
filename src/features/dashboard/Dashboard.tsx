@@ -4,15 +4,30 @@ import Logo from '../../components/Logo/Logo';
 import Search from '../../components/Search/Search';
 import FilterArea from '../filterArea/FilterArea';
 import { endpoints } from '../../utils/consts/filters';
-import { ENDPOINTS } from '../../utils/types/types';
+import { ENDPOINTS, FilterObject } from '../../utils/types/types';
 import { getEndpointEnum } from './utils';
-import { NavBarContainer, ContentContainer } from './dashboard.styles';
+import {
+  NavBarContainer,
+  LogoContainer,
+  ContentContainer,
+} from './dashboard.styles';
 
 const Dashboard = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ENDPOINTS>(
     getEndpointEnum(endpoints[0].value)
   );
-  const [filterObject, setFilterObject] = useState<any>();
+  const [filterObject, setFilterObject] = useState<FilterObject>({
+    country: '',
+    endpoint: 'top-headlines',
+    language: '',
+    sortBy: '',
+    category: '',
+    sources: '',
+    q: '',
+  });
+  const [isSourcesDisabled, setIsSourcesDisabled] = useState<boolean>(false);
+  const [isCountryCategoryDisabled, setIsCountryCategoryDisabled] =
+    useState<boolean>(false);
 
   const handleLogoClick = useCallback(() => {
     window.scrollTo(0, 0);
@@ -20,16 +35,42 @@ const Dashboard = () => {
 
   const handleEndpointChange = useCallback((value: string) => {
     setSelectedEndpoint(getEndpointEnum(value));
+    setFilterObject({
+      country: '',
+      endpoint: value,
+      language: '',
+      sortBy: '',
+      category: '',
+      sources: '',
+      q: '',
+    });
+    setIsSourcesDisabled(false);
+    setIsCountryCategoryDisabled(false);
   }, []);
 
-  const handleFilterChange = useCallback((value: string) => {
-    console.log(value);
-  }, []);
+  const shouldDisableFilter = (value: string, filter: string) => {
+    if (filterObject.endpoint === 'top-headlines') {
+      if (filter === 'country' || filter === 'category') {
+        setIsSourcesDisabled(value ? true : false);
+      } else if (filter === 'sources') {
+        setIsCountryCategoryDisabled(value ? true : false);
+      }
+    }
+  };
+
+  const handleFilterChange = (value: string, filter: string) => {
+    let newFilterObj = filterObject;
+    newFilterObj[filter] = value;
+    setFilterObject(newFilterObj);
+    shouldDisableFilter(value, filter);
+  };
 
   return (
     <>
       <NavBarContainer>
-        <Logo onClick={handleLogoClick} />
+        <LogoContainer>
+          <Logo onClick={handleLogoClick} />
+        </LogoContainer>
         <Search
           isWithFilter={true}
           filterItems={endpoints}
@@ -38,7 +79,13 @@ const Dashboard = () => {
         />
       </NavBarContainer>
       <ContentContainer>
-        <FilterArea endpoint={selectedEndpoint} onFilterChange={handleFilterChange} filterObject={filterObject}/>
+        <FilterArea
+          endpoint={selectedEndpoint}
+          onFilterChange={handleFilterChange}
+          filterObject={filterObject}
+          isSourcesDisabled={isSourcesDisabled}
+          isCountryCategoryDisabled={isCountryCategoryDisabled}
+        />
       </ContentContainer>
     </>
   );

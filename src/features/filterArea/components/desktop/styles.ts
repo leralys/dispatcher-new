@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { FlexRow } from '../../../globalStyles';
-import { MAIN_COLORS } from '../../../utils/ui/colors';
+import { FlexRow } from '../../../../globalStyles';
+import { MAIN_COLORS } from '../../../../utils/ui/colors';
 
 export const FiltersDesktopContainer = styled(FlexRow)`
   width: 100%;
