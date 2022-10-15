@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 import Select, { SelectProps } from './Select';
 import { countries } from '../../utils/consts/filters';
+import { StringChain } from 'lodash';
 
 export default {
   title: 'components/Select',
@@ -11,8 +12,9 @@ const Template: Story<SelectProps> = (args) => (
   <div>
     <Select
       items={countries}
+      name='example'
       {...args}
-      onChange={(value: string) => console.log(value)}
+      onChange={(value: string, name: string) => console.log(value, name)}
     />
   </div>
 );

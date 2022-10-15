@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -21,7 +21,7 @@ import {
 
 export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
   items?: Option[];
-  name?: string;
+  name: string;
   placeholder?: string;
   className?: string;
   isError?: boolean;
@@ -34,7 +34,7 @@ export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
   isInSearch?: boolean;
   isWithEmptyValue?: boolean;
   selected?: Option;
-  onChange?: (value: string) => void;
+  onChange?: (value: string, name: string) => void;
 }
 
 const Select = ({
@@ -56,17 +56,27 @@ const Select = ({
   onOpen,
   onClose,
   selected,
+  value,
 }: SelectProps) => {
-  const [value, setValue] = useState<string>(selected ? selected.value : '');
+  const [innerValue, setInnerValue] = useState<string>(
+    selected ? selected.value : ''
+  );
   const [renderedValue, setRenderedValue] = useState<string>(
     selected ? selected.label : ''
   );
 
+  useEffect(() => {
+    if (!selected) {
+      setInnerValue('');
+      setRenderedValue('');
+    }
+  }, [value, selected]);
+
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
   const handleChange = (e: SelectChangeEvent<string>, child: any) => {
-    onChange(e.target.value);
-    setValue(e.target.value);
+    onChange(e.target.value, name);
+    setInnerValue(e.target.value);
     setRenderedValue(child.props.children);
   };
   return (
@@ -81,7 +91,7 @@ const Select = ({
         name={name}
         disabled={disabled}
         fullWidth={fullWidth}
-        value={value}
+        value={innerValue}
         displayEmpty
         onChange={handleChange}
         IconComponent={ArrowBackIosRoundedIcon}
