@@ -39,6 +39,7 @@ const Datepicker = () => {
           OpenPickerIcon: CalendarIcon,
         }}
         inputFormat='dd/MMM/yyyy'
+        disableMaskedInput
         renderInput={(params) => (
           <TextField
             {...params}
