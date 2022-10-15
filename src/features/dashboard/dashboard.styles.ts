@@ -10,9 +10,11 @@ export const NavBarContainer = styled(FlexRow)`
   width: 100%;
   background: ${SECONDARY_SHADES[500]};
   align-items: center;
-  gap: 152px;
   padding: 12px 20px;
-  position: relative;
+`;
+
+export const LogoContainer = styled.div`
+  width: 11.5%;
 `;
 
 export const ContentContainer = styled.div`
