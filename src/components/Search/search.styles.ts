@@ -12,6 +12,7 @@ export const SearchContainer = styled.div<{ customWidth: number }>`
   ${({ customWidth: width }) => css`
     width: ${width}px;
     transition: all 0.3s ease-out;
+    position: relative;
   `}
 `;
 

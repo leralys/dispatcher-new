@@ -18,8 +18,8 @@ export const HistoryContainer = styled(FlexColumn)<{ customWidth: number }>`
     position: absolute;
     z-index: 6;
     margin-top: 6px;
-    top: 63px;
-    left: 238px;
+    top: 62px;
+    left: calc(16px + 11.5%);
   `}
 `;
 
