@@ -10,7 +10,10 @@ import {
 } from '../../utils/ui/colors';
 import { BORDER_RADIUS } from '../../globalStyles';
 
-export const StyledButton = styled(Button)<{ $btnVariant: ButtonVariants }>`
+export const StyledButton = styled(Button)<{
+  $btnVariant: ButtonVariants;
+  disabled: boolean;
+}>`
   && {
     ${({ $btnVariant: variant }) => css`
       border-radius: ${BORDER_RADIUS[20]};
@@ -52,3 +55,14 @@ export const StyledIconButton = styled(IconButton)`
    background: ${MAIN_COLORS.secondary}70;
   }
 `;
+
+export const SxDisabledStyles = (variant: ButtonVariants): SxProps<Theme> => {
+  return {
+    '&.MuiButtonBase-root.Mui-disabled': {
+      background: `${
+        variant === ButtonVariants.TEXT ? 'none' : NEUTRAL_SHADES[200]
+      }`,
+      color: NEUTRAL_SHADES.DISABLED,
+    },
+  };
+};

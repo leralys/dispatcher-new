@@ -6,6 +6,7 @@ import {
   StyledButton,
   SxButtonIcon,
   StyledIconButton,
+  SxDisabledStyles,
 } from './mainButton.styles';
 
 export enum ButtonVariants {
@@ -27,7 +28,7 @@ const MainButton = ({
   btnVariant = ButtonVariants.PRIMARY,
   isIconBtn = false,
   onClick,
-  sx,
+  disabled,
 }: MainButtonProps) => {
   return (
     <>
@@ -45,7 +46,8 @@ const MainButton = ({
             )
           }
           onClick={onClick}
-          sx={sx}
+          sx={SxDisabledStyles(btnVariant)}
+          disabled={disabled}
           data-testid='main-button'
           // transient props
           $btnVariant={btnVariant}
