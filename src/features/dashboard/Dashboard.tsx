@@ -82,7 +82,6 @@ const Dashboard = () => {
         <FilterArea
           endpoint={selectedEndpoint}
           onFilterChange={handleFilterChange}
-          filterObject={filterObject}
           isSourcesDisabled={isSourcesDisabled}
           isCountryCategoryDisabled={isCountryCategoryDisabled}
         />

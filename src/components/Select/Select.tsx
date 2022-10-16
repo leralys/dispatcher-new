@@ -65,13 +65,6 @@ const Select = ({
     selected ? selected.label : ''
   );
 
-  useEffect(() => {
-    if (!selected) {
-      setLocalValue('');
-      setRenderedValue('');
-    }
-  }, [value, selected]);
-
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
   const handleChange = (e: SelectChangeEvent<string>, child: any) => {
