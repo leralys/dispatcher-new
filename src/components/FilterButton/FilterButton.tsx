@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import {
@@ -9,19 +10,21 @@ import {
 } from './filterButton.styles';
 
 export interface FilterButtonProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   title?: string;
   selectedItem?: string;
   selectedItemsAmount?: number;
   isInSearch?: boolean;
+  icon?: ReactNode;
 }
 
 const DropdownButton = ({
-  isOpen,
+  isOpen = false,
   title = 'Select',
   selectedItem = '',
   selectedItemsAmount = null,
   isInSearch = false,
+  icon,
 }: FilterButtonProps) => {
   return (
     <StyledFilterButton isInSearch={isInSearch} data-testid='filter-button'>
@@ -39,26 +42,16 @@ const DropdownButton = ({
           </Amount>
         )}
       </TextAndAmount>
-      <ArrowBackIosRoundedIcon
-        sx={SxFilterIcon(isOpen)}
-        data-testid='filter-icon'
-      />
+      {icon ? (
+        icon
+      ) : (
+        <ArrowBackIosRoundedIcon
+          sx={SxFilterIcon(isOpen)}
+          data-testid='filter-icon'
+        />
+      )}
     </StyledFilterButton>
   );
 };
 
 export default DropdownButton;
-
-// <Button size="small" sx={sxButton(selectedItems.length > 0, filterTheme)}>
-//           <ContainerTitle isSelected={selectedItems.length > 0} filterTheme={filterTheme}>
-//             <ContainerIconAndTypography>
-//               {iconName && <Icon sx={IconStyle} component={iconName} size="sm" />}
-//               {selectedItems.length ? `${filterTitle} / ${selectedItems.length}` : `${filterTitle}`}
-//             </ContainerIconAndTypography>
-//             {anchorEl ? (
-//               <ArrowDropUpIcon sx={{ fontSize: '20px' }} />
-//             ) : (
-//               <ArrowDropDownIcon sx={{ fontSize: '20px' }} />
-//             )}
-//           </ContainerTitle>
-//         </Button>
