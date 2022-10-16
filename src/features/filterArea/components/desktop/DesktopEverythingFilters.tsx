@@ -1,4 +1,4 @@
-import Datepicker from '../../../../components/Datepicker/Datepicker';
+import DesktopDateFilter from './DesktopDateFilter';
 import Select from '../../../../components/Select/Select';
 import { sortBy, languages } from '../../../../utils/consts/filters';
 
@@ -20,7 +20,7 @@ const DesktopEverythingFilters = ({
         />
       </span>
       <span>
-        <Datepicker />
+        <DesktopDateFilter />
       </span>
       <span>
         <Select
