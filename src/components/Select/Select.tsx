@@ -58,7 +58,7 @@ const Select = ({
   selected,
   value,
 }: SelectProps) => {
-  const [innerValue, setInnerValue] = useState<string>(
+  const [localValue, setLocalValue] = useState<string>(
     selected ? selected.value : ''
   );
   const [renderedValue, setRenderedValue] = useState<string>(
@@ -67,7 +67,7 @@ const Select = ({
 
   useEffect(() => {
     if (!selected) {
-      setInnerValue('');
+      setLocalValue('');
       setRenderedValue('');
     }
   }, [value, selected]);
@@ -76,7 +76,7 @@ const Select = ({
 
   const handleChange = (e: SelectChangeEvent<string>, child: any) => {
     onChange(e.target.value, name);
-    setInnerValue(e.target.value);
+    setLocalValue(e.target.value);
     setRenderedValue(child.props.children);
   };
   return (
@@ -91,7 +91,7 @@ const Select = ({
         name={name}
         disabled={disabled}
         fullWidth={fullWidth}
-        value={innerValue}
+        value={localValue}
         displayEmpty
         onChange={handleChange}
         IconComponent={ArrowBackIosRoundedIcon}
