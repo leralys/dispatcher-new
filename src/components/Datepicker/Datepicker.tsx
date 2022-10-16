@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker as MuiDatepicker } from '@mui/x-date-pickers';
 import { TextField, SvgIcon, InputAdornment } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import subMonths from 'date-fns/subMonths';
 
 import Button from '../MainButton/MainButton';
 import { ReactComponent as CalendarIcon } from '../../assets/svgs/calendar.svg';
@@ -47,6 +48,8 @@ const Datepicker = ({ isBorder = false }: DatepickerProps) => {
         }}
         inputFormat='dd/MMM/yyyy'
         disableMaskedInput
+        minDate={subMonths(new Date(), 1)}
+        views={['month', 'day']}
         PaperProps={{
           sx: SxPaperProps,
         }}

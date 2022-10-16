@@ -3,10 +3,7 @@ import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { red } from '@mui/material/colors';
 import { Theme, createTheme } from '@mui/material';
 
-import {
-  SECONDARY_SHADES,
-  MAIN_COLORS,
-} from './utils/ui/colors';
+import { SECONDARY_SHADES, MAIN_COLORS } from './utils/ui/colors';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -87,13 +84,31 @@ export const globalMuiTheme: Theme = createTheme({
               background: `${MAIN_COLORS.primary}`,
             },
             '&:hover': {
-              background: `${MAIN_COLORS.primary}95`,
+              opacity: 0.8,
             },
           },
         },
         today: {
           '&:not(.Mui-selected)': {
             border: `1px solid ${SECONDARY_SHADES[400]}`,
+          },
+        },
+      },
+    },
+    PrivatePickersMonth: {
+      styleOverrides: {
+        root: {
+          color: `${SECONDARY_SHADES[400]}`,
+          '&:hover': {
+            background: `${MAIN_COLORS.secondary}80`,
+          },
+          '&.Mui-selected': {
+            '&:focus': {
+              background: `${MAIN_COLORS.primary}`,
+            },
+            '&:hover': {
+              opacity: 0.8,
+            },
           },
         },
       },
