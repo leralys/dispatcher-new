@@ -1,8 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { red } from '@mui/material/colors';
 import { Theme, createTheme } from '@mui/material';
 
-import { SECONDARY_SHADES, MAIN_COLORS } from './utils/ui/colors';
+import {
+  SECONDARY_SHADES,
+  MAIN_COLORS,
+} from './utils/ui/colors';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -53,6 +57,44 @@ export const globalMuiTheme: Theme = createTheme({
       styleOverrides: {
         root: {
           padding: '4px',
+        },
+      },
+    },
+    MuiPickersCalendarHeader: {
+      styleOverrides: {
+        root: {
+          color: `${SECONDARY_SHADES[400]}`,
+        },
+        label: {
+          fontSize: '14px',
+        },
+        switchViewButton: {
+          '&:hover': {
+            background: `${MAIN_COLORS.secondary}70`,
+          },
+        },
+      },
+    },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          color: `${SECONDARY_SHADES[400]}`,
+          '&:hover': {
+            background: `${MAIN_COLORS.secondary}80`,
+          },
+          '&.Mui-selected': {
+            '&:focus': {
+              background: `${MAIN_COLORS.primary}`,
+            },
+            '&:hover': {
+              background: `${MAIN_COLORS.primary}95`,
+            },
+          },
+        },
+        today: {
+          '&:not(.Mui-selected)': {
+            border: `1px solid ${SECONDARY_SHADES[400]}`,
+          },
         },
       },
     },

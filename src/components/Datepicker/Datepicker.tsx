@@ -5,14 +5,21 @@ import { DatePicker as MuiDatepicker } from '@mui/x-date-pickers';
 import { TextField, SvgIcon, InputAdornment } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
+import Button from '../MainButton/MainButton';
 import { ReactComponent as CalendarIcon } from '../../assets/svgs/calendar.svg';
 import {
   SxDatepickerInput,
   SxDatepickerInputContainer,
   SxCloseIcon,
+  SxPaperProps,
+  SxPopperProps,
 } from './datepicker.styles';
 
-const Datepicker = () => {
+interface DatepickerProps {
+  isBorder?: boolean;
+}
+
+const Datepicker = ({ isBorder = false }: DatepickerProps) => {
   const [selectedVal, setSelectedVal] = useState<Date | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -40,6 +47,13 @@ const Datepicker = () => {
         }}
         inputFormat='dd/MMM/yyyy'
         disableMaskedInput
+        PaperProps={{
+          sx: SxPaperProps,
+        }}
+        PopperProps={{
+          placement: 'bottom-start',
+          sx: SxPopperProps,
+        }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -55,13 +69,15 @@ const Datepicker = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   {selectedVal ? (
-                    <CloseRoundedIcon sx={SxCloseIcon} onClick={clearValue} />
+                    <Button isIconBtn={true} onClick={clearValue}>
+                      <CloseRoundedIcon sx={SxCloseIcon} />
+                    </Button>
                   ) : (
                     <SvgIcon component={CalendarIcon} inheritViewBox />
                   )}
                 </InputAdornment>
               ),
-              sx: SxDatepickerInputContainer,
+              sx: SxDatepickerInputContainer(isBorder, Boolean(selectedVal)),
               disableUnderline: true,
             }}
           />
