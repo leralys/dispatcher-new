@@ -93,7 +93,7 @@ export const SxMenuStyles = (
     width: isInSearch ? '164px' : `${customWidth}px`,
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
-    marginTop: '3px',
+    marginTop: '2px',
     color: SECONDARY_SHADES[400],
     'li.MuiMenuItem-root': {
       fontFamily: 'Mulish, Roboto, san-serif',
