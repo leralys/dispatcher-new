@@ -1,6 +1,7 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { isNull } from 'lodash';
 
 import Popover from '../../../../components/Popover/Popover';
 import FilterButton from '../../../../components/FilterButton/FilterButton';
@@ -16,6 +17,13 @@ import {
   DropdownTitle,
   DropdownFooter,
 } from './styles';
+import { DateType } from '../../../../utils/types/types';
+
+export interface ISelectedDates {
+  [key: string]: DateType;
+  from: DateType;
+  to: DateType;
+}
 
 interface DesktopDateFilterProps {
   isDateSelected?: boolean;
@@ -24,6 +32,11 @@ const DesktopDateFilter = ({
   isDateSelected = false,
 }: DesktopDateFilterProps) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
+  const [selectedDates, setSelectedDates] = useState<ISelectedDates>({
+    from: null,
+    to: null,
+  });
+  const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
   const divRef = useRef();
 
   const handleClick = useCallback(() => {
@@ -33,6 +46,25 @@ const DesktopDateFilter = ({
   const handleClose = useCallback(() => {
     setAnchorEl(null);
   }, [setAnchorEl]);
+
+  const handleDateChange = useCallback(
+    (name: string, date: DateType) => {
+      let newObj = selectedDates;
+      newObj[name] = date;
+      setSelectedDates(newObj);
+      if (isNull(selectedDates.from) && isNull(selectedDates.from)) {
+        setIsDisabledButton(true);
+      } else setIsDisabledButton(false);
+    },
+    [selectedDates]
+  );
+
+  const handleClear = () => {
+    console.log('handleClear');
+  };
+  const handleApply = () => {
+    console.log(selectedDates);
+  };
 
   return (
     <Popover
@@ -56,19 +88,32 @@ const DesktopDateFilter = ({
         <DateDropdownContainer>
           <DatepickerContainer>
             <DropdownTitle>From</DropdownTitle>
-            <Datepicker isBorder={true} />
+            <Datepicker
+              isBorder={true}
+              onDateChange={handleDateChange}
+              name='from'
+            />
           </DatepickerContainer>
           <DatepickerContainer>
             <DropdownTitle>To</DropdownTitle>
-            <Datepicker isBorder={true} />
+            <Datepicker
+              isBorder={true}
+              onDateChange={handleDateChange}
+              name='to'
+            />
           </DatepickerContainer>
           <DropdownFooter>
-            <Button btnVariant={ButtonVariants.TEXT} disabled={!isDateSelected}>
+            <Button
+              btnVariant={ButtonVariants.TEXT}
+              disabled={isDisabledButton}
+              onClick={handleClear}
+            >
               Clear
             </Button>
             <Button
               btnVariant={ButtonVariants.SECONDARY}
-              disabled={!isDateSelected}
+              disabled={isDisabledButton}
+              onClick={handleApply}
             >
               Apply
             </Button>

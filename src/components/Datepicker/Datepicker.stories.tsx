@@ -7,6 +7,8 @@ export default {
   component: Datepicker,
 } as Meta;
 
-const Template: Story = (args) => <Datepicker {...args} />;
+const Template: Story = (args) => (
+  <Datepicker {...args} onDateChange={() => {}} name='example' />
+);
 
 export const Primary = Template.bind({});

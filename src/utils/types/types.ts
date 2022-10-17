@@ -8,7 +8,7 @@ export enum ENDPOINTS {
   TOP_HEADLINES = 'top-headlines',
 }
 
-export interface FilterObject {
+export interface IFilterObject {
   [key: string]: string;
   country: string;
   endpoint: string;
@@ -17,5 +17,8 @@ export interface FilterObject {
   sortBy: string;
   category: string;
   sources: string;
-  // TODO dates
+  from: string;
+  to: string;
 }
+
+export type DateType = Date | null;

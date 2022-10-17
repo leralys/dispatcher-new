@@ -4,7 +4,7 @@ import Logo from '../../components/Logo/Logo';
 import Search from '../../components/Search/Search';
 import FilterArea from '../filterArea/FilterArea';
 import { endpoints } from '../../utils/consts/filters';
-import { ENDPOINTS, FilterObject } from '../../utils/types/types';
+import { ENDPOINTS, IFilterObject } from '../../utils/types/types';
 import { getEndpointEnum } from './utils';
 import {
   NavBarContainer,
@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ENDPOINTS>(
     getEndpointEnum(endpoints[0].value)
   );
-  const [filterObject, setFilterObject] = useState<FilterObject>({
+  const [filterObject, setFilterObject] = useState<IFilterObject>({
     country: '',
     endpoint: 'top-headlines',
     language: '',
@@ -24,6 +24,8 @@ const Dashboard = () => {
     category: '',
     sources: '',
     q: '',
+    from: '',
+    to: '',
   });
   const [isSourcesDisabled, setIsSourcesDisabled] = useState<boolean>(false);
   const [isCountryCategoryDisabled, setIsCountryCategoryDisabled] =
@@ -43,6 +45,8 @@ const Dashboard = () => {
       category: '',
       sources: '',
       q: '',
+      from: '',
+      to: '',
     });
     setIsSourcesDisabled(false);
     setIsCountryCategoryDisabled(false);
