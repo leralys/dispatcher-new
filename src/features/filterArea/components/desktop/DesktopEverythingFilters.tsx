@@ -16,25 +16,21 @@ const DesktopEverythingFilters = ({
           placeholder='Sort By'
           items={sortBy}
           onChange={onFilterChange}
-          name='sortBy'
+          id='sortBy'
         />
       </span>
       <span>
         <DesktopDateFilter />
       </span>
       <span>
-        <Select
-          placeholder='Sources'
-          onChange={onFilterChange}
-          name='sources'
-        />
+        <Select placeholder='Sources' onChange={onFilterChange} id='sources' />
       </span>
       <span>
         <Select
           placeholder='Language'
           items={languages}
           onChange={onFilterChange}
-          name='language'
+          id='language'
         />
       </span>
     </>

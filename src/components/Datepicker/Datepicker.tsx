@@ -19,11 +19,11 @@ import {
 
 interface DatepickerProps {
   isBorder?: boolean;
-  onDateChange: (name: string, date: DateType) => void;
-  name: string;
+  onDateChange: (date: DateType, id: string) => void;
+  id: string;
 }
 
-const Datepicker = ({ isBorder = false, onDateChange, name }: DatepickerProps) => {
+const Datepicker = ({ isBorder = false, onDateChange, id }: DatepickerProps) => {
   const [selectedDate, setSelectedDate] = useState<DateType>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -33,12 +33,12 @@ const Datepicker = ({ isBorder = false, onDateChange, name }: DatepickerProps) =
 
   const clearValue = (e: SyntheticEvent) => {
     e.stopPropagation();
-    onDateChange(name, null);
+    onDateChange(null, id);
     setSelectedDate(null);
   };
 
   const handleChange = (value: DateType) => {
-    onDateChange(name, value);
+    onDateChange(value, id);
     setSelectedDate(value);
   };
 

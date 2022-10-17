@@ -140,7 +140,7 @@ const Search = ({
               isWithFilter && (
                 <InputAdornment position='end' data-testid='end-adornment'>
                   <Select
-                    name='endpoint'
+                    id='endpoint'
                     items={filterItems}
                     isInSearch={true}
                     isWithEmptyValue={false}

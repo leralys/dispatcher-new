@@ -32,8 +32,7 @@ const DesktopTopHeadlinesFilters = ({
           placeholder='Country'
           items={countries}
           onChange={onFilterChange}
-          name='country'
-          // value={filterValue}
+          id='country'
           disabled={isCountryCategoryDisabled}
         />
       </span>
@@ -42,7 +41,7 @@ const DesktopTopHeadlinesFilters = ({
           placeholder='Category'
           items={categories}
           onChange={onFilterChange}
-          name='category'
+          id='category'
           disabled={isCountryCategoryDisabled}
         />
       </span>
@@ -50,8 +49,7 @@ const DesktopTopHeadlinesFilters = ({
         <Select
           placeholder='Sources'
           onChange={onFilterChange}
-          name='sources'
-          // value={filterValue}
+          id='sources'
           disabled={isSourcesDisabled}
         />
       </span>

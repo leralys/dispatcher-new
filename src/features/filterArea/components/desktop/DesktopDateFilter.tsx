@@ -48,9 +48,9 @@ const DesktopDateFilter = ({
   }, [setAnchorEl]);
 
   const handleDateChange = useCallback(
-    (name: string, date: DateType) => {
+    (date: DateType, id: string) => {
       let newObj = selectedDates;
-      newObj[name] = date;
+      newObj[id] = date;
       setSelectedDates(newObj);
       if (isNull(selectedDates.from) && isNull(selectedDates.to)) {
         setIsDisabledButton(true);
@@ -91,7 +91,7 @@ const DesktopDateFilter = ({
             <Datepicker
               isBorder={true}
               onDateChange={handleDateChange}
-              name='from'
+              id='from'
             />
           </DatepickerContainer>
           <DatepickerContainer>
@@ -99,7 +99,7 @@ const DesktopDateFilter = ({
             <Datepicker
               isBorder={true}
               onDateChange={handleDateChange}
-              name='to'
+              id='to'
             />
           </DatepickerContainer>
           <DropdownFooter>

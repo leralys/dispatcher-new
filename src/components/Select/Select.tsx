@@ -21,7 +21,7 @@ import {
 
 export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
   items?: Option[];
-  name: string;
+  id: string;
   placeholder?: string;
   className?: string;
   isError?: boolean;
@@ -38,7 +38,7 @@ export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
 }
 
 const Select = ({
-  name,
+  id,
   placeholder = 'Select',
   className,
   items = [],
@@ -68,7 +68,7 @@ const Select = ({
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
   const handleChange = (e: SelectChangeEvent<string>, child: any) => {
-    onChange(e.target.value, name);
+    onChange(e.target.value, id);
     setLocalValue(e.target.value);
     setRenderedValue(child.props.children);
   };
@@ -80,7 +80,7 @@ const Select = ({
     >
       <MuiSelect
         data-testid='select'
-        id={name}
+        id={id}
         disabled={disabled}
         fullWidth={fullWidth}
         value={localValue}

@@ -8,7 +8,7 @@ export default {
 } as Meta;
 
 const Template: Story = (args) => (
-  <Datepicker {...args} onDateChange={() => {}} name='example' />
+  <Datepicker {...args} onDateChange={() => {}} id='example' />
 );
 
 export const Primary = Template.bind({});
