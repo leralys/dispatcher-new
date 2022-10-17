@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -81,7 +81,6 @@ const Select = ({
       <MuiSelect
         data-testid='select'
         id={name}
-        name={name}
         disabled={disabled}
         fullWidth={fullWidth}
         value={localValue}
