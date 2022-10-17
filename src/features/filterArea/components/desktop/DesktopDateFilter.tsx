@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, SyntheticEvent } from 'react';
 import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { isNull } from 'lodash';
@@ -10,6 +10,11 @@ import Button, {
   ButtonVariants,
 } from '../../../../components/MainButton/MainButton';
 import { ReactComponent as CalendarIcon } from '../../../../assets/svgs/calendar.svg';
+import {
+  DateType,
+  IDateObject,
+  DateFilterType,
+} from '../../../../utils/types/types';
 import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 import {
   DateDropdownContainer,
@@ -17,26 +22,20 @@ import {
   DropdownTitle,
   DropdownFooter,
 } from './styles';
-import { DateType } from '../../../../utils/types/types';
-
-export interface ISelectedDates {
-  [key: string]: DateType;
-  from: DateType;
-  to: DateType;
-}
+import { dateToISOFormat } from '../../utils';
 
 interface DesktopDateFilterProps {
-  isDateSelected?: boolean;
+  updateFilter: (dates: DateFilterType) => void;
 }
-const DesktopDateFilter = ({
-  isDateSelected = false,
-}: DesktopDateFilterProps) => {
+
+const DesktopDateFilter = ({ updateFilter }: DesktopDateFilterProps) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
-  const [selectedDates, setSelectedDates] = useState<ISelectedDates>({
+  const [dateObject, setDateObject] = useState<IDateObject>({
     from: null,
     to: null,
   });
   const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
+  const [isFilterApplied, setIsFilterApplied] = useState<boolean>(false);
   const divRef = useRef();
 
   const handleClick = useCallback(() => {
@@ -49,21 +48,41 @@ const DesktopDateFilter = ({
 
   const handleDateChange = useCallback(
     (date: DateType, id: string) => {
-      let newObj = selectedDates;
-      newObj[id] = date;
-      setSelectedDates(newObj);
-      if (isNull(selectedDates.from) && isNull(selectedDates.to)) {
+      let newObj = dateObject;
+      newObj[id as keyof typeof dateObject] = date;
+      setDateObject(newObj);
+      if (isNull(dateObject.from) && isNull(dateObject.to)) {
         setIsDisabledButton(true);
       } else setIsDisabledButton(false);
     },
-    [selectedDates]
+    [dateObject]
   );
 
-  const handleClear = () => {
-    console.log('handleClear');
+  const handleClear = (e: SyntheticEvent) => {
+    e.stopPropagation();
+    setDateObject({
+      from: null,
+      to: null,
+    });
+    updateFilter({ to: '', from: '' });
+    setIsFilterApplied(false);
+    setIsDisabledButton(true);
   };
+
   const handleApply = () => {
-    console.log(selectedDates);
+    let newDateFilter: DateFilterType = { to: '', from: '' };
+    for (let key in dateObject) {
+      if (isNull(dateObject[key as keyof typeof dateObject])) {
+        continue;
+      } else {
+        newDateFilter[key as keyof typeof newDateFilter] = dateToISOFormat(
+          dateObject[key as keyof typeof dateObject]
+        );
+      }
+    }
+    updateFilter(newDateFilter);
+    setIsFilterApplied(true);
+    handleClose();
   };
 
   return (
@@ -76,8 +95,10 @@ const DesktopDateFilter = ({
         <FilterButton
           title='Dates'
           icon={
-            isDateSelected ? (
-              <CloseRoundedIcon sx={{ color: SECONDARY_SHADES[300] }} />
+            isFilterApplied ? (
+              <Button isIconBtn={true} onClick={handleClear}>
+                <CloseRoundedIcon sx={{ color: SECONDARY_SHADES[300] }} />
+              </Button>
             ) : (
               <SvgIcon component={CalendarIcon} inheritViewBox />
             )
@@ -92,15 +113,19 @@ const DesktopDateFilter = ({
               isBorder={true}
               onDateChange={handleDateChange}
               id='from'
+              value={dateObject.from}
             />
           </DatepickerContainer>
           <DatepickerContainer>
             <DropdownTitle>To</DropdownTitle>
-            <Datepicker
-              isBorder={true}
-              onDateChange={handleDateChange}
-              id='to'
-            />
+            <span>
+              <Datepicker
+                isBorder={true}
+                onDateChange={handleDateChange}
+                id='to'
+                value={dateObject.to}
+              />
+            </span>
           </DatepickerContainer>
           <DropdownFooter>
             <Button

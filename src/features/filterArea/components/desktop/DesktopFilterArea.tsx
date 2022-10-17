@@ -1,12 +1,17 @@
 import DesktopTopHeadlinesFilters from './DesktopTopHeadlinesFilters';
 import DesktopEverythingFilters from './DesktopEverythingFilters';
-import { ENDPOINTS, Option } from '../../../../utils/types/types';
+import {
+  ENDPOINTS,
+  Option,
+  DateFilterType,
+} from '../../../../utils/types/types';
 import { FiltersDesktopContainer } from './styles';
 
 interface DesktopFilterAreaProps {
   endpoint: ENDPOINTS;
   sources?: Option[];
-  onFilterChange: (value: string, name: string) => void;
+  onFilterChange: (value: string, id: string) => void;
+  onDateFilterChange: (dates: DateFilterType) => void;
   isSourcesDisabled?: boolean;
   isCountryCategoryDisabled?: boolean;
 }
@@ -14,6 +19,7 @@ interface DesktopFilterAreaProps {
 const DesktopFilterArea = ({
   endpoint,
   onFilterChange,
+  onDateFilterChange,
   isSourcesDisabled,
   isCountryCategoryDisabled,
   sources,
@@ -28,7 +34,10 @@ const DesktopFilterArea = ({
           sources={sources}
         />
       ) : (
-        <DesktopEverythingFilters onFilterChange={onFilterChange} />
+        <DesktopEverythingFilters
+          onFilterChange={onFilterChange}
+          onDateFilterChange={onDateFilterChange}
+        />
       )}
     </FiltersDesktopContainer>
   );

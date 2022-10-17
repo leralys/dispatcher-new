@@ -1,10 +1,14 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import Logo from '../../components/Logo/Logo';
 import Search from '../../components/Search/Search';
 import FilterArea from '../filterArea/FilterArea';
 import { endpoints } from '../../utils/consts/filters';
-import { ENDPOINTS, IFilterObject } from '../../utils/types/types';
+import {
+  ENDPOINTS,
+  IFilterObject,
+  DateFilterType,
+} from '../../utils/types/types';
 import { getEndpointEnum } from './utils';
 import {
   NavBarContainer,
@@ -62,11 +66,27 @@ const Dashboard = () => {
     }
   };
 
-  const handleFilterChange = (value: string, filter: string) => {
+  const handleFilterChange = (value: string, id: string) => {
     let newFilterObj = filterObject;
-    newFilterObj[filter] = value;
+    newFilterObj[id as keyof typeof filterObject] = value;
     setFilterObject(newFilterObj);
-    shouldDisableFilter(value, filter);
+    apiFunc(newFilterObj);
+    shouldDisableFilter(value, id);
+  };
+
+  const handleDateFilterChange = useCallback(
+    (dates: DateFilterType) => {
+      let newFilterObj = filterObject;
+      newFilterObj.from = dates.from;
+      newFilterObj.to = dates.to;
+      setFilterObject(newFilterObj);
+      apiFunc(newFilterObj);
+    },
+    [filterObject]
+  );
+
+  const apiFunc = (filterObject: IFilterObject) => {
+    console.log(filterObject);
   };
 
   return (
@@ -86,6 +106,7 @@ const Dashboard = () => {
         <FilterArea
           endpoint={selectedEndpoint}
           onFilterChange={handleFilterChange}
+          onDateFilterChange={handleDateFilterChange}
           isSourcesDisabled={isSourcesDisabled}
           isCountryCategoryDisabled={isCountryCategoryDisabled}
         />

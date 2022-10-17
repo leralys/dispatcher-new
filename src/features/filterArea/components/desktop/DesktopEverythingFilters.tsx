@@ -1,13 +1,16 @@
 import DesktopDateFilter from './DesktopDateFilter';
 import Select from '../../../../components/Select/Select';
 import { sortBy, languages } from '../../../../utils/consts/filters';
+import { DateFilterType } from '../../../../utils/types/types';
 
 interface DesktopEverythingFiltersProps {
   onFilterChange: (value: string, name: string) => void;
+  onDateFilterChange: (dates: DateFilterType) => void;
 }
 
 const DesktopEverythingFilters = ({
   onFilterChange,
+  onDateFilterChange,
 }: DesktopEverythingFiltersProps) => {
   return (
     <>
@@ -20,7 +23,7 @@ const DesktopEverythingFilters = ({
         />
       </span>
       <span>
-        <DesktopDateFilter />
+        <DesktopDateFilter updateFilter={onDateFilterChange} />
       </span>
       <span>
         <Select placeholder='Sources' onChange={onFilterChange} id='sources' />

@@ -9,7 +9,6 @@ export enum ENDPOINTS {
 }
 
 export interface IFilterObject {
-  [key: string]: string;
   country: string;
   endpoint: string;
   q: string;
@@ -20,5 +19,11 @@ export interface IFilterObject {
   from: string;
   to: string;
 }
+
+export interface IDateObject {
+  from: DateType;
+  to: DateType;
+}
+export type DateFilterType = Pick<IFilterObject, 'to' | 'from'>;
 
 export type DateType = Date | null;

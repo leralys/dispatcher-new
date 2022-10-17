@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker as MuiDatepicker } from '@mui/x-date-pickers';
@@ -21,11 +21,23 @@ interface DatepickerProps {
   isBorder?: boolean;
   onDateChange: (date: DateType, id: string) => void;
   id: string;
+  value?: DateType;
+  isClearValue?: boolean;
 }
 
-const Datepicker = ({ isBorder = false, onDateChange, id }: DatepickerProps) => {
-  const [selectedDate, setSelectedDate] = useState<DateType>(null);
+const Datepicker = ({
+  isBorder = false,
+  onDateChange,
+  id,
+  value = null,
+}: DatepickerProps) => {
+  const [localValue, setLocalValue] = useState<DateType>(value);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLocalValue(value);
+    onDateChange(value, id);
+  }, [value, onDateChange, id]);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -34,18 +46,18 @@ const Datepicker = ({ isBorder = false, onDateChange, id }: DatepickerProps) => 
   const clearValue = (e: SyntheticEvent) => {
     e.stopPropagation();
     onDateChange(null, id);
-    setSelectedDate(null);
+    setLocalValue(null);
   };
 
   const handleChange = (value: DateType) => {
+    setLocalValue(value);
     onDateChange(value, id);
-    setSelectedDate(value);
   };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MuiDatepicker
-        value={selectedDate}
+        value={localValue}
         onChange={(newValue) => handleChange(newValue)}
         open={isOpen}
         onOpen={() => setIsOpen(true)}
@@ -79,7 +91,7 @@ const Datepicker = ({ isBorder = false, onDateChange, id }: DatepickerProps) => 
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
-                  {selectedDate ? (
+                  {localValue ? (
                     <Button isIconBtn={true} onClick={clearValue}>
                       <CloseRoundedIcon sx={SxCloseIcon} />
                     </Button>
@@ -88,7 +100,7 @@ const Datepicker = ({ isBorder = false, onDateChange, id }: DatepickerProps) => 
                   )}
                 </InputAdornment>
               ),
-              sx: SxDatepickerInputContainer(isBorder, Boolean(selectedDate)),
+              sx: SxDatepickerInputContainer(isBorder, Boolean(localValue)),
               disableUnderline: true,
             }}
           />
