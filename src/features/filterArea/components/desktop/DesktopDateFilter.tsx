@@ -52,7 +52,7 @@ const DesktopDateFilter = ({
       let newObj = selectedDates;
       newObj[name] = date;
       setSelectedDates(newObj);
-      if (isNull(selectedDates.from) && isNull(selectedDates.from)) {
+      if (isNull(selectedDates.from) && isNull(selectedDates.to)) {
         setIsDisabledButton(true);
       } else setIsDisabledButton(false);
     },
