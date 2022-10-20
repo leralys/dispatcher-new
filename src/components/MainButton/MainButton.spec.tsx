@@ -25,12 +25,12 @@ describe(`Should render button and icon with correct styles`, () => {
         .toHaveStyle(
           `background: ${
             variant === ButtonVariants.TEXT ? 'none' : MAIN_COLORS[variant]
-          };
-        color: ${
-          variant === ButtonVariants.PRIMARY
-            ? NEUTRAL_SHADES.WHITE
-            : SECONDARY_SHADES[400]
-        }`
+          }`
+          // color: ${
+          //   variant === ButtonVariants.PRIMARY
+          //     ? NEUTRAL_SHADES.WHITE
+          //     : SECONDARY_SHADES[400]
+          // }
         );
       expect(endIcon).toHaveStyle(
         `fill: ${

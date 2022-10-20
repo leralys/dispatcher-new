@@ -20,6 +20,7 @@ export interface MainButtonProps extends MuiButtonProps {
   children?: ReactNode | string;
   btnVariant?: ButtonVariants;
   isIconBtn?: boolean;
+  icon?: ReactNode;
 }
 
 const MainButton = ({
@@ -29,6 +30,7 @@ const MainButton = ({
   isIconBtn = false,
   onClick,
   disabled,
+  icon,
 }: MainButtonProps) => {
   return (
     <>
@@ -41,9 +43,12 @@ const MainButton = ({
           variant='contained'
           disableElevation
           endIcon={
-            withEndIcon && (
+            withEndIcon &&
+            (icon ? (
+              icon
+            ) : (
               <EastIcon sx={SxButtonIcon(btnVariant)} data-testid='end-icon' />
-            )
+            ))
           }
           onClick={onClick}
           sx={SxDisabledStyles(btnVariant)}
