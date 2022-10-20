@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { SECONDARY_SHADES } from '../../../utils/ui/colors';
-import { StyledCard } from '../cards.styles';
+import { StyledCard } from '../styles';
 import { FlexColumn, FlexRow } from '../../../globalStyles';
 
 export const Card = styled(StyledCard)`

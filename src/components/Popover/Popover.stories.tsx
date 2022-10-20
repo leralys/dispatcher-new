@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import Popover, { PopoverProps } from './Popover';
+import Popover, { Props } from './Popover';
 
 export default {
   component: Popover,
@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 // There is a problem with storybook popover position because it not render on the right root
-const Template: Story<PopoverProps> = (args) => {
+  const Template: Story<Props> = (args) => {
   return <Popover {...args} />;
 };
 

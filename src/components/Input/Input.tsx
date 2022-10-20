@@ -11,9 +11,9 @@ import {
   StyledInput,
   SxStyledInput,
   SxHelperText,
-} from './input.styles';
+} from './styles';
 
-export interface InputProps extends OutlinedInputProps {
+export interface Props extends OutlinedInputProps {
   helperText?: string;
   isError?: boolean;
 }
@@ -26,7 +26,7 @@ const Input = ({
   placeholder = 'Type something...',
   sx,
   ...props
-}: InputProps) => {
+}: Props) => {
   const showhelperText = useMemo(
     () => !props.disabled && Boolean(helperText),
     [props.disabled, helperText]

@@ -1,14 +1,14 @@
 import { Story, Meta } from '@storybook/react';
 
-import NoData, { NoDataProps } from './NoData';
-import { NoDataEnum } from './noData.consts';
+import NoData, { Props } from './NoData';
+import { NoDataEnum } from './utils';
 
 export default {
   component: NoData,
   title: 'Components/NoData',
 } as Meta;
 
-const Template: Story<NoDataProps> = (args) => <NoData {...args} />;
+const Template: Story<Props> = (args) => <NoData {...args} />;
 
 export const Search = Template.bind({});
 Search.args = {

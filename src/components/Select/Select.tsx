@@ -17,9 +17,9 @@ import {
   emptyValueStyles,
   SxHelperText,
   SxFormControl,
-} from './select.styles';
+} from './styles';
 
-export interface SelectProps extends Omit<MuiSelectProps, 'onChange'> {
+export interface Props extends Omit<MuiSelectProps, 'onChange'> {
   items?: Option[];
   id: string;
   placeholder?: string;
@@ -57,7 +57,7 @@ const Select = ({
   onClose,
   selected,
   value,
-}: SelectProps) => {
+}: Props) => {
   const [localValue, setLocalValue] = useState<string>(
     selected ? selected.value : ''
   );

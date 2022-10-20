@@ -24,10 +24,10 @@ import {
   StyledOutlinedInput,
   SxSearch,
   SearchContainer,
-} from './search.styles';
+} from './styles';
 import { NEUTRAL_SHADES } from '../../utils/ui/colors';
 
-export interface SearchProps extends MuiOutlinedInputProps {
+export interface Props extends MuiOutlinedInputProps {
   placeholder?: string;
   isWithFilter?: boolean;
   customHeight?: number;
@@ -47,7 +47,7 @@ const Search = ({
   filterItems = [],
   selectedFilter,
   onEndpointChange,
-}: SearchProps) => {
+}: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showHistory, setShowHistory] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);

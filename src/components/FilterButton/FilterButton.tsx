@@ -7,9 +7,9 @@ import {
   SxFilterIcon,
   TextAndAmount,
   Amount,
-} from './filterButton.styles';
+} from './styles';
 
-export interface FilterButtonProps {
+export interface Props {
   isOpen?: boolean;
   title?: string;
   selectedItem?: string;
@@ -25,7 +25,7 @@ const DropdownButton = ({
   selectedItemsAmount = null,
   isInSearch = false,
   icon,
-}: FilterButtonProps) => {
+}: Props) => {
   return (
     <StyledFilterButton isInSearch={isInSearch} data-testid='filter-button'>
       <TextAndAmount>

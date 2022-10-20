@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 
-import Search, { SearchProps } from './Search';
+import Search, { Props } from './Search';
 import { endpoints } from '../../utils/consts/filters';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: Search,
 } as Meta;
 
-const Template: Story<SearchProps> = (args) => <Search {...args} />;
+const Template: Story<Props> = (args) => <Search {...args} />;
 export const InputExample = Template.bind({});
 
 export const WithFilter = Template.bind({});

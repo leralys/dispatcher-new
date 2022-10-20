@@ -7,7 +7,7 @@ import {
   SxButtonIcon,
   StyledIconButton,
   SxDisabledStyles,
-} from './mainButton.styles';
+} from './styles';
 
 export enum ButtonVariants {
   PRIMARY = 'primary',
@@ -15,7 +15,7 @@ export enum ButtonVariants {
   TEXT = 'text',
 }
 
-export interface MainButtonProps extends MuiButtonProps {
+export interface Props extends MuiButtonProps {
   withEndIcon?: boolean;
   children?: ReactNode | string;
   btnVariant?: ButtonVariants;
@@ -31,7 +31,7 @@ const MainButton = ({
   onClick,
   disabled,
   icon,
-}: MainButtonProps) => {
+}: Props) => {
   return (
     <>
       {isIconBtn ? (

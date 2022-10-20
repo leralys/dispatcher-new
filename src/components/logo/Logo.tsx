@@ -1,12 +1,12 @@
 import logoSvg from '../../assets/svgs/logo.svg';
-import { LogoContainer, LogoImg } from './logo.style';
+import { LogoContainer, LogoImg } from './styles';
 
-export interface LogoProps {
+export interface Props {
   customHeight?: number;
   onClick?: () => void;
 }
 
-const Logo = ({ customHeight = 50, onClick = undefined }: LogoProps) => {
+const Logo = ({ customHeight = 50, onClick = undefined }: Props) => {
   return (
     <LogoContainer
       customHeight={customHeight}

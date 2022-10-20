@@ -22,13 +22,13 @@ import {
   DropdownTitle,
   DropdownFooter,
 } from './styles';
-import { dateToISOFormat } from '../../utils';
+import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
 
-interface DesktopDateFilterProps {
+interface Props {
   updateFilter: (dates: DateFilterType) => void;
 }
 
-const DesktopDateFilter = ({ updateFilter }: DesktopDateFilterProps) => {
+const DesktopDateFilter = ({ updateFilter }: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
   const [dateObject, setDateObject] = useState<IDateObject>({
     from: null,

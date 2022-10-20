@@ -1,13 +1,13 @@
 import { Story, Meta } from '@storybook/react';
 
-import MainButton, { MainButtonProps, ButtonVariants } from './MainButton';
+import MainButton, { Props, ButtonVariants } from './MainButton';
 
 export default {
   title: 'Components/Button',
   component: MainButton,
 } as Meta;
 
-const Template: Story<MainButtonProps> = (args) => <MainButton {...args} />;
+const Template: Story<Props> = (args) => <MainButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

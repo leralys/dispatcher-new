@@ -7,7 +7,7 @@ import {
 } from '../../../../utils/types/types';
 import { FiltersDesktopContainer } from './styles';
 
-interface DesktopFilterAreaProps {
+interface Props {
   endpoint: ENDPOINTS;
   sources?: Option[];
   onFilterChange: (value: string, id: string) => void;
@@ -23,7 +23,7 @@ const DesktopFilterArea = ({
   isSourcesDisabled,
   isCountryCategoryDisabled,
   sources,
-}: DesktopFilterAreaProps) => {
+}: Props) => {
   return (
     <FiltersDesktopContainer>
       {endpoint === ENDPOINTS.TOP_HEADLINES ? (

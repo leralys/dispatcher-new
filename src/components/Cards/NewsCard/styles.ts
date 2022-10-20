@@ -7,7 +7,7 @@ import {
 } from '../../../utils/ui/colors';
 import { SCREENS } from '../../../utils/ui/screenSizes';
 import { FlexColumn, FlexRow, BORDER_RADIUS } from '../../../globalStyles';
-import { StyledCard } from '../cards.styles';
+import { StyledCard } from '../styles';
 
 export const Card = styled(StyledCard)`
   flex-direction: row;

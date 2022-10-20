@@ -1,14 +1,8 @@
 import { ReactNode } from 'react';
 
-import {
-  TitleContainer,
-  Underline,
-  Card,
-  CardTitle,
-  CardBody,
-} from './graphCard.styles';
+import { TitleContainer, Underline, Card, CardTitle, CardBody } from './styles';
 
-export interface GraphCardProps {
+export interface Props {
   children?: ReactNode;
   title?: string;
   justifyContent?: string;
@@ -20,7 +14,7 @@ const GraphCard = ({
   title,
   justifyContent = 'center',
   alignItems = 'center',
-}: GraphCardProps) => {
+}: Props) => {
   return (
     <Card>
       <TitleContainer>

@@ -1,13 +1,13 @@
 import { Story, Meta } from '@storybook/react';
 
-import FilterButton, { FilterButtonProps } from './FilterButton';
+import FilterButton, { Props } from './FilterButton';
 
 export default {
   title: 'Components/FilterButton',
   component: FilterButton,
 } as Meta;
 
-const Template: Story<FilterButtonProps> = (args) => <FilterButton {...args} />;
+const Template: Story<Props> = (args) => <FilterButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = { isOpen: true, title: 'Category' };

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { LogoProps } from './Logo';
+import { Props } from './Logo';
 
 export const LogoContainer = styled.div`
-  ${({ customHeight: height, onClick }: LogoProps) => css`
+  ${({ customHeight: height, onClick }: Props) => css`
     height: ${height}px;
     width: fit-content;
     cursor: ${onClick && 'pointer'};

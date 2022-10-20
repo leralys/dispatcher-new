@@ -16,14 +16,14 @@ import {
   ArticleTitle,
   ArticleContent,
   ATag,
-} from './newsCard.styles';
+} from './styles';
 
-export interface NewsCardProps {
+export interface Props {
   article: IArticle;
   textDir: TEXT_DIR;
 }
 
-const NewsCard = ({ article, textDir = TEXT_DIR.RTL }: NewsCardProps) => {
+const NewsCard = ({ article, textDir = TEXT_DIR.RTL }: Props) => {
   const { width } = useWindowSize();
   const sourceString = article.author
     ? `${article.author}, ${article.source.name}`

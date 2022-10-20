@@ -1,13 +1,13 @@
 import { Story, Meta } from '@storybook/react';
 
-import Input, { InputProps } from './Input';
+import Input, { Props } from './Input';
 
 export default {
   title: 'Components/Input',
   component: Input,
 } as Meta;
 
-const Template: Story<InputProps> = (args) => (
+const Template: Story<Props> = (args) => (
   <div style={{ width: '344px' }}>
     <Input {...args} />
   </div>

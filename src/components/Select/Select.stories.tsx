@@ -1,14 +1,13 @@
 import { Story, Meta } from '@storybook/react';
-import Select, { SelectProps } from './Select';
+import Select, { Props } from './Select';
 import { countries } from '../../utils/consts/filters';
-import { StringChain } from 'lodash';
 
 export default {
   title: 'components/Select',
   component: Select,
 } as Meta;
 
-const Template: Story<SelectProps> = (args) => (
+const Template: Story<Props> = (args) => (
   <div>
     <Select
       items={countries}

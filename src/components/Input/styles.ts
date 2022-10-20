@@ -3,7 +3,7 @@ import { SxProps, Theme } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { OutlinedInput as MuiOutlinedInput } from '@mui/material';
 
-import { InputProps } from '../Input/Input';
+import { Props } from './Input';
 import {
   SECONDARY_SHADES,
   MAIN_COLORS,
@@ -27,7 +27,7 @@ export const SxErrorIcon = {
 
 export const SxStyledInput = (
   sx: SxProps<Theme>,
-  props: InputProps,
+  props: Props,
   isError: boolean
 ): SxProps<Theme> => {
   const defaultStyles = {

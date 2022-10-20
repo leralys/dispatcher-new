@@ -3,7 +3,7 @@ import Select from '../../../../components/Select/Select';
 import { sortBy, languages } from '../../../../utils/consts/filters';
 import { DateFilterType } from '../../../../utils/types/types';
 
-interface DesktopEverythingFiltersProps {
+interface Props {
   onFilterChange: (value: string, name: string) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
@@ -11,7 +11,7 @@ interface DesktopEverythingFiltersProps {
 const DesktopEverythingFilters = ({
   onFilterChange,
   onDateFilterChange,
-}: DesktopEverythingFiltersProps) => {
+}: Props) => {
   return (
     <>
       <span>

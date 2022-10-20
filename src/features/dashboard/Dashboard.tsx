@@ -14,7 +14,7 @@ import {
   NavBarContainer,
   LogoContainer,
   ContentContainer,
-} from './dashboard.styles';
+} from './styles';
 
 const Dashboard = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ENDPOINTS>(

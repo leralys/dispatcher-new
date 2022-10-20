@@ -12,7 +12,7 @@ import {
   SxRemoveIcon,
 } from './searchHistory.styles';
 
-export interface SearchHistoryProps {
+export interface Props {
   customWidth?: number;
   searchList: string[];
   handleSearchItemRemove: (index: number) => void;
@@ -21,7 +21,7 @@ export interface SearchHistoryProps {
 }
 
 const SearchHistory = forwardRef(
-  (props: SearchHistoryProps, ref: ForwardedRef<HTMLDivElement>) => {
+  (props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const {
       searchList = [],
       customWidth = 664,

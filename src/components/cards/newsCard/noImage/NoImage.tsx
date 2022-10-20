@@ -1,7 +1,7 @@
 import ImageNotSupportedOutlinedIcon from '@mui/icons-material/ImageNotSupportedOutlined';
 
 import { NEUTRAL_SHADES } from '../../../../utils/ui/colors';
-import { NoImageContainer } from './noImage.styles';
+import { NoImageContainer } from './styles';
 
 const NoImage = () => {
   return (

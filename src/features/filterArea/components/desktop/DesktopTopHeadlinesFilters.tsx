@@ -7,7 +7,7 @@ import { Option } from '../../../../utils/types/types';
 import { countries, categories } from '../../../../utils/consts/filters';
 import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 
-interface DesktopTopHeadlinesFiltersProps {
+interface Props {
   sources?: Option[];
   onFilterChange: (value: string, name: string) => void;
   isCountryCategoryDisabled: boolean;
@@ -19,7 +19,7 @@ const DesktopTopHeadlinesFilters = ({
   onFilterChange,
   isCountryCategoryDisabled,
   isSourcesDisabled,
-}: DesktopTopHeadlinesFiltersProps) => {
+}: Props) => {
   const isShowTooltip = useMemo(
     () => isSourcesDisabled || isCountryCategoryDisabled,
     [isSourcesDisabled, isCountryCategoryDisabled]

@@ -3,7 +3,7 @@ import { PopoverOrigin } from '@mui/material';
 
 import { StyledPopover, Anchor } from './popover.styles';
 
-export interface PopoverProps {
+export interface Props {
   renderAnchor: ReactNode;
   renderPopoverContent: ReactNode;
   width?: string;
@@ -37,7 +37,7 @@ const Popover = ({
   handleClose,
   anchorOrigin = defaultAnchorOrigin,
   transformOrigin = defaultTransformOrigin,
-}: PopoverProps) => {
+}: Props) => {
   const open = !!anchorEl;
 
   return (

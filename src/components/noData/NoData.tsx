@@ -1,16 +1,16 @@
-import { NoDataEnum, noDataImgObj } from './noData.consts';
+import { NoDataEnum, noDataImgObj } from './utils';
 import {
   NoDataContainer,
   NoDataImageDiv,
   NoDataImage,
   NoDataText,
-} from './noData.styles';
+} from './styles';
 
-export interface NoDataProps {
+export interface Props {
   component: NoDataEnum;
 }
 
-const NoData = ({ component }: NoDataProps) => {
+const NoData = ({ component }: Props) => {
   return (
     <NoDataContainer>
       <NoDataImageDiv>

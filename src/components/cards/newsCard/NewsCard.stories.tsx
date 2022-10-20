@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 
-import NewsCard, { NewsCardProps } from './NewsCard';
+import NewsCard, { Props } from './NewsCard';
 import mockIl from '../../../mock/topHeadlinesIsrMock.json';
 import mockUs from '../../../mock/topHeadlinesUsMock.json';
 import { TEXT_DIR } from '../../../utils/helpers/isRTL/isRTL';
@@ -10,7 +10,7 @@ export default {
   component: NewsCard,
 } as Meta;
 
-const Template: Story<NewsCardProps> = (args) => <NewsCard {...args} />;
+const Template: Story<Props> = (args) => <NewsCard {...args} />;
 
 export const RTLArticle = Template.bind({});
 RTLArticle.args = {

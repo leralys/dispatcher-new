@@ -1,6 +1,6 @@
 import { render, screen } from '../../utils/testUtils';
 import NoData from './NoData';
-import { noDataImgObj, NoDataEnum } from './noData.consts';
+import { noDataImgObj, NoDataEnum } from './utils';
 
 describe('Should render component with img and correct text', () => {
   it(`${NoDataEnum.SEARCH} no data component`, () => {

@@ -15,9 +15,9 @@ import {
   SxCloseIcon,
   SxPaperProps,
   SxPopperProps,
-} from './datepicker.styles';
+} from './styles';
 
-interface DatepickerProps {
+interface Props {
   isBorder?: boolean;
   onDateChange: (date: DateType, id: string) => void;
   id: string;
@@ -30,7 +30,7 @@ const Datepicker = ({
   onDateChange,
   id,
   value = null,
-}: DatepickerProps) => {
+}: Props) => {
   const [localValue, setLocalValue] = useState<DateType>(value);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
