@@ -1,16 +1,16 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import {
   FormControl,
   FormHelperText,
   Select as MuiSelect,
   MenuItem,
-  SelectChangeEvent,
   SelectProps as MuiSelectProps,
 } from '@mui/material';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import { Option } from '../../utils/types/types';
 import { cropMenuItem } from '../../utils/helpers/cropContent/cropContent';
+import useSelect from './useSelect';
 import {
   SxSelect,
   SxMenuStyles,
@@ -27,7 +27,6 @@ export interface Props extends Omit<MuiSelectProps, 'onChange'> {
   isError?: boolean;
   helperText?: string;
   disabled?: boolean;
-  // formSx?: SxProps<Theme>;
   fullWidth?: boolean;
   customWidth?: number;
   customHeight?: number;
@@ -56,22 +55,15 @@ const Select = ({
   onOpen,
   onClose,
   selected,
-  value,
 }: Props) => {
-  const [localValue, setLocalValue] = useState<string>(
-    selected ? selected.value : ''
-  );
-  const [renderedValue, setRenderedValue] = useState<string>(
-    selected ? selected.label : ''
-  );
-
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
-  const handleChange = (e: SelectChangeEvent<string>, child: any) => {
-    onChange(e.target.value, id);
-    setLocalValue(e.target.value);
-    setRenderedValue(child.props.children);
-  };
+  const { localValue, renderedValue, handleChange } = useSelect({
+    id,
+    selected,
+    onChange,
+  });
+
   return (
     <FormControl
       sx={SxFormControl(fullWidth)}
