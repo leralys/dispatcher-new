@@ -22,7 +22,7 @@ describe('Search component', () => {
     render(<Search />);
     const search = screen.getByTestId('search');
     fireEvent.focus(search);
-    const searchHistory = await screen.findByTestId('search-history-container');
+    const searchHistory = await screen.findByTestId('search-history');
     expect(searchHistory).toBeDefined();
   });
 });

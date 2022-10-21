@@ -34,7 +34,7 @@ export interface Props extends Omit<MuiSelectProps, 'onChange'> {
   isInSearch?: boolean;
   isWithEmptyValue?: boolean;
   selected?: Option;
-  onChange?: (value: string, name: string) => void;
+  onChange?: (value: string, id: string) => void;
 }
 
 const Select = ({
