@@ -3,8 +3,8 @@ import { fireEvent } from '@testing-library/react';
 import { render, screen } from '../../utils/testUtils';
 import Search from './Search';
 
-describe('Search', () => {
-  it('should render component', () => {
+describe('Search component', () => {
+  it('should render and have default width', () => {
     render(<Search />);
     const searchComponent = screen.getByTestId('search');
     const searchIcon = screen.getByTestId('search-icon');
@@ -18,7 +18,7 @@ describe('Search', () => {
     const endAdornment = screen.getByTestId('end-adornment');
     expect(endAdornment).toBeDefined();
   });
-  it('should grow and render search results when focused', async () => {
+  it('should grow and render searchHistory when focused', async () => {
     render(<Search />);
     const search = screen.getByTestId('search');
     fireEvent.focus(search);

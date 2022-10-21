@@ -20,11 +20,7 @@ import SearchHistory from '../SearchHistory/SearchHistory';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { Option } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
-import {
-  StyledOutlinedInput,
-  SxSearch,
-  SearchContainer,
-} from './styles';
+import { StyledOutlinedInput, SxSearch, SearchContainer } from './styles';
 import { NEUTRAL_SHADES } from '../../utils/ui/colors';
 
 export interface Props extends MuiOutlinedInputProps {
@@ -101,7 +97,7 @@ const Search = ({
     }
   };
 
-  const handleItemSearch = useCallback((value: string) => {
+  const handleSearchItem = useCallback((value: string) => {
     console.log(`search ${value}`);
   }, []);
 
@@ -168,7 +164,7 @@ const Search = ({
           searchList={test}
           handleSearchItemRemove={handleSearchItemRemove}
           handleClearHistory={handleClearHistory}
-          handleItemSearch={handleItemSearch}
+          handleItemClick={handleSearchItem}
           ref={ref}
         />
       </Fade>

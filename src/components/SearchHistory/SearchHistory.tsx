@@ -10,14 +10,14 @@ import {
   HistoryItemContainer,
   HistoryItem,
   SxRemoveIcon,
-} from './searchHistory.styles';
+} from './styles';
 
 export interface Props {
   customWidth?: number;
   searchList: string[];
   handleSearchItemRemove: (index: number) => void;
   handleClearHistory: () => void;
-  handleItemSearch: (value: string) => void;
+  handleItemClick?: (value: string) => void;
 }
 
 const SearchHistory = forwardRef(
@@ -27,7 +27,7 @@ const SearchHistory = forwardRef(
       customWidth = 664,
       handleSearchItemRemove,
       handleClearHistory,
-      handleItemSearch,
+      handleItemClick,
     } = props;
 
     const handleRemoveClick = (e: SyntheticEvent, index: number) => {
@@ -45,7 +45,7 @@ const SearchHistory = forwardRef(
         customWidth={customWidth}
         ref={ref}
         {...props}
-        data-testid='search-history-container'
+        data-testid='search-history'
       >
         <HistoryHeader>
           <HistoryTitle>Recent searches</HistoryTitle>
@@ -59,8 +59,8 @@ const SearchHistory = forwardRef(
         </HistoryHeader>
         <HistoryBody>
           {searchList.map((item, index) => (
-            <HistoryItemContainer key={index}>
-              <HistoryItem onClick={() => handleItemSearch(item)}>
+            <HistoryItemContainer data-testid='history-item' key={index}>
+              <HistoryItem onClick={() => handleItemClick(item)}>
                 {item}
               </HistoryItem>
               <Button
