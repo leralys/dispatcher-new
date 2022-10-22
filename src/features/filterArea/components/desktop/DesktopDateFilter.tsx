@@ -48,7 +48,7 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
 
   const handleDateChange = useCallback(
     (date: DateType, id: string) => {
-      let newObj = dateObject;
+      let newObj = { ...dateObject };
       newObj[id as keyof typeof dateObject] = date;
       setDateObject(newObj);
       if (isNull(dateObject.from) && isNull(dateObject.to)) {

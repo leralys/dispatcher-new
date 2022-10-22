@@ -73,7 +73,7 @@ const Dashboard = () => {
 
   const handleFilterChange = useCallback(
     (value: string, id: string) => {
-      let newFilterObj = filterObject;
+      let newFilterObj = { ...filterObject };
       newFilterObj[id as keyof typeof filterObject] = value;
       setFilterObject(newFilterObj);
       apiFunc(newFilterObj);
@@ -84,7 +84,7 @@ const Dashboard = () => {
 
   const handleDateFilterChange = useCallback(
     (dates: DateFilterType) => {
-      let newFilterObj = filterObject;
+      let newFilterObj = { ...filterObject };
       Object.keys(dates).forEach((key) => {
         newFilterObj[key as keyof typeof newFilterObj] =
           dates[key as keyof typeof dates];
