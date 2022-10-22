@@ -31,11 +31,12 @@ const MainButton = ({
   onClick,
   disabled,
   icon,
+  sx,
 }: Props) => {
   return (
     <>
       {isIconBtn ? (
-        <StyledIconButton onClick={onClick} data-testid='icon-button'>
+        <StyledIconButton onClick={onClick} data-testid='icon-button' sx={sx}>
           {children}
         </StyledIconButton>
       ) : (
@@ -51,7 +52,7 @@ const MainButton = ({
             ))
           }
           onClick={onClick}
-          sx={SxDisabledStyles(btnVariant)}
+          sx={SxDisabledStyles(sx, btnVariant)}
           disabled={disabled}
           data-testid='main-button'
           // transient props

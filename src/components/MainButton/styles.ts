@@ -56,8 +56,11 @@ export const StyledIconButton = styled(IconButton)`
   }
 `;
 
-export const SxDisabledStyles = (variant: ButtonVariants): SxProps<Theme> => {
-  return {
+export const SxDisabledStyles = (
+  sx: SxProps<Theme>,
+  variant: ButtonVariants
+): SxProps<Theme> => {
+  const disabledStyles = {
     '&.MuiButtonBase-root.Mui-disabled': {
       background: `${
         variant === ButtonVariants.TEXT ? 'none' : NEUTRAL_SHADES[200]
@@ -65,4 +68,5 @@ export const SxDisabledStyles = (variant: ButtonVariants): SxProps<Theme> => {
       color: NEUTRAL_SHADES.DISABLED,
     },
   };
+  return [disabledStyles, ...(Array.isArray(sx) ? sx : [sx])];
 };
