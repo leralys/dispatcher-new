@@ -106,7 +106,7 @@ export const SxMenuStyles = (
       borderRadius: '5px',
     },
     '&::-webkit-scrollbar-thumb:hover': {
-      background: `${SECONDARY_SHADES[400]}90`,
+      background: `${SECONDARY_SHADES[300]}40`,
     },
     color: SECONDARY_SHADES[400],
     'li.MuiMenuItem-root': {

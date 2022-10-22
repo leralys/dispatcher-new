@@ -40,7 +40,7 @@ export const HistoryContainer = styled(FlexColumn)<{ customWidth: number }>`
 export const HistoryHeader = styled(FlexRow)`
   justify-content: space-between;
   align-items: center;
-  margin: 8px 2px -2px 16px;
+  margin: 8px 2px -2px 20px;
 `;
 export const HistoryTitle = styled.span`
   text-transform: uppercase;
@@ -52,7 +52,6 @@ export const HistoryTitle = styled.span`
 
 export const HistoryBody = styled(FlexColumn)`
   width: 100%;
-  gap: 4px;
   overflow: overlay;
   padding-bottom: 8px;
 `;
@@ -62,23 +61,26 @@ export const HistoryItemContainer = styled(FlexRow)`
   justify-content: space-between;
   padding-right: 10px;
   align-items: center;
-  padding-inline: 16px;
+  padding-inline: 18px;
   &:hover {
-    background: ${SECONDARY_SHADES[300]}41;
+    background: ${SECONDARY_SHADES[300]}40;
   }
 `;
 export const HistoryItem = styled.span`
+  display: flex;
+  align-items: center;
   color: ${SECONDARY_SHADES[400]};
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 90%;
   cursor: pointer;
+  padding-block: 8px;
 `;
 
 export const SxRemoveIcon: SxProps<Theme> = {
-  height: '16px',
-  width: '16px',
+  height: '20px',
+  width: '20px',
   color: SECONDARY_SHADES[300],
 };
