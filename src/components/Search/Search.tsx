@@ -13,7 +13,7 @@ import Select from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
 import Button from '../../components/MainButton/MainButton';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
-import { Option } from '../../utils/types/types';
+import { Option, IFilterObject } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
 import { getNewArray } from './utils';
 import {
@@ -34,6 +34,7 @@ export interface Props extends MuiOutlinedInputProps {
   filterItems?: Option[];
   selectedFilter?: Option;
   id: string;
+  filterObject?: IFilterObject;
   onEndpointChange: (value: string) => void;
   onQueryChange: (value: string, id: string) => void;
 }
@@ -47,19 +48,23 @@ const Search = ({
   filterItems = [],
   selectedFilter,
   id,
+  filterObject,
   onEndpointChange,
   onQueryChange,
 }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showHistory, setShowHistory] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>(
+    filterObject ? filterObject.q : ''
+  );
   // first arg is key to the value in local storage
   const [searches, setSearches] = useLocalStorage<string>('searches', '');
   const [searchList, setSearchList] = useState<string[]>(
     searches ? searches.split(',') : []
   );
-  const ref = useRef<HTMLDivElement>(null);
+  const searchHistoryRef = useRef<HTMLDivElement>(null);
+  const searchInput = useRef(null);
 
   const handleSearch = async (value: string) => {
     if (value !== '') {
@@ -73,6 +78,7 @@ const Search = ({
   };
 
   const handleItemClick = async (value: string) => {
+    setSearchValue(value);
     await handleSearch(value);
     setIsFocused(false);
     setShowHistory(false);
@@ -113,6 +119,7 @@ const Search = ({
       setIsFocused(false);
       setShowHistory(false);
     }
+    setSearchValue(filterObject ? filterObject?.q : '');
   };
 
   const handleSearchItemRemove = useCallback(
@@ -198,7 +205,7 @@ const Search = ({
           handleSearchItemRemove={handleSearchItemRemove}
           handleClearHistory={handleClearHistory}
           handleItemClick={handleItemClick}
-          ref={ref}
+          ref={searchHistoryRef}
         />
       </Fade>
     </>

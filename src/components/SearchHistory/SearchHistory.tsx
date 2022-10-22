@@ -30,7 +30,7 @@ const SearchHistory = forwardRef(
       handleItemClick,
     } = props;
 
-    const scrollRef = useRef(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
     const scroll = () =>
       scrollRef?.current &&
       scrollRef.current.scrollIntoView({ behavior: 'smooth' });
