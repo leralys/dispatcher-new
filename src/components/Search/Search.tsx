@@ -1,11 +1,4 @@
-import {
-  useState,
-  useRef,
-  useCallback,
-  ChangeEvent,
-  useMemo,
-  useEffect,
-} from 'react';
+import { useState, useRef, useCallback, ChangeEvent, useEffect } from 'react';
 import {
   InputProps as MuiOutlinedInputProps,
   InputAdornment,
@@ -13,13 +6,14 @@ import {
   Fade,
 } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { debounce } from 'lodash';
+import { debounce, isEmpty } from 'lodash';
 
 import Select from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { Option } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
+import { getNewArray } from './utils';
 import { StyledOutlinedInput, SxSearch, SearchContainer } from './styles';
 import { NEUTRAL_SHADES } from '../../utils/ui/colors';
 
@@ -31,7 +25,9 @@ export interface Props extends MuiOutlinedInputProps {
   customGrowWidth?: number;
   filterItems?: Option[];
   selectedFilter?: Option;
-  onEndpointChange?: (value: string) => void;
+  id: string;
+  onEndpointChange: (value: string) => void;
+  onQueryChange: (value: string, id: string) => void;
 }
 
 const Search = ({
@@ -42,52 +38,60 @@ const Search = ({
   customGrowWidth = 664,
   filterItems = [],
   selectedFilter,
+  id,
   onEndpointChange,
+  onQueryChange,
 }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showHistory, setShowHistory] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  const [searchList, setSearchList] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
-  // first arg is key to the value in local storage.
+  // first arg is key to the value in local storage
   const [searches, setSearches] = useLocalStorage<string>('searches', '');
-
+  const [searchList, setSearchList] = useState<string[]>(
+    searches ? searches.split(',') : []
+  );
   const ref = useRef<HTMLDivElement>(null);
 
-  // TODO remove
-  const test = useMemo(() => ['test', 'search', 'soccer', 'lorem ipsum'], []);
+  const handleSearch = async (value: string) => {
+    if (value !== '') {
+      const list = searchList;
+      const newSearchList = getNewArray(value, list);
+      setSearchList(newSearchList);
+      setSearches(newSearchList.join());
+      setShowHistory(true);
+      onQueryChange(value, id);
+    }
+  };
 
-  // TODO move and change
-  const someApiFunc = async (value: string) => {
-    console.log(value);
+  const handleItemClick = async (value: string) => {
+    await handleSearch(value);
+    setIsFocused(false);
+    setShowHistory(false);
   };
 
   const debouncedReference = useRef(
     debounce(async (input) => {
-      await someApiFunc(input);
+      await handleSearch(input);
     }, 1000)
   ).current;
 
-  useEffect(() => {
-    return () => {
-      debouncedReference.cancel();
-    };
-  }, [debouncedReference]);
-
   const handleFocus = useCallback(() => {
     setIsFocused(true);
-    // if (searches) {
-    //   setSearchList(searches.split(','));
-    //   setShowHistory(true);
-    // }
-    // TODO change
-    setSearchList(test);
-    setShowHistory(true);
-  }, [test]);
+    if (!isEmpty(searchList)) {
+      setShowHistory(true);
+    }
+  }, [searchList]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     debouncedReference(e.target.value);
+  };
+
+  const handleEnterKeyPress = async (e: React.KeyboardEvent, value: string) => {
+    if (e.key === 'Enter') {
+      await handleSearch(value);
+    }
   };
 
   const handleClickAway = () => {
@@ -97,19 +101,26 @@ const Search = ({
     }
   };
 
-  const handleSearchItem = useCallback((value: string) => {
-    console.log(`search ${value}`);
-  }, []);
-
   const handleSearchItemRemove = useCallback(
     (index: number) => {
-      console.log(`remove ${test[index]}`);
+      let newSearchList = searchList;
+      newSearchList.splice(index, 1);
+      setSearchList(newSearchList);
+      setSearches(newSearchList.join());
     },
-    [test]
+    [searchList, setSearches]
   );
+
   const handleClearHistory = useCallback(() => {
-    console.log('clear all');
-  }, []);
+    setSearchList([]);
+    setSearches('');
+  }, [setSearches]);
+
+  useEffect(() => {
+    return () => {
+      debouncedReference.cancel();
+    };
+  }, [debouncedReference]);
 
   return (
     <>
@@ -122,6 +133,14 @@ const Search = ({
             value={searchValue}
             onChange={handleInputChange}
             data-testid='search'
+            placeholder={placeholder}
+            fullWidth={true}
+            sx={SxSearch()}
+            onFocus={handleFocus}
+            onKeyPress={(e) => handleEnterKeyPress(e, searchValue)}
+            // transient props
+            $customHeight={customHeight}
+            $isWithFilter={isWithFilter}
             startAdornment={
               <InputAdornment position='start'>
                 <SvgIcon
@@ -148,23 +167,16 @@ const Search = ({
                 </InputAdornment>
               )
             }
-            placeholder={placeholder}
-            fullWidth={true}
-            sx={SxSearch()}
-            onFocus={handleFocus}
-            // transient props
-            $customHeight={customHeight}
-            $isWithFilter={isWithFilter}
           />
         </SearchContainer>
       </ClickAwayListener>
       <Fade in={showHistory} timeout={{ exit: 200 }}>
         <SearchHistory
           customWidth={customGrowWidth}
-          searchList={test}
-          handleSearchItemRemove={handleSearchItemRemove}
-          handleClearHistory={handleClearHistory}
-          handleItemClick={handleSearchItem}
+          searchList={searchList}
+          onSearchItemRemove={handleSearchItemRemove}
+          onClearHistory={handleClearHistory}
+          onItemClick={handleItemClick}
           ref={ref}
         />
       </Fade>

@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Mulish', 'Roboto', sans-serif;
   }
   // *::-webkit-scrollbar {
-  //   width: 6px;
+  //   width: 5px;
   // }
   // *::-webkit-scrollbar-track {
   //   margin-block: 4px;

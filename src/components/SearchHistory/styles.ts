@@ -20,13 +20,27 @@ export const HistoryContainer = styled(FlexColumn)<{ customWidth: number }>`
     margin-top: 6px;
     top: 62px;
     left: calc(16px + 11.5%);
+    *::-webkit-scrollbar {
+      width: 5px;
+    }
+    *::-webkit-scrollbar-track {
+      margin-bottom: 8px;
+      border-radius: 5px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: ${SECONDARY_SHADES[400]};
+      border-radius: 5px;
+    }
+    *::-webkit-scrollbar-thumb:hover {
+      background: ${SECONDARY_SHADES[400]}90;
+    }
   `}
 `;
 
 export const HistoryHeader = styled(FlexRow)`
   justify-content: space-between;
   align-items: center;
-  margin: 8px 2px 2px 16px;
+  margin: 8px 2px -2px 16px;
 `;
 export const HistoryTitle = styled.span`
   text-transform: uppercase;

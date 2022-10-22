@@ -10,11 +10,7 @@ import {
   DateFilterType,
 } from '../../utils/types/types';
 import { getEndpointEnum } from './utils';
-import {
-  NavBarContainer,
-  LogoContainer,
-  ContentContainer,
-} from './styles';
+import { NavBarContainer, LogoContainer, ContentContainer } from './styles';
 
 const Dashboard = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ENDPOINTS>(
@@ -56,29 +52,37 @@ const Dashboard = () => {
     setIsCountryCategoryDisabled(false);
   }, []);
 
-  const shouldDisableFilter = (value: string, filter: string) => {
-    if (filterObject.endpoint === 'top-headlines') {
-      if (filter === 'country' || filter === 'category') {
-        setIsSourcesDisabled(value ? true : false);
-      } else if (filter === 'sources') {
-        setIsCountryCategoryDisabled(value ? true : false);
+  const shouldDisableFilter = useCallback(
+    (value: string, id: string) => {
+      if (filterObject.endpoint === 'top-headlines') {
+        if (id === 'country' || id === 'category') {
+          setIsSourcesDisabled(value ? true : false);
+        } else if (id === 'sources') {
+          setIsCountryCategoryDisabled(value ? true : false);
+        }
       }
-    }
-  };
+    },
+    [filterObject.endpoint]
+  );
 
-  const handleFilterChange = (value: string, id: string) => {
-    let newFilterObj = filterObject;
-    newFilterObj[id as keyof typeof filterObject] = value;
-    setFilterObject(newFilterObj);
-    apiFunc(newFilterObj);
-    shouldDisableFilter(value, id);
-  };
+  const handleFilterChange = useCallback(
+    (value: string, id: string) => {
+      let newFilterObj = filterObject;
+      newFilterObj[id as keyof typeof filterObject] = value;
+      setFilterObject(newFilterObj);
+      apiFunc(newFilterObj);
+      shouldDisableFilter(value, id);
+    },
+    [filterObject, shouldDisableFilter]
+  );
 
   const handleDateFilterChange = useCallback(
     (dates: DateFilterType) => {
       let newFilterObj = filterObject;
-      newFilterObj.from = dates.from;
-      newFilterObj.to = dates.to;
+      Object.keys(dates).forEach((key) => {
+        newFilterObj[key as keyof typeof newFilterObj] =
+          dates[key as keyof typeof dates];
+      });
       setFilterObject(newFilterObj);
       apiFunc(newFilterObj);
     },
@@ -99,7 +103,9 @@ const Dashboard = () => {
           isWithFilter={true}
           filterItems={endpoints}
           selectedFilter={endpoints[0]}
+          id='q'
           onEndpointChange={handleEndpointChange}
+          onQueryChange={handleFilterChange}
         />
       </NavBarContainer>
       <ContentContainer>

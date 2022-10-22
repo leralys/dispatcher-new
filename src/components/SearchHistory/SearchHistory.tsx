@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, SyntheticEvent } from 'react';
+import { ForwardedRef, forwardRef, SyntheticEvent, useRef } from 'react';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import Button, { ButtonVariants } from '../MainButton/MainButton';
@@ -15,9 +15,9 @@ import {
 export interface Props {
   customWidth?: number;
   searchList: string[];
-  handleSearchItemRemove: (index: number) => void;
-  handleClearHistory: () => void;
-  handleItemClick?: (value: string) => void;
+  onSearchItemRemove: (index: number) => void;
+  onClearHistory: () => void;
+  onItemClick: (value: string) => void;
 }
 
 const SearchHistory = forwardRef(
@@ -25,19 +25,30 @@ const SearchHistory = forwardRef(
     const {
       searchList = [],
       customWidth = 664,
-      handleSearchItemRemove,
-      handleClearHistory,
-      handleItemClick,
+      onSearchItemRemove,
+      onClearHistory,
+      onItemClick,
     } = props;
+
+    const scrollRef = useRef(null);
+    const scroll = () =>
+      scrollRef?.current &&
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
 
     const handleRemoveClick = (e: SyntheticEvent, index: number) => {
       e.stopPropagation();
-      handleSearchItemRemove(index);
+      onSearchItemRemove(index);
     };
 
     const handleClearClick = (e: SyntheticEvent) => {
       e.stopPropagation();
-      handleClearHistory();
+      onClearHistory();
+    };
+
+    const handleItemClick = (e: SyntheticEvent, value: string) => {
+      e.stopPropagation();
+      onItemClick(value);
+      scroll();
     };
 
     return (
@@ -58,9 +69,10 @@ const SearchHistory = forwardRef(
           </Button>
         </HistoryHeader>
         <HistoryBody>
+          <HistoryItemContainer ref={scrollRef}></HistoryItemContainer>
           {searchList.map((item, index) => (
             <HistoryItemContainer data-testid='history-item' key={index}>
-              <HistoryItem onClick={() => handleItemClick(item)}>
+              <HistoryItem onClick={(e) => handleItemClick(e, item)}>
                 {item}
               </HistoryItem>
               <Button

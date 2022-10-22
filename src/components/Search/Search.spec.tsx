@@ -5,7 +5,13 @@ import Search from './Search';
 
 describe('Search component', () => {
   it('should render and have default width', () => {
-    render(<Search />);
+    render(
+      <Search
+        id='search'
+        onEndpointChange={() => {}}
+        onQueryChange={() => {}}
+      />
+    );
     const searchComponent = screen.getByTestId('search');
     const searchIcon = screen.getByTestId('search-icon');
     const searchContainer = screen.getByTestId('search-container');
@@ -14,12 +20,25 @@ describe('Search component', () => {
     expect(searchContainer).toBeDefined().toHaveStyle('width: 424px');
   });
   it('should render end adornment', () => {
-    render(<Search isWithFilter={true} />);
+    render(
+      <Search
+        isWithFilter={true}
+        id='search'
+        onEndpointChange={() => {}}
+        onQueryChange={() => {}}
+      />
+    );
     const endAdornment = screen.getByTestId('end-adornment');
     expect(endAdornment).toBeDefined();
   });
   it('should grow and render searchHistory when focused', async () => {
-    render(<Search />);
+    render(
+      <Search
+        id='search'
+        onEndpointChange={() => {}}
+        onQueryChange={() => {}}
+      />
+    );
     const search = screen.getByTestId('search');
     fireEvent.focus(search);
     const searchHistory = await screen.findByTestId('search-history');
