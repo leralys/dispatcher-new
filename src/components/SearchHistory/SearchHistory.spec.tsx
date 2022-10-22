@@ -7,9 +7,9 @@ describe('Search History', () => {
     render(
       <SearchHistory
         searchList={searchList}
-        onSearchItemRemove={() => {}}
-        onClearHistory={() => {}}
-        onItemClick={() => {}}
+        handleSearchItemRemove={() => {}}
+        handleClearHistory={() => {}}
+        handleItemClick={() => {}}
       />
     );
     const searchHistory = screen.getByTestId('search-history');

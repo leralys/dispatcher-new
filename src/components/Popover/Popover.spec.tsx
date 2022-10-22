@@ -7,10 +7,10 @@ describe('Popover', () => {
       <Popover
         renderAnchor={<div>Popover Anchor</div>}
         renderPopoverContent={<div>Popover Content</div>}
-        onClick={() => {}}
-        onClose={() => {}}
         divRef={null}
         anchorEl={null}
+        handleClick={() => {}}
+        handleClose={() => {}}
       />
     );
     const popoverAnchor = screen.getByTestId('popover-anchor');

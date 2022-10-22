@@ -6,15 +6,23 @@ import {
   Fade,
 } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { debounce, isEmpty } from 'lodash';
 
 import Select from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
+import Button from '../../components/MainButton/MainButton';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { Option } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
 import { getNewArray } from './utils';
-import { StyledOutlinedInput, SxSearch, SearchContainer } from './styles';
+import {
+  StyledOutlinedInput,
+  SxSearch,
+  SearchContainer,
+  IconButtonSpan,
+  SxClearIcon,
+} from './styles';
 import { NEUTRAL_SHADES } from '../../utils/ui/colors';
 
 export interface Props extends MuiOutlinedInputProps {
@@ -94,6 +102,12 @@ const Search = ({
     }
   };
 
+  const handleInputRemove = () => {
+    const value = '';
+    setSearchValue(value);
+    onQueryChange(value, id);
+  };
+
   const handleClickAway = () => {
     if (!isFilterOpen) {
       setIsFocused(false);
@@ -152,8 +166,15 @@ const Search = ({
               </InputAdornment>
             }
             endAdornment={
-              isWithFilter && (
-                <InputAdornment position='end' data-testid='end-adornment'>
+              <InputAdornment position='end' data-testid='end-adornment'>
+                {!!searchValue && (
+                  <IconButtonSpan isWithFilter={isWithFilter}>
+                    <Button isIconBtn={true} onClick={handleInputRemove}>
+                      <CloseRoundedIcon sx={SxClearIcon} />
+                    </Button>
+                  </IconButtonSpan>
+                )}
+                {isWithFilter && (
                   <Select
                     id='endpoint'
                     items={filterItems}
@@ -164,8 +185,8 @@ const Search = ({
                     onOpen={() => setIsFilterOpen(true)}
                     onClose={() => setIsFilterOpen(false)}
                   />
-                </InputAdornment>
-              )
+                )}
+              </InputAdornment>
             }
           />
         </SearchContainer>
@@ -174,9 +195,9 @@ const Search = ({
         <SearchHistory
           customWidth={customGrowWidth}
           searchList={searchList}
-          onSearchItemRemove={handleSearchItemRemove}
-          onClearHistory={handleClearHistory}
-          onItemClick={handleItemClick}
+          handleSearchItemRemove={handleSearchItemRemove}
+          handleClearHistory={handleClearHistory}
+          handleItemClick={handleItemClick}
           ref={ref}
         />
       </Fade>

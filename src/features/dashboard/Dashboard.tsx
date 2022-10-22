@@ -35,22 +35,28 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleEndpointChange = useCallback((value: string) => {
-    setSelectedEndpoint(getEndpointEnum(value));
-    setFilterObject({
-      country: '',
-      endpoint: value,
-      language: '',
-      sortBy: '',
-      category: '',
-      sources: '',
-      q: '',
-      from: '',
-      to: '',
-    });
-    setIsSourcesDisabled(false);
-    setIsCountryCategoryDisabled(false);
-  }, []);
+  const handleEndpointChange = useCallback(
+    (value: string) => {
+      setSelectedEndpoint(getEndpointEnum(value));
+      const query = filterObject.q;
+      const newFilterObj = {
+        country: '',
+        endpoint: value,
+        language: '',
+        sortBy: '',
+        category: '',
+        sources: '',
+        q: query,
+        from: '',
+        to: '',
+      };
+      setFilterObject(newFilterObj);
+      setIsSourcesDisabled(false);
+      setIsCountryCategoryDisabled(false);
+      apiFunc(newFilterObj);
+    },
+    [filterObject.q]
+  );
 
   const shouldDisableFilter = useCallback(
     (value: string, id: string) => {

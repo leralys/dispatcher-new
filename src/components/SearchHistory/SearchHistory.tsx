@@ -15,9 +15,9 @@ import {
 export interface Props {
   customWidth?: number;
   searchList: string[];
-  onSearchItemRemove: (index: number) => void;
-  onClearHistory: () => void;
-  onItemClick: (value: string) => void;
+  handleSearchItemRemove: (index: number) => void;
+  handleClearHistory: () => void;
+  handleItemClick: (value: string) => void;
 }
 
 const SearchHistory = forwardRef(
@@ -25,9 +25,9 @@ const SearchHistory = forwardRef(
     const {
       searchList = [],
       customWidth = 664,
-      onSearchItemRemove,
-      onClearHistory,
-      onItemClick,
+      handleSearchItemRemove,
+      handleClearHistory,
+      handleItemClick,
     } = props;
 
     const scrollRef = useRef(null);
@@ -37,17 +37,17 @@ const SearchHistory = forwardRef(
 
     const handleRemoveClick = (e: SyntheticEvent, index: number) => {
       e.stopPropagation();
-      onSearchItemRemove(index);
+      handleSearchItemRemove(index);
     };
 
     const handleClearClick = (e: SyntheticEvent) => {
       e.stopPropagation();
-      onClearHistory();
+      handleClearHistory();
     };
 
-    const handleItemClick = (e: SyntheticEvent, value: string) => {
+    const handleClick = (e: SyntheticEvent, value: string) => {
       e.stopPropagation();
-      onItemClick(value);
+      handleItemClick(value);
       scroll();
     };
 
@@ -72,7 +72,7 @@ const SearchHistory = forwardRef(
           <HistoryItemContainer ref={scrollRef}></HistoryItemContainer>
           {searchList.map((item, index) => (
             <HistoryItemContainer data-testid='history-item' key={index}>
-              <HistoryItem onClick={(e) => handleItemClick(e, item)}>
+              <HistoryItem onClick={(e) => handleClick(e, item)}>
                 {item}
               </HistoryItem>
               <Button

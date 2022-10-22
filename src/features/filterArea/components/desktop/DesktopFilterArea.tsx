@@ -18,11 +18,11 @@ interface Props {
 
 const DesktopFilterArea = ({
   endpoint,
-  onFilterChange,
-  onDateFilterChange,
   isSourcesDisabled,
   isCountryCategoryDisabled,
   sources,
+  onFilterChange,
+  onDateFilterChange,
 }: Props) => {
   return (
     <FiltersDesktopContainer>

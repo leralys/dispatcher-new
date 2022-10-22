@@ -8,12 +8,12 @@ export interface Props {
   renderPopoverContent: ReactNode;
   width?: string;
   height?: string;
-  onClick: () => void;
-  onClose: () => void;
   divRef: React.Ref<HTMLDivElement>;
   anchorEl: Element;
   anchorOrigin?: PopoverOrigin;
   transformOrigin?: PopoverOrigin;
+  handleClick: () => void;
+  handleClose: () => void;
 }
 
 const defaultAnchorOrigin: PopoverOrigin = {
@@ -35,21 +35,21 @@ const Popover = ({
   anchorEl,
   anchorOrigin = defaultAnchorOrigin,
   transformOrigin = defaultTransformOrigin,
-  onClick,
-  onClose,
+  handleClick,
+  handleClose,
 }: Props) => {
   const open = !!anchorEl;
 
   return (
     <>
-      <Anchor ref={divRef} onClick={onClick} data-testid='popover-anchor'>
+      <Anchor ref={divRef} onClick={handleClick} data-testid='popover-anchor'>
         {renderAnchor}
       </Anchor>
       <StyledPopover
         data-testid='popover'
         open={open}
         anchorEl={anchorEl}
-        onClose={onClose}
+        onClose={handleClose}
         anchorOrigin={anchorOrigin}
         transformOrigin={transformOrigin}
         width={width}

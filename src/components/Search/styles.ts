@@ -61,3 +61,13 @@ export const SxSearch = (): SxProps<Theme> => {
   };
   return { ...defaultStyles, ...hoveredStyles, ...focusedStyles };
 };
+
+export const SxClearIcon: SxProps<Theme> = {
+  color: `${SECONDARY_SHADES[300]}`,
+};
+
+export const IconButtonSpan = styled.span<{ isWithFilter: boolean }>`
+  ${({ isWithFilter }) => css`
+    margin-right: ${isWithFilter ? 4 : -8}px;
+  `}
+`;

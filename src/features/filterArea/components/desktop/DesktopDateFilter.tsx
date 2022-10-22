@@ -145,8 +145,8 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
           </DropdownFooter>
         </DateDropdownContainer>
       }
-      onClick={handleClick}
-      onClose={handleClose}
+      handleClick={handleClick}
+      handleClose={handleClose}
       divRef={divRef}
       anchorEl={anchorEl}
     />
