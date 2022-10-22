@@ -10,10 +10,10 @@ import { FiltersDesktopContainer } from './styles';
 interface Props {
   endpoint: ENDPOINTS;
   sources?: Option[];
-  onFilterChange: (value: string, id: string) => void;
-  onDateFilterChange: (dates: DateFilterType) => void;
   isSourcesDisabled?: boolean;
   isCountryCategoryDisabled?: boolean;
+  onFilterChange: (value: string, id: string) => void;
+  onDateFilterChange: (dates: DateFilterType) => void;
 }
 
 const DesktopFilterArea = ({

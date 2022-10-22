@@ -4,10 +4,10 @@ import DesktopFilterArea from './components/desktop/DesktopFilterArea';
 interface FilterAreaProps {
   endpoint: ENDPOINTS;
   isMobile?: boolean;
-  onFilterChange: (value: string, name: string) => void;
-  onDateFilterChange: (dates: DateFilterType) => void;
   isSourcesDisabled?: boolean;
   isCountryCategoryDisabled?: boolean;
+  onFilterChange: (value: string, name: string) => void;
+  onDateFilterChange: (dates: DateFilterType) => void;
 }
 
 const FilterArea = ({

@@ -18,11 +18,11 @@ import {
 } from './styles';
 
 interface Props {
-  isBorder?: boolean;
-  onDateChange: (date: DateType, id: string) => void;
   id: string;
   value?: DateType;
+  isBorder?: boolean;
   isClearValue?: boolean;
+  onDateChange: (date: DateType, id: string) => void;
 }
 
 const Datepicker = ({

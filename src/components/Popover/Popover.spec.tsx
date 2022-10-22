@@ -7,8 +7,8 @@ describe('Popover', () => {
       <Popover
         renderAnchor={<div>Popover Anchor</div>}
         renderPopoverContent={<div>Popover Content</div>}
-        handleClick={() => {}}
-        handleClose={() => {}}
+        onClick={() => {}}
+        onClose={() => {}}
         divRef={null}
         anchorEl={null}
       />

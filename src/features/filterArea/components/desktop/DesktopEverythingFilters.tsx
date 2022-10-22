@@ -23,7 +23,7 @@ const DesktopEverythingFilters = ({
         />
       </span>
       <span>
-        <DesktopDateFilter updateFilter={onDateFilterChange} />
+        <DesktopDateFilter onDateFilterChange={onDateFilterChange} />
       </span>
       <span>
         <Select placeholder='Sources' onChange={onFilterChange} id='sources' />

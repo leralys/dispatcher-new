@@ -25,10 +25,10 @@ import {
 import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
 
 interface Props {
-  updateFilter: (dates: DateFilterType) => void;
+  onDateFilterChange: (dates: DateFilterType) => void;
 }
 
-const DesktopDateFilter = ({ updateFilter }: Props) => {
+const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
   const [dateObject, setDateObject] = useState<IDateObject>({
     from: null,
@@ -64,7 +64,7 @@ const DesktopDateFilter = ({ updateFilter }: Props) => {
       from: null,
       to: null,
     });
-    updateFilter({ to: '', from: '' });
+    onDateFilterChange({ to: '', from: '' });
     setIsFilterApplied(false);
     setIsDisabledButton(true);
   };
@@ -80,7 +80,7 @@ const DesktopDateFilter = ({ updateFilter }: Props) => {
         );
       }
     }
-    updateFilter(newDateFilter);
+    onDateFilterChange(newDateFilter);
     setIsFilterApplied(true);
     handleClose();
   };
@@ -145,8 +145,8 @@ const DesktopDateFilter = ({ updateFilter }: Props) => {
           </DropdownFooter>
         </DateDropdownContainer>
       }
-      handleClick={handleClick}
-      handleClose={handleClose}
+      onClick={handleClick}
+      onClose={handleClose}
       divRef={divRef}
       anchorEl={anchorEl}
     />

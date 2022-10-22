@@ -9,9 +9,9 @@ import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 
 interface Props {
   sources?: Option[];
-  onFilterChange: (value: string, name: string) => void;
   isCountryCategoryDisabled: boolean;
   isSourcesDisabled: boolean;
+  onFilterChange: (value: string, name: string) => void;
 }
 
 const DesktopTopHeadlinesFilters = ({
