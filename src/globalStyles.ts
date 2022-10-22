@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
-import { red } from '@mui/material/colors';
 import { Theme, createTheme } from '@mui/material';
 
 import { SECONDARY_SHADES, MAIN_COLORS } from './utils/ui/colors';
@@ -33,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   //   border-radius: 5px;
   // }
   // *::-webkit-scrollbar-thumb:hover {
-  //   background: ${SECONDARY_SHADES.SCROLLBAR};
+  //   background: ${SECONDARY_SHADES[400]}90;
   // }
 `;
 
@@ -46,7 +45,7 @@ export const globalMuiTheme: Theme = createTheme({
       main: MAIN_COLORS.secondary,
     },
     error: {
-      main: red[700],
+      main: MAIN_COLORS.error,
     },
   },
   components: {

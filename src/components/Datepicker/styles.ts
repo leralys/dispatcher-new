@@ -7,7 +7,7 @@ import {
 } from '../../utils/ui/colors';
 import { BORDER_RADIUS } from '../../globalStyles';
 
-export const SxDatepickerInput = {
+export const SxDatepickerInput: SxProps<Theme> = {
   color: SECONDARY_SHADES[400],
   cursor: 'pointer',
   fontSize: '14px',

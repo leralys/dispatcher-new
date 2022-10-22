@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { SxProps, Theme } from '@mui/material';
-import { red } from '@mui/material/colors';
 import { OutlinedInput as MuiOutlinedInput } from '@mui/material';
 
 import { Props } from './Input';
@@ -21,8 +20,8 @@ export const StyledInput = styled(MuiOutlinedInput)`
   }
 `;
 
-export const SxErrorIcon = {
-  fill: red[700],
+export const SxErrorIcon: SxProps<Theme> = {
+  fill: MAIN_COLORS.error,
 };
 
 export const SxStyledInput = (
@@ -62,14 +61,14 @@ export const SxStyledInput = (
     '&:hover': {
       fieldset: {
         '&.MuiOutlinedInput-notchedOutline': {
-          border: isError && `1px solid ${red[700]}`,
+          border: isError && `1px solid ${MAIN_COLORS.error}`,
         },
       },
     },
     '&&.Mui-focused': {
       fieldset: {
         '&.MuiOutlinedInput-notchedOutline': {
-          border: isError && `1px solid ${red[700]}`,
+          border: isError && `1px solid ${MAIN_COLORS.error}`,
         },
       },
     },
@@ -85,7 +84,7 @@ export const SxStyledInput = (
 
 export const SxHelperText = (isError: boolean): SxProps<Theme> => {
   return {
-    color: isError ? red[700] : SECONDARY_SHADES[400],
+    color: isError ? MAIN_COLORS.error : SECONDARY_SHADES[400],
     position: 'absolute',
     paddingLeft: '8px',
   };

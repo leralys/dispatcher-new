@@ -1,6 +1,5 @@
-import { CSSProperties } from 'react';
+import styled from 'styled-components';
 import { SxProps, Theme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 
 import { BORDER_RADIUS } from '../../globalStyles';
 import {
@@ -8,6 +7,7 @@ import {
   SECONDARY_SHADES,
   BOX_SHADOW,
   MAIN_COLORS,
+  ERROR_SHADES,
 } from '../../utils/ui/colors';
 
 export const SxSelect = (
@@ -48,21 +48,21 @@ export const SxSelect = (
   const errorStyles = {
     '&:hover': {
       '.MuiOutlinedInput-notchedOutline': {
-        border: isError && !disabled && `1px solid ${red[700]}`,
+        border: isError && !disabled && `1px solid ${MAIN_COLORS.error}`,
       },
     },
     '.MuiSelect-select.MuiSelect-outlined.MuiInputBase-input': {
-      color: isError && !disabled && red[700],
+      color: isError && !disabled && MAIN_COLORS.error,
     },
     '.MuiSelect-icon': {
-      fill: isError && !disabled && red[800],
+      fill: isError && !disabled && ERROR_SHADES[400],
     },
     '.MuiOutlinedInput-notchedOutline': {
-      border: isError && !disabled && `1px solid ${red[700]}`,
+      border: isError && !disabled && `1px solid ${MAIN_COLORS.error}`,
     },
     '&&.Mui-focused': {
       '.MuiOutlinedInput-notchedOutline': {
-        border: isError && !disabled && `1px solid ${red[700]}`,
+        border: isError && !disabled && `1px solid ${MAIN_COLORS.error}`,
       },
     },
   };
@@ -94,26 +94,44 @@ export const SxMenuStyles = (
     borderRadius: `${BORDER_RADIUS[8]}`,
     boxShadow: `0px 4px 12px ${BOX_SHADOW[200]}`,
     marginTop: '2px',
+    '&::-webkit-scrollbar': {
+      width: '5px',
+    },
+    '&::-webkit-scrollbar-track': {
+      marginBlock: '4px',
+      borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: `${SECONDARY_SHADES[400]}`,
+      borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar-thumb:hover': {
+      background: `${SECONDARY_SHADES[400]}90`,
+    },
     color: SECONDARY_SHADES[400],
     'li.MuiMenuItem-root': {
       fontFamily: 'Mulish, Roboto, san-serif',
       fontSize: '12px',
     },
+    // selected menu item
+    '.MuiButtonBase-root.MuiMenuItem-root.Mui-selected': {
+      background: `${SECONDARY_SHADES[300]}`,
+    },
   };
 };
 
-export const emptyValueStyles: CSSProperties = {
-  fontFamily: 'Mulish, Roboto, san-serif',
-  fontSize: '12px',
-  color: `${NEUTRAL_SHADES[600]}`,
-};
+export const EmptyValueEm = styled.em`
+  font-family: 'Mulish', 'Roboto', san-serif;
+  font-size: 12px;
+  color: ${NEUTRAL_SHADES[600]};
+`;
 
 export const SxHelperText = (
   customWidth: number,
   isError: boolean
 ): SxProps<Theme> => {
   return {
-    color: isError ? red[700] : SECONDARY_SHADES[400],
+    color: isError ? MAIN_COLORS.error : SECONDARY_SHADES[400],
     position: 'relative',
     width: `${customWidth}px`,
     marginInline: '0px',
@@ -124,4 +142,10 @@ export const SxFormControl = (fullWidth: boolean): SxProps<Theme> => {
   return {
     width: fullWidth && '100%',
   };
+};
+
+export const SxMenuItem: SxProps<Theme> = {
+  '&:hover': {
+    backgroundColor: `${SECONDARY_SHADES[300]}69`,
+  },
 };

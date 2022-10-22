@@ -1,9 +1,7 @@
-import { red } from '@mui/material/colors';
-
 import { render, screen } from '../../utils/testUtils';
 import Select from './Select';
 import { countries } from '../../utils/consts/filters';
-import { SECONDARY_SHADES } from '../../utils/ui/colors';
+import { SECONDARY_SHADES, MAIN_COLORS } from '../../utils/ui/colors';
 
 const id = 'example';
 
@@ -49,6 +47,8 @@ describe('Should render component', () => {
       />
     );
     const selectHelperText = screen.getByTestId('select-helper-text');
-    expect(selectHelperText).toBeDefined().toHaveStyle(`color: ${red[700]};`);
+    expect(selectHelperText)
+      .toBeDefined()
+      .toHaveStyle(`color: ${MAIN_COLORS.error};`);
   });
 });

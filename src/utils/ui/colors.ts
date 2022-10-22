@@ -1,10 +1,11 @@
+import { red } from '@mui/material/colors';
+
 export const SECONDARY_SHADES = {
   100: '#F8F8FF',
   200: '#F3F3FF',
   300: '#DFE0EB',
   400: '#5A5A89',
   500: '#262146',
-  SCROLLBAR: '#A0A3BD',
 };
 
 export const NEUTRAL_SHADES = {
@@ -28,9 +29,15 @@ export const NEUTRAL_SHADES = {
 export const MAIN_COLORS = {
   primary: '#0058B9',
   secondary: '#D9DBE9',
+  error: red[700],
 };
 
 export const BOX_SHADOW = {
   100: 'rgba(0, 0, 0, 0.05)',
   200: 'rgba(0, 0, 0, 0.08)',
+};
+
+export const ERROR_SHADES = {
+  300: MAIN_COLORS.error,
+  400: red[800],
 };
