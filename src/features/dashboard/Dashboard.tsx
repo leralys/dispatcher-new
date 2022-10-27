@@ -108,7 +108,7 @@ const Dashboard = () => {
         <Search
           isWithFilter={true}
           filterItems={endpoints}
-          selectedFilter={endpoints[0]}
+          selectedOption={endpoints[0]}
           id='q'
           filterObject={filterObject}
           onEndpointChange={handleEndpointChange}

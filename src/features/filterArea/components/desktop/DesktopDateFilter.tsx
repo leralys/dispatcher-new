@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, SyntheticEvent } from 'react';
 import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { isNull } from 'lodash';
+import { isNull, isEmpty } from 'lodash';
 
 import Popover from '../../../../components/Popover/Popover';
 import FilterButton from '../../../../components/FilterButton/FilterButton';
@@ -51,15 +51,12 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
       let newObj = { ...dateObject };
       newObj[id as keyof typeof dateObject] = date;
       setDateObject(newObj);
-      if (isNull(dateObject.from) && isNull(dateObject.to)) {
-        setIsDisabledButton(true);
-      } else setIsDisabledButton(false);
+      setIsDisabledButton(false);
     },
     [dateObject]
   );
 
-  const handleClear = (e: SyntheticEvent) => {
-    e.stopPropagation();
+  const handleClear = () => {
     setDateObject({
       from: null,
       to: null,
@@ -96,7 +93,13 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
           title='Dates'
           icon={
             isFilterApplied ? (
-              <Button isIconBtn={true} onClick={handleClear}>
+              <Button
+                isIconBtn={true}
+                onClick={(e: SyntheticEvent) => {
+                  e.stopPropagation();
+                  handleClear();
+                }}
+              >
                 <CloseRoundedIcon sx={{ color: SECONDARY_SHADES[300] }} />
               </Button>
             ) : (

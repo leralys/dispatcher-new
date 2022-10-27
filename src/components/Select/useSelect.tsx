@@ -4,17 +4,17 @@ import { SelectChangeEvent } from '@mui/material';
 import { Option } from '../../utils/types/types';
 
 interface Props {
-  selected: Option;
+  selectedOption: Option;
   onChange: (value: string, id: string) => void;
   id: string;
 }
 
-const useSelect = ({ id, selected, onChange }: Props) => {
+const useSelect = ({ id, selectedOption, onChange }: Props) => {
   const [localValue, setLocalValue] = useState<string>(
-    selected ? selected.value : ''
+    selectedOption ? selectedOption.value : ''
   );
   const [renderedValue, setRenderedValue] = useState<string>(
-    selected ? selected.label : ''
+    selectedOption ? selectedOption.label : ''
   );
 
   const handleChange = (e: SelectChangeEvent<string>, child: any) => {

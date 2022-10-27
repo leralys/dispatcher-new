@@ -12,7 +12,7 @@ const Template: Story<Props> = (args) => <SearchHistory {...args} />;
 export const Primary = Template.bind({
   customWidth: 664,
   searchList: ['test', 'search', 'soccer'],
-  handleSearchItemRemove: (index: number) => {
+  handleItemRemove: (index: number) => {
     console.log(index);
   },
 });

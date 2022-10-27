@@ -33,7 +33,7 @@ export interface Props extends Omit<MuiSelectProps, 'onChange'> {
   customHeight?: number;
   isInSearch?: boolean;
   isWithEmptyValue?: boolean;
-  selected?: Option;
+  selectedOption?: Option;
   onChange?: (value: string, id: string) => void;
 }
 
@@ -55,13 +55,13 @@ const Select = ({
   onChange,
   onOpen,
   onClose,
-  selected,
+  selectedOption,
 }: Props) => {
   const showhelperText = useMemo(() => Boolean(helperText), [helperText]);
 
   const { localValue, renderedValue, handleChange } = useSelect({
     id,
-    selected,
+    selectedOption,
     onChange,
   });
 

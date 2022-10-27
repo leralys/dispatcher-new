@@ -7,7 +7,7 @@ describe('Search History', () => {
     render(
       <SearchHistory
         searchList={searchList}
-        handleSearchItemRemove={() => {}}
+        handleItemRemove={() => {}}
         handleClearHistory={() => {}}
         handleItemClick={() => {}}
       />

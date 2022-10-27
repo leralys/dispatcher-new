@@ -36,15 +36,13 @@ const Datepicker = ({
 
   useEffect(() => {
     setLocalValue(value);
-    onDateChange(value, id);
-  }, [value, onDateChange, id]);
+  }, [value]);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  const clearValue = (e: SyntheticEvent) => {
-    e.stopPropagation();
+  const clearValue = () => {
     onDateChange(null, id);
     setLocalValue(null);
   };
@@ -92,7 +90,13 @@ const Datepicker = ({
               endAdornment: (
                 <InputAdornment position='end'>
                   {localValue ? (
-                    <Button isIconBtn={true} onClick={clearValue}>
+                    <Button
+                      isIconBtn={true}
+                      onClick={(e: SyntheticEvent) => {
+                        e.stopPropagation();
+                        clearValue();
+                      }}
+                    >
                       <CloseRoundedIcon sx={SxCloseIcon} />
                     </Button>
                   ) : (

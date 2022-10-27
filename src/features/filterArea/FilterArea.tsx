@@ -13,10 +13,10 @@ interface FilterAreaProps {
 const FilterArea = ({
   endpoint,
   isMobile = false,
-  onFilterChange,
-  onDateFilterChange,
   isSourcesDisabled,
   isCountryCategoryDisabled,
+  onFilterChange,
+  onDateFilterChange,
 }: FilterAreaProps) => {
   return (
     <>
@@ -25,10 +25,10 @@ const FilterArea = ({
       ) : (
         <DesktopFilterArea
           endpoint={endpoint}
-          onFilterChange={onFilterChange}
-          onDateFilterChange={onDateFilterChange}
           isSourcesDisabled={isSourcesDisabled}
           isCountryCategoryDisabled={isCountryCategoryDisabled}
+          onFilterChange={onFilterChange}
+          onDateFilterChange={onDateFilterChange}
         />
       )}
     </>
