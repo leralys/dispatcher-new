@@ -33,7 +33,7 @@ export interface Props extends MuiOutlinedInputProps {
   filterItems?: Option[];
   selectedOption?: Option;
   id: string;
-  filterObject?: IFilterObject;
+  query?: string;
   onEndpointChange: (value: string) => void;
   onQueryChange: (value: string, id: string) => void;
 }
@@ -47,16 +47,14 @@ const Search = ({
   filterItems = [],
   selectedOption,
   id,
-  filterObject,
+  query = '',
   onEndpointChange,
   onQueryChange,
 }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showHistory, setShowHistory] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>(
-    filterObject ? filterObject.q : ''
-  );
+  const [searchValue, setSearchValue] = useState<string>(query);
   // first arg is key to the value in local storage
   const [searches, setSearches] = useLocalStorage<string>('searches', '');
   const [searchList, setSearchList] = useState<string[]>(
@@ -107,7 +105,7 @@ const Search = ({
   const handleEnterKeyPress = (keyboardKey: string, value: string) => {
     if (keyboardKey === 'Enter') {
       searchInputRef.current.blur();
-      if (value !== filterObject.q) {
+      if (value !== query) {
         handleSearch(value);
       }
       closeHistoryDropdown();
@@ -124,7 +122,7 @@ const Search = ({
     if (!isFilterOpen) {
       closeHistoryDropdown();
     }
-    setSearchValue(filterObject ? filterObject?.q : '');
+    setSearchValue(query);
   };
 
   const handleSearchItemRemove = useCallback(

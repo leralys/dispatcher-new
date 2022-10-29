@@ -110,7 +110,7 @@ const Dashboard = () => {
           filterItems={endpoints}
           selectedOption={endpoints[0]}
           id='q'
-          filterObject={filterObject}
+          query={filterObject.q}
           onEndpointChange={handleEndpointChange}
           onQueryChange={handleFilterChange}
         />
