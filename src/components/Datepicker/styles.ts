@@ -37,7 +37,7 @@ export const SxDatepickerInputContainer = (
     : styles;
 };
 
-export const SxCloseIcon: SxProps<Theme> = {
+export const SxClearIcon: SxProps<Theme> = {
   color: SECONDARY_SHADES[300],
 };
 
@@ -49,4 +49,8 @@ export const SxPaperProps: SxProps<Theme> = {
 
 export const SxPopperProps: SxProps<Theme> = {
   paddingTop: '20px',
+};
+
+export const SxClearButton: SxProps<Theme> = {
+  marginRight: '2px',
 };

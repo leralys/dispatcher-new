@@ -12,9 +12,10 @@ import { ReactComponent as CalendarIcon } from '../../assets/svgs/calendar.svg';
 import {
   SxDatepickerInput,
   SxDatepickerInputContainer,
-  SxCloseIcon,
   SxPaperProps,
   SxPopperProps,
+  SxClearButton,
+  SxClearIcon,
 } from './styles';
 
 interface Props {
@@ -96,8 +97,9 @@ const Datepicker = ({
                         e.stopPropagation();
                         clearValue();
                       }}
+                      sx={SxClearButton}
                     >
-                      <CloseRoundedIcon sx={SxCloseIcon} />
+                      <CloseRoundedIcon sx={SxClearIcon} />
                     </Button>
                   ) : (
                     <SvgIcon component={CalendarIcon} inheritViewBox />

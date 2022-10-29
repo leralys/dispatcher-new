@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SxProps, Theme } from '@mui/material';
 
 import { FlexColumn, FlexRow } from '../../../../globalStyles';
 import {
@@ -43,3 +44,7 @@ export const DropdownFooter = styled(FlexRow)`
   padding: 8px 12px 0px;
   border-top: 1px solid ${MAIN_COLORS.secondary};
 `;
+
+export const SxClearIcon: SxProps<Theme> = {
+  color: `&{SECONDARY_SHADES[300]}`,
+};

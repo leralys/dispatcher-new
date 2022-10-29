@@ -1,9 +1,4 @@
-import {
-  useState,
-  useRef,
-  useCallback,
-  SyntheticEvent,
-} from 'react';
+import { useState, useRef, useCallback, SyntheticEvent } from 'react';
 import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { isNull, isEmpty } from 'lodash';
@@ -21,12 +16,12 @@ import {
   IDateObject,
   IFilterObject,
 } from '../../../../utils/types/types';
-import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 import {
   DateDropdownContainer,
   DatepickerContainer,
   DropdownTitle,
   DropdownFooter,
+  SxClearIcon,
 } from './styles';
 import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
 
@@ -116,7 +111,7 @@ const DesktopDateFilter = ({
                   handleClear();
                 }}
               >
-                <CloseRoundedIcon sx={{ color: SECONDARY_SHADES[300] }} />
+                <CloseRoundedIcon sx={SxClearIcon} />
               </Button>
             ) : (
               <SvgIcon component={CalendarIcon} inheritViewBox />
