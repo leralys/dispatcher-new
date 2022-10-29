@@ -44,6 +44,7 @@ const DesktopDateFilter = ({
   const divRef = useRef();
 
   const handleClick = useCallback(() => {
+    setIsDisabledButton(true);
     setAnchorEl(divRef.current);
   }, [setAnchorEl, divRef]);
 
