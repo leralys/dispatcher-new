@@ -1,4 +1,9 @@
-import { useState, useRef, useCallback, SyntheticEvent } from 'react';
+import {
+  useState,
+  useRef,
+  useCallback,
+  SyntheticEvent,
+} from 'react';
 import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { isNull, isEmpty } from 'lodash';
@@ -12,8 +17,9 @@ import Button, {
 import { ReactComponent as CalendarIcon } from '../../../../assets/svgs/calendar.svg';
 import {
   DateType,
-  IDateObject,
   DateFilterType,
+  IDateObject,
+  IFilterObject,
 } from '../../../../utils/types/types';
 import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 import {
@@ -25,15 +31,19 @@ import {
 import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
 
 interface Props {
+  filterObject: IFilterObject;
+  dateObject: IDateObject;
+  setDateObject: (dateObj: IDateObject) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
 
-const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
+const DesktopDateFilter = ({
+  filterObject,
+  dateObject,
+  setDateObject,
+  onDateFilterChange,
+}: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
-  const [dateObject, setDateObject] = useState<IDateObject>({
-    from: null,
-    to: null,
-  });
   const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
   const [isFilterApplied, setIsFilterApplied] = useState<boolean>(false);
   const divRef = useRef();
@@ -44,7 +54,11 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
 
   const handleClose = useCallback(() => {
     setAnchorEl(null);
-  }, [setAnchorEl]);
+    setDateObject({
+      from: isEmpty(filterObject.from) ? null : new Date(filterObject.from),
+      to: isEmpty(filterObject.to) ? null : new Date(filterObject.to),
+    });
+  }, [setAnchorEl, filterObject, setDateObject]);
 
   const handleDateChange = useCallback(
     (date: DateType, id: string) => {
@@ -53,7 +67,7 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
       setDateObject(newObj);
       setIsDisabledButton(false);
     },
-    [dateObject]
+    [dateObject, setDateObject]
   );
 
   const handleClear = () => {
@@ -78,8 +92,10 @@ const DesktopDateFilter = ({ onDateFilterChange }: Props) => {
       }
     }
     onDateFilterChange(newDateFilter);
-    setIsFilterApplied(true);
-    handleClose();
+    setIsFilterApplied(
+      isNull(dateObject.from) && isNull(dateObject.to) ? false : true
+    );
+    setAnchorEl(null);
   };
 
   return (

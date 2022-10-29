@@ -122,6 +122,7 @@ const Dashboard = () => {
           onDateFilterChange={handleDateFilterChange}
           isSourcesDisabled={isSourcesDisabled}
           isCountryCategoryDisabled={isCountryCategoryDisabled}
+          filterObject={filterObject}
         />
       </ContentContainer>
     </>

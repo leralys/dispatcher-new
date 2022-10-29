@@ -1,4 +1,8 @@
-import { ENDPOINTS, DateFilterType } from '../../utils/types/types';
+import {
+  ENDPOINTS,
+  DateFilterType,
+  IFilterObject,
+} from '../../utils/types/types';
 import DesktopFilterArea from './components/desktop/DesktopFilterArea';
 
 interface FilterAreaProps {
@@ -6,6 +10,7 @@ interface FilterAreaProps {
   isMobile?: boolean;
   isSourcesDisabled?: boolean;
   isCountryCategoryDisabled?: boolean;
+  filterObject: IFilterObject;
   onFilterChange: (value: string, name: string) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
@@ -15,6 +20,7 @@ const FilterArea = ({
   isMobile = false,
   isSourcesDisabled,
   isCountryCategoryDisabled,
+  filterObject,
   onFilterChange,
   onDateFilterChange,
 }: FilterAreaProps) => {
@@ -29,6 +35,7 @@ const FilterArea = ({
           isCountryCategoryDisabled={isCountryCategoryDisabled}
           onFilterChange={onFilterChange}
           onDateFilterChange={onDateFilterChange}
+          filterObject={filterObject}
         />
       )}
     </>
