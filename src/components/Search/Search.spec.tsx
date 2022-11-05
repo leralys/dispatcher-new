@@ -31,7 +31,7 @@ describe('Search component', () => {
     const endAdornment = screen.getByTestId('end-adornment');
     expect(endAdornment).toBeDefined();
   });
-  it('should grow and render searchHistory when focused', async () => {
+  it('should grow when focused', async () => {
     render(
       <Search
         id='search'
@@ -40,8 +40,11 @@ describe('Search component', () => {
       />
     );
     const search = screen.getByTestId('search');
+    const searchContainer = screen.getByTestId('search-container');
     fireEvent.focus(search);
-    const searchHistory = await screen.findByTestId('search-history');
-    expect(searchHistory).toBeDefined();
+    expect(searchContainer).toBeDefined();
+    setTimeout(() => {
+      expect(searchContainer).toHaveStyle('width: 664px');
+    }, 3000);
   });
 });

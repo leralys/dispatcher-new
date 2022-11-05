@@ -12,7 +12,7 @@ import Select from '../Select/Select';
 import SearchHistory from '../SearchHistory/SearchHistory';
 import Button from '../../components/MainButton/MainButton';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
-import { Option, IFilterObject } from '../../utils/types/types';
+import { Option } from '../../utils/types/types';
 import { ReactComponent as SearchIcon } from '../../assets/svgs/searchIcon.svg';
 import { getNewArray } from './utils';
 import {
