@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.0](https://github.com/leralys/dispatcher-new/compare/v1.0.0...v1.1.0) (2022-11-05)
+
+
+### Features
+
+* **DateFilter:** date filter functionality ([e97f4bb](https://github.com/leralys/dispatcher-new/commit/e97f4bb3c41d74f30f65e315dbe25e88b7995fe1))
+* **Datefilter:** started dates logic ([91b659f](https://github.com/leralys/dispatcher-new/commit/91b659f1d560ac639eab72a63504cbe5f7965aa0))
+* **Search:** clear input button ([2289b93](https://github.com/leralys/dispatcher-new/commit/2289b93981323102deb537d687d9f1f0a4158a10))
+* **SearchHistory:** save to local storage, add new query string to filter object ([ff9cb7c](https://github.com/leralys/dispatcher-new/commit/ff9cb7c801adf54a5b01cea2a5c1fa76261cc4fa))
+* **tests:** popover ([a603235](https://github.com/leralys/dispatcher-new/commit/a603235d4040eba9100e3afca2cc6cd8a14b8a22))
+* **tests:** popover ([a1c763b](https://github.com/leralys/dispatcher-new/commit/a1c763bcdb4abfcfbf8b448b4b4ea97919de84d4))
+* **tests:** search history unit tests ([1d53c86](https://github.com/leralys/dispatcher-new/commit/1d53c868433cbeb54d1ab51788bca25debb516ae))
+* **useSelect:** useSelect custo hook ([db587f5](https://github.com/leralys/dispatcher-new/commit/db587f5b5cfb8a429eeb63f784affe46c1fba135))
+
+
+### Bug Fixes
+
+* **components:** fixed syntax error ([ceef96c](https://github.com/leralys/dispatcher-new/commit/ceef96cc04a655d099a9639f9d0ef7b6aa602e8e))
+* **components:** fixes and refactorings ([85475a3](https://github.com/leralys/dispatcher-new/commit/85475a32982e011a68feaa7214357a967cc3dd49))
+* **DesktopDateFilter:** button disabled if no changes were made ([982da22](https://github.com/leralys/dispatcher-new/commit/982da22243df2d7b7e363ad3dc014dec4e3e4b57))
+* **DesktopDateFilter:** fixed typo ([acf053b](https://github.com/leralys/dispatcher-new/commit/acf053ba6064fea0518ddeb0fc2c57d5b89c5246))
+* **DesktopDateFilter:** if no changes set the values back on close ([44ab833](https://github.com/leralys/dispatcher-new/commit/44ab833c8e2f3f2c4efb05892d2f69fb8c3f7feb))
+* **MainButton:** sx props ([8ce9894](https://github.com/leralys/dispatcher-new/commit/8ce98944da3b591d3ac0216f9117fb33878049ac))
+* **SearchHistory:** set input value to current query string on click away ([4e973a0](https://github.com/leralys/dispatcher-new/commit/4e973a00b4acfa15e492ae1830cb7fab9d5c0649))
+
 ## 1.0.0 (2022-10-16)
 
 
