@@ -11,7 +11,7 @@ interface Props {
   sources?: Option[];
   isCountryCategoryDisabled: boolean;
   isSourcesDisabled: boolean;
-  onFilterChange: (value: string, name: string) => void;
+  onFilterChange: (value: string, id: string) => void;
 }
 
 const DesktopTopHeadlinesFilters = ({

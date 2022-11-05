@@ -11,7 +11,7 @@ interface Props {
   filterObject: IFilterObject;
   dateObject: IDateObject;
   setDateObject: (dateObj: IDateObject) => void;
-  onFilterChange: (value: string, name: string) => void;
+  onFilterChange: (value: string, id: string) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
 

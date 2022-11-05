@@ -11,7 +11,7 @@ interface FilterAreaProps {
   isSourcesDisabled?: boolean;
   isCountryCategoryDisabled?: boolean;
   filterObject: IFilterObject;
-  onFilterChange: (value: string, name: string) => void;
+  onFilterChange: (value: string, id: string) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
 
