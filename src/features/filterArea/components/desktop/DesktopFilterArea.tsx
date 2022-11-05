@@ -1,56 +1,18 @@
-import { useState } from 'react';
-
+import { useFilterStore } from '../../../../store/filterStore';
 import DesktopTopHeadlinesFilters from './DesktopTopHeadlinesFilters';
 import DesktopEverythingFilters from './DesktopEverythingFilters';
-import {
-  ENDPOINTS,
-  Option,
-  DateFilterType,
-  IDateObject,
-} from '../../../../utils/types/types';
+import { ENDPOINTS } from '../../../../utils/types/types';
 import { FiltersDesktopContainer } from './styles';
-import { isEmpty } from 'lodash';
+import { getEndpointEnum } from '../../../dashboard/utils';
 
-interface Props {
-  endpoint: ENDPOINTS;
-  sources?: Option[];
-  isSourcesDisabled?: boolean;
-  isCountryCategoryDisabled?: boolean;
-  filterObject: any;
-  onFilterChange: (value: string, id: string) => void;
-  onDateFilterChange: (dates: DateFilterType) => void;
-}
-
-const DesktopFilterArea = ({
-  endpoint,
-  isSourcesDisabled,
-  isCountryCategoryDisabled,
-  sources,
-  filterObject,
-  onFilterChange,
-  onDateFilterChange,
-}: Props) => {
-  const [dateObject, setDateObject] = useState<IDateObject>({
-    from: isEmpty(filterObject.from) ? null : new Date(filterObject.from),
-    to: isEmpty(filterObject.to) ? null : new Date(filterObject.to),
-  });
+const DesktopFilterArea = () => {
+  const { filterObject } = useFilterStore((state) => state);
   return (
     <FiltersDesktopContainer>
-      {endpoint === ENDPOINTS.TOP_HEADLINES ? (
-        <DesktopTopHeadlinesFilters
-          isSourcesDisabled={isSourcesDisabled}
-          isCountryCategoryDisabled={isCountryCategoryDisabled}
-          onFilterChange={onFilterChange}
-          sources={sources}
-        />
+      {getEndpointEnum(filterObject.endpoint) === ENDPOINTS.TOP_HEADLINES ? (
+        <DesktopTopHeadlinesFilters />
       ) : (
-        <DesktopEverythingFilters
-          filterObject={filterObject}
-          dateObject={dateObject}
-          setDateObject={setDateObject}
-          onFilterChange={onFilterChange}
-          onDateFilterChange={onDateFilterChange}
-        />
+        <DesktopEverythingFilters />
       )}
     </FiltersDesktopContainer>
   );

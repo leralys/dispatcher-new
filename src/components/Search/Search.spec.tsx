@@ -6,11 +6,7 @@ import Search from './Search';
 describe('Search component', () => {
   it('should render and have default width', () => {
     render(
-      <Search
-        id='search'
-        onEndpointChange={() => {}}
-        onQueryChange={() => {}}
-      />
+      <Search id='search' onFilterChange={() => {}} onQueryChange={() => {}} />
     );
     const searchComponent = screen.getByTestId('search');
     const searchIcon = screen.getByTestId('search-icon');
@@ -24,7 +20,7 @@ describe('Search component', () => {
       <Search
         isWithFilter={true}
         id='search'
-        onEndpointChange={() => {}}
+        onFilterChange={() => {}}
         onQueryChange={() => {}}
       />
     );
@@ -33,11 +29,7 @@ describe('Search component', () => {
   });
   it('should grow when focused', async () => {
     render(
-      <Search
-        id='search'
-        onEndpointChange={() => {}}
-        onQueryChange={() => {}}
-      />
+      <Search id='search' onFilterChange={() => {}} onQueryChange={() => {}} />
     );
     const search = screen.getByTestId('search');
     const searchContainer = screen.getByTestId('search-container');

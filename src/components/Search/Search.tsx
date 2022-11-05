@@ -34,7 +34,7 @@ export interface Props extends MuiOutlinedInputProps {
   selectedOption?: Option;
   id: string;
   query?: string;
-  onEndpointChange: (value: string) => void;
+  onFilterChange: (value: string) => void;
   onQueryChange: (value: string, id: string) => void;
 }
 
@@ -48,7 +48,7 @@ const Search = ({
   selectedOption,
   id,
   query = '',
-  onEndpointChange,
+  onFilterChange,
   onQueryChange,
 }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -196,7 +196,7 @@ const Search = ({
                     isInSearch={true}
                     isWithEmptyValue={false}
                     selectedOption={Boolean(selectedOption) && selectedOption}
-                    onChange={onEndpointChange}
+                    onChange={onFilterChange}
                     onOpen={() => setIsFilterOpen(true)}
                     onClose={() => setIsFilterOpen(false)}
                   />

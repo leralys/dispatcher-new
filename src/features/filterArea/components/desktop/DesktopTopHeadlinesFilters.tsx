@@ -1,28 +1,39 @@
-import { useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { Tooltip } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
+import { useFilterStore } from '../../../../store/filterStore';
 import Select from '../../../../components/Select/Select';
-import { Option } from '../../../../utils/types/types';
 import { countries, categories } from '../../../../utils/consts/filters';
 import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
 
-interface Props {
-  sources?: Option[];
-  isCountryCategoryDisabled: boolean;
-  isSourcesDisabled: boolean;
-  onFilterChange: (value: string, id: string) => void;
-}
+const DesktopTopHeadlinesFilters = () => {
+  const [isSourcesDisabled, setIsSourcesDisabled] = useState<boolean>(false);
+  const [isCountryCategoryDisabled, setIsCountryCategoryDisabled] =
+    useState<boolean>(false);
 
-const DesktopTopHeadlinesFilters = ({
-  sources,
-  onFilterChange,
-  isCountryCategoryDisabled,
-  isSourcesDisabled,
-}: Props) => {
+  const { setFilter } = useFilterStore((state) => state);
+
   const isShowTooltip = useMemo(
     () => isSourcesDisabled || isCountryCategoryDisabled,
     [isSourcesDisabled, isCountryCategoryDisabled]
+  );
+
+  const shouldDisableFilter = useCallback((value: string, id: string) => {
+    if (id === 'country' || id === 'category') {
+      setIsSourcesDisabled(value ? true : false);
+    }
+    if (id === 'sources') {
+      setIsCountryCategoryDisabled(value ? true : false);
+    }
+  }, []);
+
+  const handleFilterChange = useCallback(
+    (value: string, id: string) => {
+      setFilter(value, id);
+      shouldDisableFilter(value, id);
+    },
+    [setFilter, shouldDisableFilter]
   );
 
   return (
@@ -31,7 +42,7 @@ const DesktopTopHeadlinesFilters = ({
         <Select
           placeholder='Country'
           items={countries}
-          onChange={onFilterChange}
+          onChange={handleFilterChange}
           id='country'
           disabled={isCountryCategoryDisabled}
         />
@@ -40,7 +51,7 @@ const DesktopTopHeadlinesFilters = ({
         <Select
           placeholder='Category'
           items={categories}
-          onChange={onFilterChange}
+          onChange={handleFilterChange}
           id='category'
           disabled={isCountryCategoryDisabled}
         />
@@ -48,7 +59,7 @@ const DesktopTopHeadlinesFilters = ({
       <span>
         <Select
           placeholder='Sources'
-          onChange={onFilterChange}
+          onChange={handleFilterChange}
           id='sources'
           disabled={isSourcesDisabled}
         />

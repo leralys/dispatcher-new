@@ -3,6 +3,7 @@ import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { isNull, isEmpty } from 'lodash';
 
+import { useFilterStore } from '../../../../store/filterStore';
 import Popover from '../../../../components/Popover/Popover';
 import FilterButton from '../../../../components/FilterButton/FilterButton';
 import Datepicker from '../../../../components/Datepicker/Datepicker';
@@ -14,7 +15,6 @@ import {
   DateType,
   DateFilterType,
   IDateObject,
-  IFilterObject,
 } from '../../../../utils/types/types';
 import {
   DateDropdownContainer,
@@ -26,22 +26,17 @@ import {
 import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
 
 interface Props {
-  filterObject: IFilterObject;
   dateObject: IDateObject;
-  setDateObject: (dateObj: IDateObject) => void;
-  onDateFilterChange: (dates: DateFilterType) => void;
+  onDateObjectChange: (dateObj: IDateObject) => void;
 }
 
-const DesktopDateFilter = ({
-  filterObject,
-  dateObject,
-  setDateObject,
-  onDateFilterChange,
-}: Props) => {
+const DesktopDateFilter = ({ dateObject, onDateObjectChange }: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
   const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
   const [isFilterApplied, setIsFilterApplied] = useState<boolean>(false);
   const divRef = useRef();
+
+  const { filterObject, setDatesFilter } = useFilterStore((state) => state);
 
   const handleClick = useCallback(() => {
     setIsDisabledButton(true);
@@ -50,44 +45,44 @@ const DesktopDateFilter = ({
 
   const handleClose = useCallback(() => {
     setAnchorEl(null);
-    setDateObject({
+    onDateObjectChange({
       from: isEmpty(filterObject.from) ? null : new Date(filterObject.from),
       to: isEmpty(filterObject.to) ? null : new Date(filterObject.to),
     });
-  }, [setAnchorEl, filterObject, setDateObject]);
+  }, [setAnchorEl, filterObject, onDateObjectChange]);
 
   const handleDateChange = useCallback(
     (date: DateType, id: string) => {
       let newObj = { ...dateObject };
       newObj[id as keyof typeof dateObject] = date;
-      setDateObject(newObj);
+      onDateObjectChange(newObj);
       setIsDisabledButton(false);
     },
-    [dateObject, setDateObject]
+    [dateObject, onDateObjectChange]
   );
 
   const handleClear = () => {
-    setDateObject({
+    onDateObjectChange({
       from: null,
       to: null,
     });
-    onDateFilterChange({ to: '', from: '' });
+    setDatesFilter({ to: '', from: '' });
     setIsFilterApplied(false);
     setIsDisabledButton(true);
   };
 
   const handleApply = () => {
-    let newDateFilter: DateFilterType = { to: '', from: '' };
+    let newDates: DateFilterType = { to: '', from: '' };
     for (let key in dateObject) {
       if (isNull(dateObject[key as keyof typeof dateObject])) {
         continue;
       } else {
-        newDateFilter[key as keyof typeof newDateFilter] = dateToISOFormat(
+        newDates[key as keyof typeof newDates] = dateToISOFormat(
           dateObject[key as keyof typeof dateObject]
         );
       }
     }
-    onDateFilterChange(newDateFilter);
+    setDatesFilter(newDates);
     setIsFilterApplied(
       isNull(dateObject.from) && isNull(dateObject.to) ? false : true
     );
