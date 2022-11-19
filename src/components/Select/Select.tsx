@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 export interface Props extends Omit<MuiSelectProps, 'onChange'> {
-  items?: Option[];
+  items: Option[];
   id: string;
   placeholder?: string;
   className?: string;

@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import { Tooltip } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
-import Select from '../../../../components/Select/Select';
-import { Option } from '../../../../utils/types/types';
-import { countries, categories } from '../../../../utils/consts/filters';
-import { SECONDARY_SHADES } from '../../../../utils/ui/colors';
+import Select from '../../../components/Select/Select';
+import { Option } from '../../../utils/types/types';
+import { countries, categories } from '../../../utils/consts/filters';
+import { SECONDARY_SHADES } from '../../../utils/ui/colors';
 
 interface Props {
-  sources?: Option[];
+  sources: Option[];
   isCountryCategoryDisabled: boolean;
   isSourcesDisabled: boolean;
   onFilterChange: (value: string, id: string) => void;
@@ -48,6 +48,7 @@ const DesktopTopHeadlinesFilters = ({
       <span>
         <Select
           placeholder='Sources'
+          items={sources}
           onChange={onFilterChange}
           id='sources'
           disabled={isSourcesDisabled}
