@@ -9,6 +9,7 @@ import {
   DateFilterType,
 } from '../../../utils/types/types';
 import { getEndpointEnum } from '../../dashboard/utils';
+import { getNewsData } from '../service/newsApiService';
 
 const useFilters = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ENDPOINTS>(
@@ -33,17 +34,17 @@ const useFilters = () => {
   const [isCountryCategoryDisabled, setIsCountryCategoryDisabled] =
     useState<boolean>(false);
 
-  const apiFunc = (filterObject: IFilterObject) => {
-    console.log(filterObject);
-  };
+  // const apiFunc = (filterObject: IFilterObject) => {
+  //   console.log(filterObject);
+  // };
 
   const handleEndpointChange = useCallback(
-    (value: string) => {
-      setSelectedEndpoint(getEndpointEnum(value));
+    (endpoint: string) => {
+      setSelectedEndpoint(getEndpointEnum(endpoint));
       const query = filterObject.q;
       const newFilterObj = {
         country: '',
-        endpoint: value,
+        endpoint: endpoint,
         language: '',
         sortBy: '',
         category: '',
@@ -55,7 +56,7 @@ const useFilters = () => {
       setFilterObject(newFilterObj);
       setIsSourcesDisabled(false);
       setIsCountryCategoryDisabled(false);
-      apiFunc(newFilterObj);
+      getNewsData(newFilterObj, getEndpointEnum(endpoint));
     },
     [filterObject.q]
   );
@@ -78,7 +79,7 @@ const useFilters = () => {
       let newFilterObj = { ...filterObject };
       newFilterObj[id as keyof typeof filterObject] = value;
       setFilterObject(newFilterObj);
-      apiFunc(newFilterObj);
+      getNewsData(newFilterObj, getEndpointEnum(newFilterObj.endpoint));
       shouldDisableFilter(value, id);
     },
     [filterObject, shouldDisableFilter]
@@ -92,7 +93,7 @@ const useFilters = () => {
           dates[key as keyof typeof dates];
       });
       setFilterObject(newFilterObj);
-      apiFunc(newFilterObj);
+      getNewsData(newFilterObj, getEndpointEnum(newFilterObj.endpoint));
     },
     [filterObject]
   );
