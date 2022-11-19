@@ -1,26 +1,29 @@
 import DesktopDateFilter from './DesktopDateFilter';
-import Select from '../../../../components/Select/Select';
-import { sortBy, languages } from '../../../../utils/consts/filters';
+import Select from '../../../components/Select/Select';
+import { sortBy, languages } from '../../../utils/consts/filters';
 import {
   DateFilterType,
   IFilterObject,
   IDateObject,
-} from '../../../../utils/types/types';
+  Option,
+} from '../../../utils/types/types';
 
 interface Props {
   filterObject: IFilterObject;
   dateObject: IDateObject;
-  setDateObject: (dateObj: IDateObject) => void;
+  sources: Option[];
+  handleDateObjectChange: (dateObj: IDateObject) => void;
   onFilterChange: (value: string, id: string) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
 
 const DesktopEverythingFilters = ({
-  onFilterChange,
-  onDateFilterChange,
   filterObject,
   dateObject,
-  setDateObject,
+  sources,
+  onFilterChange,
+  onDateFilterChange,
+  handleDateObjectChange,
 }: Props) => {
   return (
     <>
@@ -36,12 +39,17 @@ const DesktopEverythingFilters = ({
         <DesktopDateFilter
           dateObject={dateObject}
           filterObject={filterObject}
-          setDateObject={setDateObject}
+          handleDateObjectChange={handleDateObjectChange}
           onDateFilterChange={onDateFilterChange}
         />
       </span>
       <span>
-        <Select placeholder='Sources' onChange={onFilterChange} id='sources' />
+        <Select
+          placeholder='Sources'
+          onChange={onFilterChange}
+          id='sources'
+          items={sources}
+        />
       </span>
       <span>
         <Select

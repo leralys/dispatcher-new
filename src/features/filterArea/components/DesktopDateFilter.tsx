@@ -3,39 +3,39 @@ import { SvgIcon } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { isNull, isEmpty } from 'lodash';
 
-import Popover from '../../../../components/Popover/Popover';
-import FilterButton from '../../../../components/FilterButton/FilterButton';
-import Datepicker from '../../../../components/Datepicker/Datepicker';
+import Popover from '../../../components/Popover/Popover';
+import FilterButton from '../../../components/FilterButton/FilterButton';
+import Datepicker from '../../../components/Datepicker/Datepicker';
 import Button, {
   ButtonVariants,
-} from '../../../../components/MainButton/MainButton';
-import { ReactComponent as CalendarIcon } from '../../../../assets/svgs/calendar.svg';
+} from '../../../components/MainButton/MainButton';
+import { ReactComponent as CalendarIcon } from '../../../assets/svgs/calendar.svg';
 import {
   DateType,
   DateFilterType,
   IDateObject,
   IFilterObject,
-} from '../../../../utils/types/types';
+} from '../../../utils/types/types';
 import {
   DateDropdownContainer,
   DatepickerContainer,
   DropdownTitle,
   DropdownFooter,
   SxClearIcon,
-} from './styles';
-import { dateToISOFormat } from '../../../../utils/helpers/dateFormat/dateFormat';
+} from '../styles';
+import { dateToISOFormat } from '../../../utils/helpers/dateFormat/dateFormat';
 
 interface Props {
   filterObject: IFilterObject;
   dateObject: IDateObject;
-  setDateObject: (dateObj: IDateObject) => void;
+  handleDateObjectChange: (dateObj: IDateObject) => void;
   onDateFilterChange: (dates: DateFilterType) => void;
 }
 
 const DesktopDateFilter = ({
   filterObject,
   dateObject,
-  setDateObject,
+  handleDateObjectChange,
   onDateFilterChange,
 }: Props) => {
   const [anchorEl, setAnchorEl] = useState<Element>();
@@ -50,24 +50,24 @@ const DesktopDateFilter = ({
 
   const handleClose = useCallback(() => {
     setAnchorEl(null);
-    setDateObject({
+    handleDateObjectChange({
       from: isEmpty(filterObject.from) ? null : new Date(filterObject.from),
       to: isEmpty(filterObject.to) ? null : new Date(filterObject.to),
     });
-  }, [setAnchorEl, filterObject, setDateObject]);
+  }, [setAnchorEl, filterObject, handleDateObjectChange]);
 
   const handleDateChange = useCallback(
     (date: DateType, id: string) => {
       let newObj = { ...dateObject };
       newObj[id as keyof typeof dateObject] = date;
-      setDateObject(newObj);
+      handleDateObjectChange(newObj);
       setIsDisabledButton(false);
     },
-    [dateObject, setDateObject]
+    [dateObject, handleDateObjectChange]
   );
 
   const handleClear = () => {
-    setDateObject({
+    handleDateObjectChange({
       from: null,
       to: null,
     });

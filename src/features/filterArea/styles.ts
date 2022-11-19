@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { SxProps, Theme } from '@mui/material';
 
-import { FlexColumn, FlexRow } from '../../../../globalStyles';
+import { FlexColumn, FlexRow } from '../../globalStyles';
 import {
   MAIN_COLORS,
   NEUTRAL_SHADES,
   SECONDARY_SHADES,
-} from '../../../../utils/ui/colors';
+} from '../../utils/ui/colors';
 
 export const FiltersDesktopContainer = styled(FlexRow)`
   width: 100%;
