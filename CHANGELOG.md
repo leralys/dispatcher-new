@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/leralys/dispatcher-new/compare/v1.1.0...v1.2.0) (2023-01-27)
+
+
+### Features
+
+* **newsApiService:** newsApiService ([6d925e3](https://github.com/leralys/dispatcher-new/commit/6d925e3bd4cb3de76a06df7407f02242a346c55f))
+
 ## [1.1.0](https://github.com/leralys/dispatcher-new/compare/v1.0.0...v1.1.0) (2022-11-05)
 
 
