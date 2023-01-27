@@ -29,6 +29,28 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const renderDesktopFilters = () => (
+    <FiltersDesktopContainer>
+      {selectedEndpoint === ENDPOINTS.TOP_HEADLINES ? (
+        <DesktopTopHeadlinesFilters
+          isSourcesDisabled={isSourcesDisabled}
+          isCountryCategoryDisabled={isCountryCategoryDisabled}
+          onFilterChange={handleFilterChange}
+          sources={[]}
+        />
+      ) : (
+        <DesktopEverythingFilters
+          filterObject={filterObject}
+          dateObject={dateObject}
+          handleDateObjectChange={handleDateObjectChange}
+          onFilterChange={handleFilterChange}
+          onDateFilterChange={handleDateFilterChange}
+          sources={[]}
+        />
+      )}
+    </FiltersDesktopContainer>
+  );
+
   return (
     <>
       <NavBarContainer>
@@ -46,29 +68,7 @@ const Dashboard = () => {
         />
       </NavBarContainer>
       <ContentContainer>
-        {isMobile ? (
-          <div>Mobile</div>
-        ) : (
-          <FiltersDesktopContainer>
-            {selectedEndpoint === ENDPOINTS.TOP_HEADLINES ? (
-              <DesktopTopHeadlinesFilters
-                isSourcesDisabled={isSourcesDisabled}
-                isCountryCategoryDisabled={isCountryCategoryDisabled}
-                onFilterChange={handleFilterChange}
-                sources={[]}
-              />
-            ) : (
-              <DesktopEverythingFilters
-                filterObject={filterObject}
-                dateObject={dateObject}
-                handleDateObjectChange={handleDateObjectChange}
-                onFilterChange={handleFilterChange}
-                onDateFilterChange={handleDateFilterChange}
-                sources={[]}
-              />
-            )}
-          </FiltersDesktopContainer>
-        )}
+        {isMobile ? <div>Mobile</div> : renderDesktopFilters()}
       </ContentContainer>
     </>
   );

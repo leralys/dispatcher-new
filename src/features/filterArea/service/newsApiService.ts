@@ -17,12 +17,9 @@ const makeTopHeadlinesParams = (filterObject: IFilterObject) => {
   ]);
   if (Object.values(paramsObj).every((value) => isEmpty(value))) {
     paramsObj.language = defaultLanguage;
-    console.log('every');
-  }
-  if (isEmpty(filterObject.sources)) {
+  } else if (isEmpty(filterObject.sources)) {
     paramsObj = pick(filterObject, ['country', 'category', 'q']);
-  }
-  if (!isEmpty(filterObject.sources)) {
+  } else if (!isEmpty(filterObject.sources)) {
     paramsObj = pick(filterObject, ['sources', 'q']);
   }
   return { ...paramsObj, endpoint: filterObject.endpoint };

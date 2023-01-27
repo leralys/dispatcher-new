@@ -34,10 +34,6 @@ const useFilters = () => {
   const [isCountryCategoryDisabled, setIsCountryCategoryDisabled] =
     useState<boolean>(false);
 
-  // const apiFunc = (filterObject: IFilterObject) => {
-  //   console.log(filterObject);
-  // };
-
   const handleEndpointChange = useCallback(
     (endpoint: string) => {
       setSelectedEndpoint(getEndpointEnum(endpoint));
